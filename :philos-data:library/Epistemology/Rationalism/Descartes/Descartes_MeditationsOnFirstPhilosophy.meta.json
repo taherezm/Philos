@@ -1,0 +1,54 @@
+{
+  "id": "meditations-descartes",
+  "title": "Meditations on First Philosophy",
+  "author": "René Descartes",
+  "year": 1641,
+  "branch": "Epistemology",
+  "school": "Rationalism",
+  "source": "Project Gutenberg",
+  "sourceUrl": null,
+  "introduction": "Written in the quiet of a warm stove-heated room in winter, the Meditations on First Philosophy is one of the most consequential philosophical texts ever produced. In just six short meditations, Descartes dismantles the entire edifice of received knowledge, descends to the one certainty that cannot be doubted, and then — with the precision of a geometer — rebuilds the world from scratch. It is philosophy as spiritual exercise: the reader is invited not to follow an argument from the outside, but to perform the meditations themselves.\n\nDescartes' method is radical doubt: take any belief that can possibly be doubted and treat it as false. The senses have deceived us before. Perhaps we are always dreaming. Perhaps an evil demon is systematically misleading us at every step. What survives this assault? Only one thing: the very act of doubting is itself a form of thinking, and the thinking thing cannot doubt its own existence while it is thinking. Cogito ergo sum — I think, therefore I am.\n\nFrom this single foothold, Descartes reconstructs mathematics, physics, and the existence of God. Whether his reconstruction succeeds is one of the great debates in the history of philosophy. But the method — the demand for a foundation certain enough to bear the weight of all knowledge — defined the agenda of modern philosophy for three centuries and remains a live question today.",
+  "argumentCard": {
+    "centralQuestion": "What, if anything, can be known with absolute certainty — and how do we escape the prison of radical doubt?",
+    "thesis": "The practice of methodological doubt strips away all uncertain knowledge until only one indubitable certainty remains: I think, therefore I am. From this foundation, the existence of God and the reliability of clear and distinct perception can be established, providing a secure basis for all knowledge.",
+    "keyMoves": [
+      "The Method of Doubt (Meditation I): Anything that can possibly be doubted must be provisionally rejected — the senses, mathematics, even the physical world are called into question by the evil demon hypothesis",
+      "The Cogito (Meditation II): The one thing the evil demon cannot deceive is the existence of the doubting mind itself. Even if I am deceived about everything, there must be something that is being deceived: 'I think, therefore I am'",
+      "The Wax Argument (Meditation II): The wax changes all its sensible properties (color, smell, texture, shape) when melted — yet we know it is still the same wax. This knowledge cannot come from the senses; it must come from the intellect alone",
+      "God's existence as guarantee (Meditations III & V): A perfect God would not systematically deceive us; therefore our clear and distinct perceptions are reliable guides to truth"
+    ],
+    "strongestObjection": "The Cartesian Circle: Descartes uses the reliability of clear and distinct perception to prove God exists, then uses God's existence to guarantee clear and distinct perception. The proof is circular — the very faculty whose reliability is in question is used to prove that it is reliable."
+  },
+  "conceptDNA": null,
+  "conceptHighlights": null,
+  "guidedPaths": null,
+  "debates": [
+    {
+      "id": "descartes-hume-foundations",
+      "title": "Can we build certain knowledge from the inside out?",
+      "subtitle": "The Cartesian project vs. Humean skepticism",
+      "philosopher1": {
+        "name": "René Descartes",
+        "position": "Pure reason, starting from the cogito, can reconstruct the entire edifice of human knowledge on certain foundations",
+        "keyQuote": "I will suppose then, that everything I see is spurious. I will believe that my memory tells me lies, and that none of the things that it reports ever happened. I have no senses. Body, shape, extension, movement and place are chimeras. So what remains true? Perhaps just the one fact that nothing is certain.",
+        "arguments": [
+          "The senses are unreliable and cannot serve as the foundation of knowledge. Only pure rational intuition — the grasp of clear and distinct ideas — can provide the certainty that knowledge requires.",
+          "Mathematics and geometry provide the model: from self-evident axioms, we derive certain truths by pure reason alone. Philosophy should emulate this method.",
+          "Without a secure foundation, skepticism wins by default. The radical doubt method is not a concession to the skeptic — it is the only way to defeat the skeptic permanently."
+        ]
+      },
+      "philosopher2": {
+        "name": "David Hume",
+        "position": "The rationalist project is illusory — 'clear and distinct' perception is no more reliable than sensation, and the self Descartes finds is a fiction",
+        "keyQuote": "When I enter most intimately into what I call myself, I always stumble on some particular perception or other, of heat or cold, light or shade, love or hatred, pain or pleasure. I never can catch myself at any time without a perception.",
+        "arguments": [
+          "The 'clear and distinct' criterion is circular: Descartes calls something certain when it seems very clear to him. But seeming certain to someone is not the same as being certain. The history of confident philosophical errors is long.",
+          "The cogito itself is suspect: 'I think' already smuggles in the assumption of a persistent 'I.' All that is warranted is 'There is thinking happening' — not that there is a continuous self doing the thinking.",
+          "God's existence cannot be established by pure reason — it is either a matter of faith or a matter of experience. The cosmological and ontological arguments all involve the same circular maneuver."
+        ]
+      },
+      "stakes": "This is the deepest debate in modern epistemology: can the mind bootstrap itself into certainty by its own operations, or is all knowledge ultimately dependent on the messy, fallible deliveries of experience? The answer shapes everything from how we justify scientific knowledge to whether artificial intelligence can ever 'understand' in the way humans do.",
+      "yourTurn": "Try the cogito yourself: can you doubt that you are thinking right now? If not, does this give Descartes his foundation — or does Hume's critique that 'I' is an assumption still apply? What exactly survives the evil demon scenario?"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "crito",
+  "title": "Crito",
+  "author": "Plato",
+  "year": -399,
+  "branch": "Ethics",
+  "school": "Virtue Ethics",
+  "source": "Project Gutenberg",
+  "sourceUrl": null,
+  "introduction": "Set in Socrates' prison cell in 399 BC, the Crito dramatizes a conversation between Socrates and his wealthy friend Crito, who has arranged an escape. Socrates refuses, arguing that it is never right to return injustice for injustice and that he has an obligation to obey the laws of Athens even when they are misapplied. The dialogue raises questions about civil disobedience, the social contract, and the relationship between law and justice that remain urgent today.",
+  "argumentCard": {
+    "centralQuestion": "Is it ever right to break the law, even when you have been unjustly condemned?",
+    "thesis": "It is never right to do wrong, even in response to wrong done to you — and since Socrates has benefited from Athens' laws and implicitly agreed to abide by them, he must accept even an unjust verdict rather than undermine the legal order by escaping.",
+    "keyMoves": [
+      "Establishes the principle that it is never right to do wrong or return evil for evil, regardless of what has been done to you",
+      "Argues that by living in Athens and benefiting from its laws for seventy years, Socrates has made an implicit agreement to obey them — leaving when the verdict goes against him would be breaking that agreement",
+      "Personifies the Laws of Athens, who argue that if citizens disobey whenever they disagree with a verdict, the entire legal order will be destroyed"
+    ],
+    "strongestObjection": "Socrates' argument proves too much — if we must always obey the law, there can be no justified civil disobedience, which means figures like Gandhi, Thoreau, and Martin Luther King Jr. were wrong to break unjust laws."
+  },
+  "conceptDNA": null,
+  "conceptHighlights": null,
+  "guidedPaths": null,
+  "debates": [
+    {
+      "id": "civil-disobedience",
+      "title": "When must we disobey the law?",
+      "subtitle": "Socratic obligation vs. the right of conscience",
+      "philosopher1": {
+        "name": "Socrates (via Plato)",
+        "position": "We have a binding obligation to obey the law, even an unjust one",
+        "keyQuote": "Do you imagine that a state can subsist and not be overthrown, in which the decisions of law have no power?",
+        "arguments": [
+          "We implicitly consent to the laws of our city by choosing to live under them — benefiting from education, protection, and community.",
+          "If every person could decide which laws to follow based on personal judgment, social order would collapse.",
+          "Breaking the law to escape punishment would be to return evil for evil — exactly the kind of injustice Socrates has spent his life condemning."
+        ]
+      },
+      "philosopher2": {
+        "name": "Henry David Thoreau",
+        "position": "Conscience is a higher law than the state",
+        "keyQuote": "The only obligation which I have a right to assume is to do at any time what I think right.",
+        "arguments": [
+          "A government that enforces unjust laws forfeits its claim to moral authority. Obeying it is not civic virtue — it is complicity.",
+          "Practical conscience is more reliable than abstract law. If your gut tells you the law is wrong, your gut may be closer to justice than the legislature.",
+          "History proves that moral progress has depended on people who broke unjust laws: abolitionists, suffragists, civil rights activists. Their disobedience was the engine of reform."
+        ]
+      },
+      "stakes": "This debate isn't abstract: it determines how we think about protesters, tax resisters, whistleblowers, and conscientious objectors. Is obedience a virtue, or can it be a moral failure?",
+      "yourTurn": "Socrates accepts death rather than break Athenian law. Thoreau goes to jail rather than pay a war tax. Who has the stronger position — the one who submits to legitimate authority, or the one who refuses to sanction injustice?"
+    }
+  ]
+}

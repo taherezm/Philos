@@ -1,0 +1,54 @@
+{
+  "id": "groundwork-metaphysics",
+  "title": "Groundwork for the Metaphysics of Morals",
+  "author": "Immanuel Kant",
+  "year": 1785,
+  "branch": "Ethics",
+  "school": "Deontology",
+  "source": "Project Gutenberg",
+  "sourceUrl": null,
+  "introduction": "The Groundwork for the Metaphysics of Morals is Kant's attempt to locate the supreme principle of morality — the one rule that underlies all genuine moral obligation. It is a short book, but one of the densest and most consequential in the history of ethics. Kant's goal is not to describe how people actually behave, nor to argue from the consequences of actions — it is to establish, through pure reason alone, what we are unconditionally obligated to do.\n\nKant's key insight is that the only thing good without qualification is a good will — not intelligence, wealth, happiness, or even virtue in the Aristotelian sense, because all of these can be used for evil. A good will is one that acts from duty, not from inclination, self-interest, or anticipated consequences. When someone tells the truth simply because it would be advantageous, that action has no moral worth. Moral worth belongs only to actions done because they are right — from respect for the moral law itself.\n\nThis moral law takes the form of the Categorical Imperative — an unconditional command of reason that admits of no exceptions. Kant offers several formulations, the most famous being: 'Act only according to that maxim whereby you can at the same time will that it should become a universal law.' Morality is not about outcomes — it is about the rational consistency of the principles on which you act. The Groundwork has been the touchstone of deontological ethics ever since.",
+  "argumentCard": {
+    "centralQuestion": "What is the supreme principle of morality — and why does morality bind us unconditionally, regardless of consequences?",
+    "thesis": "The only unconditionally good thing is a good will — one that acts from duty, from respect for the moral law alone. This moral law takes the form of the Categorical Imperative: act only on maxims that you could consistently will to be universal laws. Morality is grounded in reason, not consequences, feelings, or divine command.",
+    "keyMoves": [
+      "The good will argument: all other goods — intelligence, health, happiness — can be used for bad ends and so are only conditionally good. A good will is good in itself, regardless of what it achieves",
+      "The distinction between acting in conformity with duty (which might be motivated by self-interest) and acting from duty (motivated by respect for the law) — only the latter has genuine moral worth",
+      "The Categorical Imperative (universal law formulation): 'Act only according to that maxim by which you can at the same time will that it should become a universal law.' Test any maxim by asking: what if everyone did this?",
+      "The humanity formulation: 'Act so that you treat humanity, whether in your own person or in that of another, always as an end and never as a means only.' Rational beings have unconditional dignity and cannot be merely used"
+    ],
+    "strongestObjection": "Mill's consequentialist objection: Kant's categorical imperative produces absurd results in practice. He himself argued that lying to a murderer seeking your friend is wrong — because lying cannot be universalized. Any moral framework that forbids lying to save an innocent life is not a framework for human beings but for logical machines. Consequences must have moral weight."
+  },
+  "conceptDNA": null,
+  "conceptHighlights": null,
+  "guidedPaths": null,
+  "debates": [
+    {
+      "id": "kant-mill-duty-consequences",
+      "title": "Does morality depend on consequences or on principle?",
+      "subtitle": "Deontological duty vs. utilitarian outcomes",
+      "philosopher1": {
+        "name": "Immanuel Kant",
+        "position": "Moral worth belongs only to actions done from duty, regardless of their consequences",
+        "keyQuote": "Act only according to that maxim whereby you can at the same time will that it should become a universal law of nature.",
+        "arguments": [
+          "Consequences are outside our control — we can intend to help someone and cause harm, or intend to harm and accidentally help. A morality based on outcomes cannot ground consistent obligations because outcomes depend on luck.",
+          "If consequences determined rightness, it would sometimes be right to torture innocents, break solemn promises, or punish the innocent — whenever doing so maximized good outcomes. This violates our deepest moral intuitions.",
+          "Rational beings are ends in themselves, not mere means. To lie to someone — even a murderer — is to treat them as a thing to be manipulated rather than a rational agent to whom truth is owed."
+        ]
+      },
+      "philosopher2": {
+        "name": "John Stuart Mill",
+        "position": "Actions are right insofar as they promote happiness; wrong as they produce the reverse",
+        "keyQuote": "The creed which accepts as the foundation of morals, Utility, or the Greatest Happiness Principle, holds that actions are right in proportion as they tend to promote happiness, wrong as they tend to produce the reverse of happiness.",
+        "arguments": [
+          "What is the point of following a rule that produces terrible outcomes? Kant's deontology becomes a fetish for rule-following divorced from any concern for actual human welfare. A morality that demands you tell the truth to a murderer is a reductio ad absurdum.",
+          "Kant's universalizability test, applied carefully, actually tracks consequences. The reason lying cannot be universalized is that universal lying would undermine trust — a consequentialist argument in disguise.",
+          "Consequences are exactly what we should care about. The suffering and happiness of sentient creatures is the only thing that has intrinsic value. Rules, duties, and principles are valuable only instrumentally — they work because following them generally produces better outcomes."
+        ]
+      },
+      "stakes": "The Kant-Mill debate is the central conflict in normative ethics, and it surfaces in every serious moral controversy: should we torture one person to save many? Should we break a promise to prevent a greater harm? Should a doctor lie to a patient for their own good? Both frameworks have illuminating things to say, and both face serious objections — which is why the debate continues.",
+      "yourTurn": "Imagine you are hiding a friend from someone who wants to harm them. When asked 'Is your friend here?', Kant says you must not lie. Mill says you must. Which principle do you follow — and why? Does your answer reveal that you are secretly a Kantian, a consequentialist, or something else entirely?"
+    }
+  ]
+}

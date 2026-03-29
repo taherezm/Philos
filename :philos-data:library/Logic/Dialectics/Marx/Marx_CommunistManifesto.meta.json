@@ -1,0 +1,53 @@
+{
+  "id": "marx-communist-manifesto",
+  "title": "The Communist Manifesto",
+  "author": "Karl Marx",
+  "year": 1848,
+  "branch": "Logic",
+  "school": "Dialectics",
+  "source": "Project Gutenberg",
+  "sourceUrl": null,
+  "introduction": "Published in 1848 on the eve of revolutions across Europe, the Communist Manifesto presents history as a series of class struggles culminating in the conflict between bourgeoisie and proletariat. Marx and Engels argue that capitalism, for all its productive power, generates the very class that will overthrow it. The pamphlet became the most widely read political document of the modern era.",
+  "argumentCard": {
+    "centralQuestion": "What is the historical trajectory of class society, and what comes next?",
+    "thesis": "All history is the history of class struggles; capitalism creates the proletariat, which will abolish private property and class distinctions altogether.",
+    "keyMoves": [
+      "Traces how the bourgeoisie revolutionized production while simultaneously creating its own gravedigger",
+      "Argues that the state is merely the executive committee of the ruling class",
+      "Calls for the abolition of private property as the precondition for universal human emancipation"
+    ],
+    "strongestObjection": "The predicted immiseration and revolutionary consciousness of the proletariat did not materialize in the most advanced capitalist nations, suggesting the historical mechanism is far less deterministic than Marx claimed."
+  },
+  "conceptDNA": null,
+  "conceptHighlights": null,
+  "guidedPaths": null,
+  "debates": [
+    {
+      "id": "revolution-vs-reform",
+      "title": "Revolution or gradual reform — how does society change?",
+      "subtitle": "Marx vs. Burke on history, tradition, and political transformation",
+      "philosopher1": {
+        "name": "Karl Marx",
+        "position": "Revolutionary overthrow is the only path to genuine change",
+        "keyQuote": "The history of all hitherto existing society is the history of class struggles.",
+        "arguments": [
+          "Ruling classes never voluntarily surrender power. Reform within a capitalist system merely adjusts the terms of exploitation without ending it — the factory owner offers better wages but remains the factory owner.",
+          "The state itself is a tool of class domination: police, courts, and laws protect property relations that benefit the bourgeoisie. 'Reforming' this system through its own institutions is a contradiction in terms.",
+          "History moves in dialectical leaps, not gradual slopes. When contradictions within a system become irreconcilable, rupture is inevitable — the only question is whether the proletariat is ready to seize the moment."
+        ]
+      },
+      "philosopher2": {
+        "name": "Edmund Burke",
+        "position": "Tradition and gradual reform preserve the wisdom of generations",
+        "keyQuote": "The science of constructing a commonwealth is not to be taught a priori.",
+        "arguments": [
+          "Institutions that have survived for centuries embody a 'latent wisdom' — solutions to problems that abstract theory cannot anticipate. Destroying them in the name of reason destroys knowledge that cannot be reconstructed.",
+          "The French Revolution proves the catastrophic cost of revolutionary idealism: you cannot tear up the social fabric and expect flowers to grow. You get terror, tyranny, and Napoleon.",
+          "Genuine improvement comes through the slow reform of inherited institutions — pruning the dead branches, not burning the tree."
+        ]
+      },
+      "stakes": "This debate defines the fault line in all progressive politics: work within the system or overthrow it? It has been rehearsed in every revolutionary moment from 1848 to the present.",
+      "yourTurn": "History offers examples of both approaches succeeding and failing. Can you think of a case where Marx's view was vindicated? A case where Burke's was? What does that tell us about the general question?"
+    }
+  ]
+}

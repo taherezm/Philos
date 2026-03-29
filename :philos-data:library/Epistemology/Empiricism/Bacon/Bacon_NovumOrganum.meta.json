@@ -1,0 +1,54 @@
+{
+  "id": "novum-organum",
+  "title": "Novum Organum",
+  "author": "Francis Bacon",
+  "year": 1620,
+  "branch": "Epistemology",
+  "school": "Empiricism",
+  "source": "Project Gutenberg",
+  "sourceUrl": null,
+  "introduction": "In 1620, Francis Bacon published a work whose title was a direct challenge to Aristotle: the 'New Instrument.' Aristotle's logical treatise, the Organon ('Instrument'), had dominated Western thought for two thousand years. Bacon's Novum Organum declared that the old instrument had failed — it had produced magnificent arguments and beautiful systems, but no actual discoveries, no new power over nature, no practical benefit to human life. A new method was urgently needed.\n\nBacon's diagnosis of why knowledge had stagnated is one of philosophy's great analytical achievements: the doctrine of the Four Idols. These are the systematic biases that corrupt human thinking — the tendency to see patterns where there are none (Tribe), the distortions produced by individual personality (Cave), the confusions created by language (Marketplace), and the hypnotic hold of inherited philosophical systems (Theatre). Until these idols are recognized and cleared away, no genuine inquiry is possible.\n\nThe positive program is inductive method: instead of constructing grand theories by pure reason and then deducing their consequences, the natural philosopher must begin with careful, systematic observation, cataloguing phenomena, and ascending from particulars to gradually more general principles. Bacon was not a scientist himself — many of his specific views were wrong — but he laid the philosophical groundwork for what would become the scientific revolution, and his critique of intellectual complacency remains as sharp as ever.",
+  "argumentCard": {
+    "centralQuestion": "Why has human knowledge stagnated for millennia despite enormous intellectual effort — and what method would finally produce real progress?",
+    "thesis": "Human understanding is corrupted by four systematic 'Idols' — biases of human nature, individual temperament, language, and inherited philosophy. Only a rigorous inductive method, beginning with careful observation and ascending gradually to general principles, can generate genuine knowledge and practical power over nature.",
+    "keyMoves": [
+      "The Four Idols diagnosis: Idols of the Tribe (universal human biases like seeing patterns and ignoring disconfirming evidence), Cave (individual biases from temperament and education), Marketplace (confusion from imprecise language), and Theatre (blind deference to inherited philosophical systems)",
+      "The critique of the syllogism: Aristotelian logic is powerful at drawing out implications of premises — but if the premises are wrong (as they often are when derived from hasty generalizations), the conclusions are worthless. The syllogism cannot correct errors at the level of first principles",
+      "The case for induction: knowledge must ascend gradually from careful experiments and observations, through intermediate axioms, to the most general principles — never jumping directly from a few cases to a universal law",
+      "The fruit test: a true philosophy produces practical results — new arts, new inventions, new power over nature. A philosophy that generates only arguments and interpretations without any new power has failed the test of reality"
+    ],
+    "strongestObjection": "Hume's problem of induction: even if we follow Bacon's careful method and observe a thousand cases, we cannot logically justify concluding that the thousand-and-first will follow the same pattern. Induction, no matter how careful, cannot produce the certainty Bacon promises — it only produces probability."
+  },
+  "conceptDNA": null,
+  "conceptHighlights": null,
+  "guidedPaths": null,
+  "debates": [
+    {
+      "id": "bacon-aristotle-method",
+      "title": "Does genuine knowledge come from observation or from reason?",
+      "subtitle": "Inductive empiricism vs. deductive rationalism",
+      "philosopher1": {
+        "name": "Francis Bacon",
+        "position": "Knowledge must begin with systematic observation of nature and ascend inductively to general laws",
+        "keyQuote": "Those who have handled sciences have been either men of experiment or men of dogmas. The men of experiment are like the ant, they only collect and use; the reasoners resemble spiders, who make cobwebs out of their own substance. But the bee takes a middle course.",
+        "arguments": [
+          "Two thousand years of Aristotelian philosophy produced beautiful arguments but no new inventions, no new medicines, no new power over nature. A method that produces only more philosophy has failed.",
+          "The mind left to itself is a crooked mirror — it distorts reality through its natural biases and linguistic confusions. Only careful, systematic experiment can correct these distortions.",
+          "Truth is the daughter of time, not of authority. Gradual accumulation of observations, properly organized, will eventually yield the deep patterns of nature."
+        ]
+      },
+      "philosopher2": {
+        "name": "Aristotle",
+        "position": "The highest knowledge is demonstrated from first principles grasped by the intellect, not accumulated from experience",
+        "keyQuote": "We suppose ourselves to possess unqualified scientific knowledge of a thing, as opposed to knowing it in the accidental way in which the sophist knows, when we think that we know the cause on which the fact depends, as the cause of that fact and of no other.",
+        "arguments": [
+          "Mere observation and cataloguing is not science — it is natural history. Science (episteme) begins when we understand why something must be the case, not merely that it is the case.",
+          "Bacon's inductive method can never achieve genuine universality. From however many observed cases, you cannot logically derive a universal law. The intellect must grasp the essential nature of things.",
+          "The four causes — material, formal, efficient, and final — provide a richer explanatory framework than Bacon's brute empiricism. Understanding the purpose and form of natural things is essential to genuine knowledge."
+        ]
+      },
+      "stakes": "This debate is nothing less than the origin story of modern science. Bacon's program — observation, experiment, induction — became the default self-understanding of scientific practice. But philosophers of science from Hume to Popper have questioned whether induction can ever deliver the certainty Bacon promised, and whether 'pure observation' independent of theory is even possible.",
+      "yourTurn": "Try to describe something you know 'scientifically.' Did you arrive at it by observation (Bacon) or by reasoning from principles (Aristotle)? Can you separate the two? Consider how a doctor diagnoses an illness — which method dominates?"
+    }
+  ]
+}

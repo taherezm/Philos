@@ -1,0 +1,54 @@
+{
+  "id": "beyond-good-and-evil",
+  "title": "Beyond Good and Evil",
+  "author": "Friedrich Nietzsche",
+  "year": 1886,
+  "branch": "Metaphysics",
+  "school": "Existentialism",
+  "source": "Project Gutenberg",
+  "sourceUrl": "https://www.gutenberg.org/ebooks/4363",
+  "introduction": null,
+  "argumentCard": {
+    "centralQuestion": "What is the true nature and origin of morality — and why does conventional morality deserve to be questioned?",
+    "thesis": "The dominant moral systems of the West — Christian ethics and Kantian universalism — are expressions of weakness and resentment disguised as objective truth. A genuine revaluation of values, led by the 'free spirit,' is both possible and necessary.",
+    "keyMoves": [
+      "Attacks the dogmatic assumption that morality is self-evident or universal, showing that every moral system reflects the interests and psychology of those who created it",
+      "Distinguishes 'master morality' (rooted in nobility, self-affirmation, and the creation of values) from 'slave morality' (rooted in resentment of the strong and the inversion of their values into 'evil')",
+      "Argues that the will to power — not happiness, utility, or duty — is the fundamental drive behind all human action and value-creation",
+      "Calls for a new kind of philosopher — the 'philosopher of the future' — who creates values rather than merely systematizing received ones"
+    ],
+    "strongestObjection": "Nietzsche's framework risks self-refutation: if all morality is a expression of power, then Nietzsche's own 'revaluation' is just another bid for dominance. His contempt for 'herd morality' also provides rhetorical cover for cruelty, as its historical appropriations tragically demonstrated."
+  },
+  "conceptDNA": null,
+  "conceptHighlights": null,
+  "guidedPaths": null,
+  "debates": [
+    {
+      "id": "nietzsche-vs-kant-morality",
+      "title": "Is morality a universal law or an expression of power?",
+      "subtitle": "Nietzsche's genealogy vs. Kant's categorical imperative",
+      "philosopher1": {
+        "name": "Friedrich Nietzsche",
+        "position": "Morality is a historical weapon — not universal truth",
+        "keyQuote": "What is good? — Everything that heightens the feeling of power, the will to power, power itself in man.",
+        "arguments": [
+          "So-called 'universal morality' is not universal at all — it is the revenge of the weak on the strong. Christian and democratic morality teaches the powerful to be ashamed of their strength.",
+          "Kant's categorical imperative — act only according to principles you could universalize — disguises a deep desire for conformity and mediocrity. It is the ethics of the herd.",
+          "The great creative individuals — artists, philosophers, conquerors of spirit — have always broken with conventional morality. Morality as universal law is the enemy of human greatness."
+        ]
+      },
+      "philosopher2": {
+        "name": "Immanuel Kant",
+        "position": "Morality is grounded in pure reason — and applies to all rational beings",
+        "keyQuote": "Act only according to that maxim whereby you can at the same time will that it should become a universal law.",
+        "arguments": [
+          "Morality cannot be grounded in power or desire — these are contingent and variable. Only reason provides the unconditional foundation that moral law requires.",
+          "Every rational being is an end in themselves, never merely a means. This is not weakness — it is the recognition of what makes human beings worthy of respect.",
+          "Nietzsche's 'will to power' simply re-labels selfishness as virtue. Any ethical system that celebrates the strong dominating the weak cannot be consistently defended without exempting oneself from its consequences."
+        ]
+      },
+      "stakes": "This is not merely an academic dispute. Nietzsche's ideas were appropriated to justify authoritarianism; Kant's were used to ground human rights. The stakes concern whether moral equality is a deep truth or a comfortable fiction.",
+      "yourTurn": "Is Nietzsche diagnosing something real about how moral systems work in practice — even if his solution is dangerous? Or does Kant have the stronger foundation? Can you have Nietzsche's insight without his risks?"
+    }
+  ]
+}

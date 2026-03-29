@@ -1,0 +1,53 @@
+{
+  "id": "on-the-beautiful",
+  "title": "On the Beautiful",
+  "author": "Plotinus",
+  "year": 270,
+  "branch": "Aesthetics",
+  "school": "Beauty and the Sublime",
+  "source": "Project Gutenberg",
+  "sourceUrl": null,
+  "introduction": "Written around 270 AD, On the Beautiful is Plotinus' treatise on the nature of beauty and its relationship to the divine. As the founder of Neoplatonism, Plotinus goes beyond Plato's own account by arguing that beauty is not primarily a matter of proportion or symmetry but of the soul's recognition of a spiritual form shining through matter. The essay profoundly shaped Christian, Islamic, and Renaissance thinking about art, beauty, and the contemplative life.",
+  "argumentCard": {
+    "centralQuestion": "What is beauty, and why does it move the soul so powerfully?",
+    "thesis": "Beauty is not symmetry or proportion but the presence of intelligible Form shining through matter — the soul recognizes beauty because it recognizes its own kinship with the divine source from which all form descends.",
+    "keyMoves": [
+      "Refutes the theory that beauty consists in proportion by noting that simple things like a single color or a musical note can be beautiful without having parts in proportion",
+      "Argues that beauty is the radiance of the Intellectual Principle — Form or Idea — present in material things, and ugliness is matter's resistance to form",
+      "Claims that to see beauty we must become beautiful ourselves: the soul must purify itself and turn inward, ascending toward the One through contemplation"
+    ],
+    "strongestObjection": "Plotinus' identification of beauty with spiritual form devalues the material world and bodily experience, suggesting that the highest beauty can only be found by turning away from the sensible world entirely."
+  },
+  "conceptDNA": null,
+  "conceptHighlights": null,
+  "guidedPaths": null,
+  "debates": [
+    {
+      "id": "beauty-objective-vs-subjective",
+      "title": "Is beauty in the world or in the mind?",
+      "subtitle": "Plotinus vs. Hume on the nature of aesthetic experience",
+      "philosopher1": {
+        "name": "Plotinus",
+        "position": "Beauty is objective — the soul's recognition of its divine origin",
+        "keyQuote": "The soul that has not lost its memory of the Beautiful will tremble at the sight of it and feel a divine longing to return to its source.",
+        "arguments": [
+          "When we encounter true beauty, we are not merely pleased — we are reminded of something higher. This sense of recognition points to an objective reality beyond the senses.",
+          "Beauty in the material world is always an imperfect echo of the Form of Beauty that exists eternally in the Intellect. The more a thing participates in this Form, the more beautiful it is.",
+          "If beauty were purely subjective, there could be no genuine disagreement about it. But we argue passionately about beauty — and sometimes we know we are wrong, that we failed to see something beautiful."
+        ]
+      },
+      "philosopher2": {
+        "name": "David Hume",
+        "position": "Beauty exists only in the mind of the beholder",
+        "keyQuote": "Beauty is no quality in things themselves: it exists merely in the mind which contemplates them; and each mind perceives a different beauty.",
+        "arguments": [
+          "No two cultures, no two individuals, agree completely on what is beautiful. This variation is exactly what we'd expect if beauty is a subjective response, not an objective property.",
+          "There is no instrument you can use to measure 'beauty' in a painting the way you can measure its dimensions. The experience of beauty is a feeling, not a perception of fact.",
+          "Standards of taste are socially constructed — what counts as beautiful in one era is kitsch in another. This is inexplicable if beauty is a timeless objective Form."
+        ]
+      },
+      "stakes": "This debate determines whether aesthetic criticism can be genuinely rational — whether 'this is beautiful' is a statement of fact or merely a preference. It shapes art education, museum curation, and the philosophy of art.",
+      "yourTurn": "Think of something you find overwhelmingly beautiful. Is that response purely personal, or does it point to something real about the object? Could both thinkers be partly right?"
+    }
+  ]
+}

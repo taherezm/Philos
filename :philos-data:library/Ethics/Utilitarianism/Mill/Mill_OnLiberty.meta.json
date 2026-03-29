@@ -1,0 +1,54 @@
+{
+  "id": "on-liberty",
+  "title": "On Liberty",
+  "author": "John Stuart Mill",
+  "year": 1859,
+  "branch": "Ethics",
+  "school": "Utilitarianism",
+  "source": "Project Gutenberg",
+  "sourceUrl": "https://www.gutenberg.org/ebooks/34901",
+  "introduction": null,
+  "argumentCard": {
+    "centralQuestion": "What is the proper boundary between individual freedom and society's authority to coerce?",
+    "thesis": "The only legitimate reason for society to restrict individual liberty — whether through law or social pressure — is to prevent harm to others. Liberty of thought, expression, and lifestyle must be nearly absolute, because diversity of opinion and ways of life is the engine of human progress.",
+    "keyMoves": [
+      "Establishes the Harm Principle: power may only be exercised over an individual to prevent harm to others, never for their own good or to enforce majority opinion",
+      "Defends absolute freedom of thought and expression on the grounds that even false opinions sharpen our grasp of truth, and unchallenged truths become dead dogma",
+      "Argues for 'experiments in living' — the freedom to pursue radically different lifestyles — as the only way societies discover better ways of being human",
+      "Warns that the tyranny of prevailing opinion can be more oppressive than legal coercion, and that democratic majorities are no guarantee of individual liberty"
+    ],
+    "strongestObjection": "The Harm Principle is far harder to apply than it appears: almost any action can be argued to harm someone, and Mill's own expansive vision of 'higher pleasures' smuggles in a substantive view of the good life that undermines the neutrality the principle promises."
+  },
+  "conceptDNA": null,
+  "conceptHighlights": null,
+  "guidedPaths": null,
+  "debates": [
+    {
+      "id": "liberty-vs-tyranny-of-majority",
+      "title": "Is democracy's greatest threat the government — or the crowd?",
+      "subtitle": "Mill's harm principle vs. Tocqueville's warning about soft despotism",
+      "philosopher1": {
+        "name": "John Stuart Mill",
+        "position": "Individual liberty must be near-absolute — only harm to others justifies restriction",
+        "keyQuote": "The only purpose for which power can be rightfully exercised over any member of a civilized community, against his will, is to prevent harm to others.",
+        "arguments": [
+          "The greatest danger to liberty comes from legal coercion — the state using force to suppress opinions and ways of life it dislikes. This must be resisted absolutely.",
+          "Free expression is essential not only for individuals but for society: false opinions are overthrown by free debate; true ones are kept alive rather than becoming dead dogma.",
+          "Experiments in living — allowing individuals to pursue their own vision of the good life — generate the diversity that makes social progress possible."
+        ]
+      },
+      "philosopher2": {
+        "name": "Alexis de Tocqueville",
+        "position": "Democracy generates a 'soft despotism' more insidious than government tyranny",
+        "keyQuote": "It does not tyrannize, it hinders, it represses, it enervates, it extinguishes, it stupefies, and finally reduces each nation to a herd of timid and industrious animals.",
+        "arguments": [
+          "The real threat in democratic societies is not the state but social conformity — the tyranny of majority opinion that makes individuals afraid to think differently.",
+          "Democratic citizens, absorbed in private comfort, become passive and incapable of self-governance. They outsource their thinking to the crowd and their governance to administrators.",
+          "Mill focuses on legal liberty, but Tocqueville sees the deeper problem: a society where everyone thinks alike and innovation is socially punished is already unfree, even without laws."
+        ]
+      },
+      "stakes": "Both thinkers were worried about the same thing — freedom disappearing from democratic societies — but they disagreed about where the threat originates. Their debate shapes contemporary worries about political correctness, cancel culture, and technocratic governance.",
+      "yourTurn": "Which threat feels more real to you today — government overreach or social conformity? Is it possible to address both simultaneously, or does focusing on one make the other worse?"
+    }
+  ]
+}

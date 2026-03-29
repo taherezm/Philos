@@ -1,0 +1,54 @@
+{
+  "id": "enquiry-human-understanding",
+  "title": "An Enquiry Concerning Human Understanding",
+  "author": "David Hume",
+  "year": 1748,
+  "branch": "Epistemology",
+  "school": "Empiricism",
+  "source": "Project Gutenberg",
+  "sourceUrl": null,
+  "introduction": "Published in 1748 as a more accessible rewrite of his earlier Treatise of Human Nature, Hume's Enquiry is one of the most important and unsettling documents in the history of Western philosophy. Its central project is to apply the 'experimental method' to the mind itself — to investigate how human understanding works by examining its actual operations, not by building grand metaphysical systems from the armchair.\n\nThe results are explosive. Hume argues that all our knowledge comes from sensory experience (impressions), that our ideas are merely faded copies of impressions, and that the most fundamental concepts in science and philosophy — causation, the self, necessary connection — cannot be traced back to any impression at all. When Hume looks for the source of our belief that causes necessarily produce effects, he finds not an observed connection in the world, but a habit of the mind built up by repeated experience.\n\nKant famously credited Hume with waking him from his 'dogmatic slumber,' and the Enquiry still has this effect on readers today. It does not just question particular beliefs — it questions the foundations on which all beliefs are built, forcing us to ask what we actually know versus what we merely assume, and whether the gap between the two is bridgeable at all.",
+  "argumentCard": {
+    "centralQuestion": "What is the origin and limit of human knowledge — and can reason ever establish certainty about the world?",
+    "thesis": "All human knowledge derives from sensory experience; our ideas are copies of impressions; and the crucial concept of causation is not a feature of the world we observe but a habit of the mind produced by constant conjunction — meaning empirical science rests on custom, not reason.",
+    "keyMoves": [
+      "Divides all mental content into 'impressions' (vivid sense experiences) and 'ideas' (fainter copies of them) — every legitimate concept must be traceable back to an impression",
+      "Separates 'relations of ideas' (necessary, true by definition, e.g. mathematics) from 'matters of fact' (contingent, established by experience) — this is Hume's Fork, which carves up all meaningful knowledge",
+      "The billiard ball problem: when one ball strikes another, we see the first ball move and then the second — we do not see the causation. All we observe is constant conjunction; necessity is projected by the mind, not found in the world",
+      "Extends the skepticism to the self: there is no single impression of 'the self' — introspect and all you find is a bundle of perceptions, nothing more"
+    ],
+    "strongestObjection": "Kant's response: Hume is right that causation is not derived from experience alone — but this proves too much. If causal necessity is a contribution of the mind to experience, then it is a necessary feature of how the mind structures experience, not a mere habit. Hume's skepticism about causation inadvertently points toward transcendental idealism."
+  },
+  "conceptDNA": null,
+  "conceptHighlights": null,
+  "guidedPaths": null,
+  "debates": [
+    {
+      "id": "hume-descartes-certainty",
+      "title": "Can reason alone give us certain knowledge of reality?",
+      "subtitle": "Empiricist skepticism vs. rationalist foundations",
+      "philosopher1": {
+        "name": "David Hume",
+        "position": "All knowledge comes from experience; reason alone can tell us nothing about the world",
+        "keyQuote": "When we run over libraries, persuaded of these principles, what havoc must we make? If we take in our hand any volume of divinity or school metaphysics, for instance; let us ask, Does it contain any abstract reasoning concerning quantity or number? No. Does it contain any experimental reasoning concerning matter of fact and existence? No. Commit it then to the flames.",
+        "arguments": [
+          "Every idea can be traced to a prior impression. Concepts that cannot be so traced — like 'substance,' 'necessary connection,' 'the self' — are meaningless pseudo-concepts dressed up in philosophical language.",
+          "Even mathematics gives us only relations of ideas — truths that are necessarily true by definition, but tell us nothing about whether anything in the world exists or behaves in any particular way.",
+          "Induction, the cornerstone of empirical science, cannot be rationally justified — we cannot prove that the future will resemble the past without already assuming the very thing we are trying to prove."
+        ]
+      },
+      "philosopher2": {
+        "name": "René Descartes",
+        "position": "Reason can establish certain, indubitable foundations for knowledge independent of sensory experience",
+        "keyQuote": "Archimedes used to demand just one firm and immovable point in order to shift the entire earth; so I too can hope for great things if I manage to find just one thing, however slight, that is certain and unshakeable.",
+        "arguments": [
+          "The senses are unreliable — they deceive us constantly, in illusions, dreams, and misperceptions. Knowledge built on sensation alone is built on sand.",
+          "The cogito ('I think, therefore I am') gives us a foundational certainty that no skeptical argument can touch. From this bedrock, a rational system of knowledge can be constructed.",
+          "Clear and distinct perception — the mark of a truth grasped by pure reason — is the standard of certainty. Hume's constant conjunction is the confused perception of a mind that has not yet learned to think clearly."
+        ]
+      },
+      "stakes": "The empiricism-rationalism debate shapes everything from how we understand scientific method to whether AI systems can 'reason' about the world. Are the deep structures of reality accessible to pure thought, or only to careful observation? This question drives philosophy, cognitive science, and the foundations of mathematics to this day.",
+      "yourTurn": "Hume says you cannot prove that the sun will rise tomorrow — you can only say it always has. Descartes says mathematics gives us certain truths about reality. Who is right? Can you think of a domain — ethics, physics, logic — where one seems more compelling than the other?"
+    }
+  ]
+}

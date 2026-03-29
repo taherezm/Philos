@@ -1,0 +1,54 @@
+{
+  "id": "tao-te-ching",
+  "title": "Tao Te Ching",
+  "author": "Lao Tzu",
+  "year": -500,
+  "branch": "Aesthetics",
+  "school": "Beauty and the Sublime",
+  "source": "Project Gutenberg",
+  "sourceUrl": null,
+  "introduction": "Attributed to the semi-legendary sage Lao Tzu and composed around the sixth century BC, the Tao Te Ching is the foundational text of Taoism and one of the most translated works in world literature. In eighty-one brief, enigmatic chapters, it describes the Tao — the Way — as the nameless, formless source of all things, and counsels a life of simplicity, humility, and effortless action (wu wei). Its paradoxical wisdom has influenced Chinese philosophy, art, and statecraft for over two millennia.",
+  "argumentCard": {
+    "centralQuestion": "How should one live in harmony with the fundamental nature of reality?",
+    "thesis": "The Tao — the nameless, formless source and pattern of all things — cannot be grasped by force or intellect but only by yielding to it through simplicity, humility, and wu wei (effortless action that follows nature's grain).",
+    "keyMoves": [
+      "Defines the Tao as prior to all distinctions — the unnamed origin of heaven and earth that cannot be captured in language or concepts",
+      "Introduces wu wei (non-action) not as passivity but as acting without forcing, like water that overcomes the hardest stone by flowing around it",
+      "Inverts conventional values: weakness overcomes strength, emptiness is more useful than fullness, the sage leads by following",
+      "Applies these principles to governance, arguing that the best ruler governs so lightly that the people say 'we did it ourselves'"
+    ],
+    "strongestObjection": "The Tao Te Ching's counsel of passivity, withdrawal, and acceptance of nature's course can become a justification for political quietism — accepting injustice rather than actively fighting it."
+  },
+  "conceptDNA": null,
+  "conceptHighlights": null,
+  "guidedPaths": null,
+  "debates": [
+    {
+      "id": "wu-wei-vs-cultivation",
+      "title": "Should the ideal ruler lead or get out of the way?",
+      "subtitle": "Taoist effortlessness vs. Confucian moral cultivation",
+      "philosopher1": {
+        "name": "Lao Tzu",
+        "position": "The best ruler does nothing — and nothing is left undone",
+        "keyQuote": "The Tao that can be named is not the eternal Tao. The best leader is one whose subjects barely know he exists.",
+        "arguments": [
+          "Nature achieves everything through effortless action (wu wei): water carves canyons by yielding, not forcing. Human societies flourish the same way — by removing interference, not adding control.",
+          "The more laws and regulations you have, the more criminals you create. Moral instruction produces hypocrisy; simplicity produces genuine virtue.",
+          "The sage-ruler empties people of desire and fills them with contentment. A people with simple desires and no ambition cannot be manipulated."
+        ]
+      },
+      "philosopher2": {
+        "name": "Confucius",
+        "position": "Society must be ordered through moral cultivation, ritual, and exemplary leadership",
+        "keyQuote": "Lead them with virtue and keep them orderly through rites and they will have a sense of shame and will correct themselves.",
+        "arguments": [
+          "Human beings are not naturally harmonious — they require cultivation through education, ritual, and moral example. Without structure, society fragments.",
+          "The ruler's role is to be a moral exemplar (junzi): when the ruler is virtuous, virtue radiates outward through society like light through a window.",
+          "Relationships — parent/child, ruler/subject, friend/friend — are the fabric of civilization. Neglecting their proper ordering in the name of 'naturalness' destroys the social bonds that make human life possible."
+        ]
+      },
+      "stakes": "This is a debate about the proper role of government and moral education that still resonates: libertarians vs. communitarians, minimal-state vs. active government. Should power be exercised or restrained?",
+      "yourTurn": "Which approach do you trust more — the invisible hand of natural order or the deliberate cultivation of virtue? Is wu wei an insight about power, or an abdication of responsibility?"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id": "tractatus",
+  "title": "Tractatus Logico-Philosophicus",
+  "author": "Ludwig Wittgenstein",
+  "year": 1921,
+  "branch": "Logic",
+  "school": "Philosophy of Language",
+  "source": "Project Gutenberg",
+  "sourceUrl": null,
+  "introduction": "Written in the trenches of World War I and in a prisoner-of-war camp in Italy, the Tractatus Logico-Philosophicus is one of the strangest and most influential philosophical works of the twentieth century. Wittgenstein believed he had solved all the problems of philosophy — not by answering the traditional questions but by showing that most of them were literally meaningless: confused pseudo-problems arising from the misuse of language.\n\nThe Tractatus is organized as a series of numbered propositions, descending from the most general (1: 'The world is all that is the case') to the most particular. Its central theory is the 'picture theory of meaning': language pictures the world by having the same logical structure as the facts it represents. A proposition is meaningful if and only if it depicts a possible state of affairs. Propositions that try to say something 'beyond' the world — about ethics, aesthetics, the meaning of life, God, or the self — are not false but meaningless: they try to say what can only be shown.\n\nThe book's final line is its most famous: 'Whereof one cannot speak, thereof one must be silent.' But Wittgenstein did not think the unspeakable was unimportant — quite the opposite. He thought the most important things — value, meaning, the mystical — were precisely what language could not capture, and that philosophy's failure to recognize this was the source of endless confusion. The Tractatus attempts to trace the limits of language from within.",
+  "argumentCard": {
+    "centralQuestion": "What can language meaningfully say — and what must it remain silent about?",
+    "thesis": "Language pictures the world by having the same logical structure as the facts it depicts. A proposition is meaningful if and only if it can be true or false — if it depicts a possible state of affairs. Propositions about ethics, aesthetics, the self, God, and the meaning of life cannot be true or false and are therefore meaningless. Philosophy's task is to clarify what can be said and to recognize the limits of the sayable.",
+    "keyMoves": [
+      "The picture theory: a proposition represents a possible state of affairs by having the same logical form as that state of affairs. Meaning is isomorphism between the logical structure of language and the logical structure of facts",
+      "The limits of sense: a proposition makes sense only if it can be verified as true or false — if there is a state of affairs it depicts. Propositions that try to say something about the world 'as a whole' or about 'values' fail to depict any possible state of affairs",
+      "What can only be shown, not said: the logical form that language and world share cannot itself be stated — it shows itself in how language works. Similarly, ethics and aesthetics are not facts but show themselves in the manner of life",
+      "The ladder: the propositions of the Tractatus are themselves, strictly speaking, nonsense — they try to say what can only be shown. The reader must use them as a ladder and then throw it away: understanding the Tractatus means coming to see that its propositions are elucidatory nonsense"
+    ],
+    "strongestObjection": "The verification principle self-destructs: the claim 'a proposition is meaningful only if it can be verified as true or false' is itself neither verifiable nor falsifiable — it is a philosophical thesis about language. By its own criterion, it is meaningless. This self-referential problem haunts not only the Tractatus but all forms of logical positivism."
+  },
+  "conceptDNA": null,
+  "conceptHighlights": null,
+  "guidedPaths": null,
+  "debates": [
+    {
+      "id": "wittgenstein-russell-language-logic",
+      "title": "Is language a logical picture of the world — or a tool for social action?",
+      "subtitle": "The early Wittgenstein vs. the late Wittgenstein (and Russell)",
+      "philosopher1": {
+        "name": "Ludwig Wittgenstein (Tractatus)",
+        "position": "Language pictures the world; philosophical problems arise from misunderstanding the logic of language",
+        "keyQuote": "The limits of my language mean the limits of my world.",
+        "arguments": [
+          "There is a definite logical structure underlying all meaningful language, and philosophical clarity consists in bringing this structure to light. Confusion arises when we use the same grammatical form for expressions with very different logical forms.",
+          "Ethics, aesthetics, religion, and the meaning of life are not things that can be said — they show themselves. The philosopher who tries to state moral truths or metaphysical facts is producing grammatically well-formed nonsense.",
+          "A perfect logical analysis of language would dissolve all philosophical problems — not solve them, but show that they were pseudo-problems arising from linguistic confusion."
+        ]
+      },
+      "philosopher2": {
+        "name": "Ludwig Wittgenstein (Philosophical Investigations)",
+        "position": "There is no hidden logical structure — language is a family of overlapping practices and 'forms of life,' not a picture of reality",
+        "keyQuote": "For a large class of cases — though not for all — in which we employ the word 'meaning' it can be defined thus: the meaning of a word is its use in the language.",
+        "arguments": [
+          "The Tractatus was wrong to look for a single underlying logical structure in language. Language is not one thing — it is a motley of overlapping practices with family resemblances, not a single essence.",
+          "Meaning is not pictorial correspondence but use. To know the meaning of a word is to know how to use it in the relevant practices — and these practices are essentially social and historical, not logical.",
+          "Philosophical problems do not arise from logical confusions about a hidden structure — they arise when language 'goes on holiday,' when we take words out of their home language-games and expect them to work in isolation."
+        ]
+      },
+      "stakes": "The debate between the early and late Wittgenstein is in some sense the defining debate of analytic philosophy. Does language have a deep logical structure that philosophy must uncover (Russell, early Wittgenstein, logical positivism)? Or is meaning always embedded in social practices with no deeper structure to find (later Wittgenstein, pragmatism, ordinary language philosophy)? The answer determines what philosophy is for.",
+      "yourTurn": "The Tractatus says we cannot meaningfully speak about ethics. But you make ethical judgments every day. Are you talking nonsense — or is the Tractatus wrong? Try to say what is wrong with gratuitous cruelty in terms that satisfy the picture theory. Can you do it?"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id": "fear-and-trembling",
+  "title": "Fear and Trembling",
+  "author": "Søren Kierkegaard",
+  "year": 1843,
+  "branch": "Metaphysics",
+  "school": "Existentialism",
+  "source": "Project Gutenberg",
+  "sourceUrl": null,
+  "introduction": "Published in 1843 under the pseudonym Johannes de Silentio ('John of Silence'), Fear and Trembling is Kierkegaard's meditation on the story of Abraham and Isaac — and through it, on the deepest problem of faith, ethics, and individual existence. When God commands Abraham to sacrifice his son Isaac, Abraham obeys. He does not appeal to higher ethical principles, he does not negotiate, and he does not break down in despair — he goes. This is, for Kierkegaard, the most philosophically perplexing act in human history.\n\nThe book is organized around a series of 'attunements' — retellings of the Abraham story, each imagining a slightly different emotional and spiritual response. Then comes the philosophical analysis: Kierkegaard identifies three 'stages of existence' — the aesthetic (living for pleasure), the ethical (living by universal moral principles), and the religious (a personal, absolute relationship with God that transcends the ethical). Abraham's act is not ethical — killing your son is murder in the ethical domain — but it is the highest religious act: the 'teleological suspension of the ethical.'\n\nThe book is also an attack on Hegel's system, which claimed to have absorbed all of Christian faith into rational philosophy. For Kierkegaard, faith is not a moment in the dialectical development of reason — it is something irreducibly individual, paradoxical, and beyond rational justification. The 'knight of faith' cannot explain himself to anyone. This is the founding document of existentialist philosophy, and its influence extends from Sartre and Camus to Derrida and beyond.",
+  "argumentCard": {
+    "centralQuestion": "Can faith ever justify an act that violates universal ethical principles — and what does this reveal about the relationship between reason and religious existence?",
+    "thesis": "There are three stages of existence — aesthetic, ethical, and religious. In the highest stage, the individual stands in an absolute relation to the Absolute that can 'teleologically suspend' the ethical. This is not immorality but a movement beyond morality — inexplicable, paradoxical, and accessible only through a 'leap of faith.'",
+    "keyMoves": [
+      "The three stages: the aesthetic (pleasure and self-expression), the ethical (universal duty, rational principles), and the religious (absolute individual relation to God that transcends the ethical)",
+      "The knight of infinite resignation vs. the knight of faith: the former accepts loss and renounces the finite (heroic but tragic); the latter makes the double movement — renouncing the finite while simultaneously believing that through the absurd they will receive it back",
+      "The teleological suspension of the ethical: Abraham's act cannot be justified by any ethical principle — it is murder. But it is commanded by God. Either Abraham is a murderer, or there exists a stage of existence higher than the ethical",
+      "The paradox of faith: the knight of faith looks exactly like the ordinary bourgeois — he walks and talks normally — but inwardly he has made a movement that cannot be communicated or rationally explained. Faith is radically individual and inward"
+    ],
+    "strongestObjection": "Hegel's objection (and the Enlightenment's): any claim to a divine command that overrides ethics is precisely the framework that justifies fanaticism and religious violence throughout history. If faith can suspend the ethical, there is no defense against any atrocity committed in God's name. The 'Abraham problem' is not a theological triumph but a reductio of religious irrationalism."
+  },
+  "conceptDNA": null,
+  "conceptHighlights": null,
+  "guidedPaths": null,
+  "debates": [
+    {
+      "id": "kierkegaard-hegel-faith-reason",
+      "title": "Is faith a higher form of reason — or its negation?",
+      "subtitle": "The leap of faith vs. the rational system",
+      "philosopher1": {
+        "name": "Søren Kierkegaard",
+        "position": "Faith is irreducibly individual and paradoxical — it cannot be absorbed into any rational system",
+        "keyQuote": "Faith is precisely this paradox, that the individual as the individual is higher than the universal, is justified over against it, is not subordinate but superior — yet in such a way, be it observed, that it is the particular individual who, after he has been subordinated as the individual to the universal, now through the universal becomes the individual who as the individual is superior to the universal.",
+        "arguments": [
+          "Hegel's system claims that rational philosophy can comprehend and justify everything, including Christian faith. But this is a category error: faith is not a moment in the dialectic — it is a personal, absurd, non-rational movement that philosophy cannot capture without destroying.",
+          "The individual is not simply an instance of the universal — in the religious stage, the individual stands in a direct, unmediated relation to God that no ethical principle or rational category can represent.",
+          "Abraham cannot explain himself — not because he lacks intelligence, but because genuine faith is essentially incommunicable. The moment it becomes a principle communicable to others, it has become something else: ethics or religion as institution."
+        ]
+      },
+      "philosopher2": {
+        "name": "G.W.F. Hegel",
+        "position": "Faith finds its true expression and justification in rational philosophy — the apparent paradoxes of religion are resolved at the level of Absolute Spirit",
+        "keyQuote": "What is rational is actual and what is actual is rational. Philosophy comprehends this by recognizing necessity in what appears as mere chance and contingency.",
+        "arguments": [
+          "Kierkegaard's 'leap of faith' is not a solution to the problem of religious knowledge — it is a flight from rational inquiry. Any position that defines itself as beyond rational assessment is immune to criticism, which makes it philosophically worthless.",
+          "The true content of Christianity — love, spirit, community, reconciliation — is not the particular historical Abraham story but the universal truth these narratives symbolize. Rational philosophy can preserve what is deepest in religious experience.",
+          "The 'individual' Kierkegaard celebrates is not truly free — it is isolated, anxiety-ridden, and unable to communicate its insights. True freedom is achieved not in isolation but in rational ethical and social life."
+        ]
+      },
+      "stakes": "This is the deepest debate about the relationship between reason and faith, and it matters for how we think about religious pluralism, political theology, and the limits of rational discourse. Can a secular liberal society accommodate genuine religious commitment, or does Kierkegaard's 'leap' always threaten the rational foundations of shared life?",
+      "yourTurn": "Have you ever had a conviction that you couldn't fully justify rationally but that you were certain of nonetheless? Was this an example of Kierkegaard's knight of faith — or was it self-deception? What would it take to tell the difference?"
+    }
+  ]
+}

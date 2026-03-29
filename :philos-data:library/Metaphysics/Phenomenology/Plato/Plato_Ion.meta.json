@@ -1,0 +1,50 @@
+{
+  "id": "plato-ion",
+  "title": "Ion",
+  "author": "Plato",
+  "year": -380,
+  "branch": "Metaphysics",
+  "school": "Phenomenology",
+  "source": "Project Gutenberg",
+  "sourceUrl": null,
+  "introduction": "One of Plato's shortest dialogues, composed around 380 BCE, the Ion examines whether the rhapsode Ion possesses a genuine art or is merely inspired. Socrates argues that Ion's ability to perform Homer brilliantly but no other poet shows that he operates not by knowledge but by divine possession, like a link in a magnetic chain running from the Muse through the poet to the performer. The dialogue raises foundational questions about the nature of artistic inspiration and expertise.",
+  "argumentCard": {
+    "centralQuestion": "Does the poet or performer possess genuine knowledge, or is artistic excellence a form of divine inspiration?",
+    "thesis": "Poetic and performative excellence is not a rational art (techne) but divine inspiration (theia moira): the Muse possesses the poet, who possesses the performer, who moves the audience — a chain of magnetic enthusiasm.",
+    "keyMoves": [
+      "Shows that Ion can speak brilliantly about Homer but not about other poets, proving his skill is not a general expertise",
+      "Introduces the magnet analogy: inspiration flows from the Muse through a chain of intermediaries, none of whom possess knowledge",
+      "Forces a dilemma: either Ion speaks by art (but then he should know all poets equally) or by inspiration (but then he has no real knowledge)"
+    ],
+    "strongestObjection": "The dilemma is false: domain-specific expertise is common (a Shakespeare scholar need not be equally expert on Dante), so Ion's specialization does not prove he lacks knowledge."
+  },
+  "debates": [
+    {
+      "id": "art-inspiration-vs-craft",
+      "title": "Is artistic genius knowledge or divine madness?",
+      "subtitle": "Plato vs. Aristotle on what makes great art",
+      "philosopher1": {
+        "name": "Plato (via Socrates in Ion)",
+        "position": "Artists channel divine inspiration — they do not possess real knowledge",
+        "keyQuote": "The poet is an airy thing, winged and holy, and cannot make poetry until he becomes inspired and goes out of his mind.",
+        "arguments": [
+          "Ion cannot explain why he performs Homer brilliantly but fails with other poets. If he had genuine skill, it would be general — applicable to any work. The inconsistency proves it's inspiration, not craft.",
+          "The poet transmits a chain of divine madness from the Muse through the rhapsode to the audience — none of these links truly 'knows' anything; they are merely conduits.",
+          "Because art bypasses reason, it is dangerous: it inflames emotion and bypasses judgment, which is why poets should be expelled from the ideal republic."
+        ]
+      },
+      "philosopher2": {
+        "name": "Aristotle",
+        "position": "Art is a rational craft (techne) requiring skill, judgment, and knowledge",
+        "keyQuote": "Poetry is more philosophical and more significant than history, for poetry tends to express the universal, history the particular.",
+        "arguments": [
+          "The good artist knows what they are doing: the playwright understands character, plot structure, and catharsis as thoroughly as a doctor understands medicine.",
+          "Inspiration without craft produces chaos. The great artists — Homer included — are masters of form, rhythm, and narrative technique. These can be studied and taught.",
+          "Art that mimics human action at its best educates the emotions, produces catharsis, and fosters civic virtue. Far from being dangerous, it is philosophically valuable."
+        ]
+      },
+      "stakes": "This debate shapes how we think about creativity, genius, and education. Is the artist fundamentally irrational — tapping into something beyond reason? Or is artistic excellence a form of expertise like any other?",
+      "yourTurn": "Think of an artist you admire. Which theory better explains their genius? Could both be true at different moments of the creative process?"
+    }
+  ]
+}

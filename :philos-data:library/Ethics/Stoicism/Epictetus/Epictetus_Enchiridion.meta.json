@@ -1,0 +1,53 @@
+{
+  "id": "enchiridion",
+  "title": "Enchiridion",
+  "author": "Epictetus",
+  "year": 125,
+  "branch": "Ethics",
+  "school": "Stoicism",
+  "source": "Project Gutenberg",
+  "sourceUrl": null,
+  "introduction": "The Enchiridion (\"Handbook\") is a compact manual of Stoic ethics distilled from Epictetus's longer Discourses by his student Arrian. In just fifty-three short chapters, it delivers the essence of Stoic practical philosophy: distinguish what you can control from what you cannot, accept the latter with equanimity, and focus all your energy on the former. This pocket-sized guide to inner freedom has been carried by soldiers, statesmen, and seekers for nearly two thousand years.",
+  "argumentCard": {
+    "centralQuestion": "What is the key to a tranquil and virtuous life?",
+    "thesis": "The foundation of all philosophy is this: some things are within our control (our opinions, intentions, desires, and aversions) and some are not (our body, property, reputation, and position) — happiness depends entirely on focusing on the former and accepting the latter.",
+    "keyMoves": [
+      "Opens with the fundamental Stoic distinction: \"Some things are in our control and others not\" — and all misery comes from trying to control what we cannot",
+      "Teaches the discipline of desire: want only what is within your power, and you will never be frustrated; fear only what is within your power, and you will never be afraid",
+      "Provides practical exercises: when disturbed by an external event, remind yourself it is not the event but your judgment of it that disturbs you"
+    ],
+    "strongestObjection": "The Enchiridion's counsel to remain indifferent to everything external — including the suffering and death of loved ones — can seem not like wisdom but like emotional numbness dressed up as philosophy."
+  },
+  "conceptDNA": null,
+  "conceptHighlights": null,
+  "guidedPaths": null,
+  "debates": [
+    {
+      "id": "stoic-vs-epicurean",
+      "title": "What is the path to a good life?",
+      "subtitle": "Inner virtue vs. the pursuit of pleasure",
+      "philosopher1": {
+        "name": "Epictetus",
+        "position": "Virtue and self-mastery are the only true goods",
+        "keyQuote": "Seek not that the things which happen should happen as you wish; but wish the things which happen to be as they are, and you will have a tranquil flow of life.",
+        "arguments": [
+          "Everything outside our will — health, wealth, reputation — can be taken away at any moment. Building your happiness on these things is building on sand.",
+          "The good life is achieved by aligning desire with what is actually in our power: our judgments, intentions, and responses to the world.",
+          "A slave or a prisoner can live the good life; a king who is a slave to his passions cannot. The inner citadel is the only real freedom."
+        ]
+      },
+      "philosopher2": {
+        "name": "Epicurus",
+        "position": "Pleasure — properly understood — is the highest good",
+        "keyQuote": "Pleasure is the beginning and the end of the blessed life.",
+        "arguments": [
+          "Nature itself tells us what we value: all living things move toward pleasure and away from pain. To say pleasure is not the good is to fight biology.",
+          "But Epicurus is not a hedonist: the highest pleasures are not bodily but intellectual — friendship, philosophical conversation, freedom from fear. These are stable, not fragile.",
+          "Denying yourself all pleasure in pursuit of virtue is another kind of bondage — Stoic severity mistakes asceticism for wisdom."
+        ]
+      },
+      "stakes": "Both traditions were trying to solve the same problem: how to live well in a world full of uncertainty and loss. Their disagreement about what counts as 'the good' still structures much of modern self-help, psychology, and ethics.",
+      "yourTurn": "Is Epictetus too detached? Is Epicurus too focused on feeling? Try designing your own answer: what would the good life look like if you combined their insights?"
+    }
+  ]
+}

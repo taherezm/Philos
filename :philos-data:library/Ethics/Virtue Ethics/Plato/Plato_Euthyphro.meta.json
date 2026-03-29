@@ -1,0 +1,53 @@
+{
+  "id": "euthyphro",
+  "title": "Euthyphro",
+  "author": "Plato",
+  "year": -399,
+  "branch": "Ethics",
+  "school": "Virtue Ethics",
+  "source": "Project Gutenberg",
+  "sourceUrl": null,
+  "introduction": "Set just before Socrates' trial in 399 BC, the Euthyphro finds Socrates questioning a young man who claims to know exactly what piety is. Through relentless questioning, Socrates exposes the inadequacy of every definition Euthyphro offers, culminating in one of philosophy's most famous dilemmas: is something holy because the gods love it, or do the gods love it because it is holy? The dialogue is a masterclass in Socratic method and the starting point for all subsequent debate about the relationship between religion and morality.",
+  "argumentCard": {
+    "centralQuestion": "What is piety, and what is the relationship between the gods and morality?",
+    "thesis": "None of the proposed definitions of piety can withstand scrutiny, and the most important question — whether things are good because the gods approve them or whether the gods approve them because they are independently good — reveals a fundamental problem in grounding morality in divine authority.",
+    "keyMoves": [
+      "Demolishes Euthyphro's definition that piety is \"what the gods love\" by noting that the gods disagree, so the same action would be both pious and impious",
+      "Poses the Euthyphro dilemma: is something pious because the gods love it (making morality arbitrary) or do the gods love it because it is pious (making morality independent of the gods)?",
+      "Shows that Euthyphro's final attempt to define piety as \"service to the gods\" collapses because he cannot explain what the gods gain from human service"
+    ],
+    "strongestObjection": "The dialogue reaches no positive conclusion about what piety is, and the Euthyphro dilemma, while devastating to simple divine command theory, may create a false dichotomy — there might be a third option where God's nature IS the standard of goodness."
+  },
+  "conceptDNA": null,
+  "conceptHighlights": null,
+  "guidedPaths": null,
+  "debates": [
+    {
+      "id": "euthyphro-dilemma",
+      "title": "Does morality depend on God?",
+      "subtitle": "The Euthyphro Dilemma — philosophy's oldest question about religion and ethics",
+      "philosopher1": {
+        "name": "Socrates (via Plato)",
+        "position": "Morality is independent of divine will",
+        "keyQuote": "Is the pious loved by the gods because it is pious, or is it pious because it is loved?",
+        "arguments": [
+          "If something is good simply because God commands it, then morality is arbitrary — God could just as easily command cruelty, and cruelty would become 'good'.",
+          "True morality must have a basis that even the gods recognize and defer to; otherwise we're left with raw power, not goodness.",
+          "The gods themselves disagree (in Greek religion) — which means divine approval cannot be the standard for moral truth."
+        ]
+      },
+      "philosopher2": {
+        "name": "William of Ockham",
+        "position": "God's will is the very definition of moral obligation",
+        "keyQuote": "Theft, adultery, and hatred of God would be meritorious if they were commanded by God.",
+        "arguments": [
+          "God is the absolute source of all being, including moral being. To say morality exists independently of God is to place something above God — an obvious theological error.",
+          "If morality were independent of God's will, then God himself would be bound by it, and God would not be omnipotent.",
+          "We recognize good acts precisely because they are commanded by a perfectly good will. The source and the standard are the same."
+        ]
+      },
+      "stakes": "This debate goes to the heart of whether religion can ground ethics, or whether morality must stand on its own. If Socrates is right, then religious commands need moral justification. If Ockham is right, morality without God is impossible.",
+      "yourTurn": "Can you find a third option that escapes the dilemma entirely? Some philosophers argue that God's nature — not God's will — is the moral standard. Does that dissolve the problem, or just postpone it?"
+    }
+  ]
+}

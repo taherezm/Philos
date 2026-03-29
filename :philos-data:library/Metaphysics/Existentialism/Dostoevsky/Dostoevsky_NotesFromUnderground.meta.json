@@ -1,0 +1,54 @@
+{
+  "id": "notes-from-underground",
+  "title": "Notes from Underground",
+  "author": "Fyodor Dostoevsky",
+  "year": 1864,
+  "branch": "Metaphysics",
+  "school": "Existentialism",
+  "source": "Project Gutenberg",
+  "sourceUrl": "https://www.gutenberg.org/ebooks/600",
+  "introduction": null,
+  "argumentCard": {
+    "centralQuestion": "Is the rational, self-interested individual of Enlightenment thought a convincing — or even desirable — picture of human beings?",
+    "thesis": "Human beings are fundamentally irrational and contradictory; they will freely choose suffering and self-destruction over any 'rational' happiness, because the exercise of free will — even spite — is more essential to human identity than comfort or benefit.",
+    "keyMoves": [
+      "Demolishes the utilitarian premise that knowing what is rational leads people to act rationally — the Underground Man demonstrates that humans actively resist predictability",
+      "Argues that any system promising perfect social harmony (the 'Crystal Palace') is an assault on human freedom, because freedom requires the capacity for contradiction and self-harm",
+      "Uses the Underground Man's paralysis, resentment, and cruelty toward Liza to show — not just argue — the gap between rationalist theory and actual psychological life",
+      "Positions suffering not as a defect to be engineered away but as proof of consciousness and selfhood: 'I am alone and they are everything'"
+    ],
+    "strongestObjection": "The Underground Man is a clinical portrait of wounded narcissism and social isolation, not a universal model of human nature. Dostoevsky may be diagnosing a particular psychological type produced by alienation — not disproving rationalism about human beings in general."
+  },
+  "conceptDNA": null,
+  "conceptHighlights": null,
+  "guidedPaths": null,
+  "debates": [
+    {
+      "id": "free-will-vs-rational-calculation",
+      "title": "Are humans rational agents — or creatures of spite?",
+      "subtitle": "Dostoevsky's Underground Man vs. Mill's rational utilitarian",
+      "philosopher1": {
+        "name": "Dostoevsky (The Underground Man)",
+        "position": "Humans will always choose irrationally — because freedom matters more than happiness",
+        "keyQuote": "Shower upon him every earthly blessing, drown him in bliss so that nothing but bubbles would dance on the surface of his bliss, and even then man wouldn't give up rationality in favor of bliss.",
+        "arguments": [
+          "The greatest threat to humanity is not suffering — it's the reduction of humans to calculating machines. People will act against their own interest just to prove they are free.",
+          "Every utopian system — from socialist planning to Bentham's utilitarian calculus — assumes that once people know what's rational, they'll choose it. But human beings are not that simple.",
+          "Spite, self-destruction, and contradiction are not bugs in human nature — they are features. They are what keeps us human rather than piano keys to be played by theory."
+        ]
+      },
+      "philosopher2": {
+        "name": "John Stuart Mill",
+        "position": "Properly educated reason leads to the greatest happiness",
+        "keyQuote": "It is better to be Socrates dissatisfied than a fool satisfied.",
+        "arguments": [
+          "The Underground Man's 'freedom' is really just freedom to be miserable. Real freedom is self-development — cultivating the capacities that make life rich and meaningful.",
+          "Irrationality and spite are products of deprivation and bad social conditions, not inherent human nature. Improve education and social institutions, and rational behavior follows.",
+          "Dostoevsky describes a wounded, isolated, resentful individual. That is not an argument against rationalism — it is a portrait of what happens when human potential is stunted."
+        ]
+      },
+      "stakes": "This debate sits at the heart of political philosophy, psychology, and economics. Are humans fundamentally rational agents who respond to incentives? Or is there something in human nature that will always resist being optimized?",
+      "yourTurn": "The Underground Man accuses utilitarians of wanting to build a 'Crystal Palace' — a rational paradise that would leave no room for human messiness. Is that a fair charge? Would you rather live in the Crystal Palace or in the Underground Man's basement?"
+    }
+  ]
+}

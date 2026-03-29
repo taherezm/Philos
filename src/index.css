@@ -1,0 +1,506 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #FAF8F5;
+  --color-cream-dark: #F0EDE8;
+  --color-cream-darker: #E5E0D8;
+  --color-charcoal: #2C2C2C;
+  --color-charcoal-light: #5A5A5A;
+  --color-charcoal-lighter: #8A8A8A;
+  --color-terracotta: #C17C5A;
+  --color-terracotta-light: #D4956F;
+  --color-terracotta-dark: #A86A4A;
+  --color-highlight: rgba(245, 230, 200, 0.5);
+  --color-highlight-solid: #F5E6C8;
+  --font-serif: "Crimson Pro", Georgia, "Times New Roman", serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-highlight);
+}
+
+/* Reading text styles */
+.reading-text {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  line-height: 1.75;
+  color: var(--color-charcoal);
+}
+
+.reading-text p {
+  margin-bottom: 1.5em;
+}
+
+html.dark .reading-text {
+  color: #e0ddd8;
+}
+
+/* De-jargon panel explanation text */
+.explanation-text {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--color-charcoal);
+}
+
+html.dark .explanation-text {
+  color: #e0ddd8;
+}
+
+/* ── Motion System ──────────────────────────────────────── */
+
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.05);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 300ms;
+}
+
+/* Page / view enter */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Panel slide in from right */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Bottom sheet slide up */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Toast notification */
+@keyframes toastEnter {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+/* Dropdown reveal (API key bar, tree nodes) */
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Popover / modal scale-in */
+@keyframes scaleInFade {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Fade only */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Argument card / visual expand */
+@keyframes expandDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Shimmer loading skeleton */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+/* ── Reusable motion classes ────────────────────────────── */
+
+.animate-page-enter {
+  animation: pageEnter var(--duration-slow) var(--ease-out) both;
+}
+
+.animate-scale-in {
+  animation: scaleInFade 180ms var(--ease-out) both;
+}
+
+.animate-slide-down {
+  animation: slideDownFade var(--duration-base) var(--ease-out) both;
+}
+
+/* Loading shimmer */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,0.04) 25%,
+    rgba(0,0,0,0.08) 37%,
+    rgba(0,0,0,0.04) 63%
+  );
+  background-size: 400px 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+html.dark .shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.03) 25%,
+    rgba(255,255,255,0.07) 37%,
+    rgba(255,255,255,0.03) 63%
+  );
+  background-size: 400px 100%;
+}
+
+/* ── Depth tabs ─────────────────────────────────────────── */
+
+.depth-tab {
+  position: relative;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: color 150ms ease, background-color 150ms ease;
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-sans);
+  z-index: 1;
+}
+
+.depth-tab-active {
+  background-color: var(--color-terracotta);
+  color: white;
+  box-shadow: 0 1px 3px rgba(193, 124, 90, 0.3);
+}
+
+.depth-tab-inactive {
+  background-color: transparent;
+  color: var(--color-charcoal-light);
+}
+
+.depth-tab-inactive:hover {
+  background-color: var(--color-cream-darker);
+  color: var(--color-charcoal);
+}
+
+/* ── Button interactions ────────────────────────────────── */
+
+/* Primary CTA — press scale feedback */
+.btn-primary {
+  transition: background-color 150ms ease, transform 100ms ease, box-shadow 150ms ease;
+}
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+/* Subtle card hover — lift */
+.card-interactive {
+  transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out), background-color 150ms ease;
+}
+.card-interactive:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+.card-interactive:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+html.dark .card-interactive:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Icon button press */
+.btn-icon {
+  transition: background-color 150ms ease, transform 100ms ease, opacity 100ms ease;
+}
+.btn-icon:active {
+  transform: scale(0.92);
+}
+
+/* ── Panel / sheet ──────────────────────────────────────── */
+
+.panel-enter {
+  animation: slideIn 260ms var(--ease-out) both;
+}
+
+.panel-enter-mobile {
+  animation: slideUp 280ms var(--ease-out) both;
+}
+
+/* ── Sidebar ────────────────────────────────────────────── */
+
+.sidebar-item {
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.sidebar-item:hover {
+  background-color: var(--color-cream-dark);
+}
+
+html.dark .sidebar-item:hover {
+  background-color: #2a2a2a;
+}
+
+/* Active sidebar item indicator dot */
+.sidebar-item-active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 16px;
+  background: var(--color-terracotta);
+  border-radius: 0 2px 2px 0;
+}
+
+/* ── Tree node expand/collapse ──────────────────────────── */
+
+.tree-children {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 220ms var(--ease-in-out);
+  overflow: hidden;
+}
+
+.tree-children.open {
+  grid-template-rows: 1fr;
+}
+
+.tree-children-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ── Smooth transitions ─────────────────────────────────── */
+
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 200ms var(--ease-out);
+}
+
+/* ── Bottom sheet overlay ───────────────────────────────── */
+
+.bottom-sheet-overlay {
+  animation: fadeIn 200ms ease;
+}
+
+/* ── Toast ──────────────────────────────────────────────── */
+
+.toast {
+  animation: toastEnter 200ms var(--ease-spring) both;
+}
+
+/* ── Loading pulse ──────────────────────────────────────── */
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+.loading-pulse {
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+/* Spinning loader */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.loading-spin {
+  animation: spin 0.8s linear infinite;
+}
+
+/* ── Scrollbar styling ──────────────────────────────────── */
+
+.dejargon-panel::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dejargon-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dejargon-panel::-webkit-scrollbar-thumb {
+  background-color: var(--color-cream-darker);
+  border-radius: 3px;
+}
+
+html.dark .dejargon-panel::-webkit-scrollbar-thumb {
+  background-color: #444;
+}
+
+/* ── Reading text highlight ─────────────────────────────── */
+
+.text-highlighted {
+  background-color: var(--color-highlight);
+  border-radius: 2px;
+  transition: background-color 200ms ease;
+}
+
+/* ── Session end card ───────────────────────────────────── */
+
+.session-end-card {
+  animation: slideUp 300ms var(--ease-spring) both;
+}
+
+@keyframes sessionCardSlideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 100%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* ── Ambient engagement dot ─────────────────────────────── */
+
+.ambient-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  transition: opacity 600ms ease, background-color 600ms ease;
+  flex-shrink: 0;
+}
+
+/* ── Badge earned ───────────────────────────────────────── */
+
+.badge-earned {
+  box-shadow: 0 0 0 1px rgba(193, 124, 90, 0.15), 0 0 12px rgba(193, 124, 90, 0.08);
+}
+
+html.dark .badge-earned {
+  box-shadow: 0 0 0 1px rgba(193, 124, 90, 0.25), 0 0 16px rgba(193, 124, 90, 0.1);
+}
+
+/* ── Roadmap ────────────────────────────────────────────── */
+
+.roadmap-pulse {
+  animation: roadmapPulse 2s ease-in-out infinite;
+}
+
+@keyframes roadmapPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(193, 124, 90, 0.3); }
+  50%       { box-shadow: 0 0 0 8px rgba(193, 124, 90, 0); }
+}
+
+/* ── Inline Visual Aids ─────────────────────────────────── */
+
+@keyframes visualExpand {
+  from { max-height: 0; opacity: 0.5; }
+  to   { max-height: 500px; opacity: 1; }
+}
+
+/* React Flow objection edge animation */
+.react-flow__edge-path.objection-edge {
+  animation: dashedFlow 1.5s linear infinite;
+}
+
+@keyframes dashedFlow {
+  to { stroke-dashoffset: -20; }
+}
+
+/* React Flow canvas overrides */
+.react-flow {
+  border-radius: 8px;
+}
+
+.react-flow__controls button {
+  background: #FFFDF9;
+  border: 1px solid #ddd;
+  color: #2C2C2C;
+  transition: background-color 150ms ease;
+}
+
+.react-flow__controls button:hover {
+  background: #F0EDE8;
+}
+
+.react-flow__minimap {
+  background: #FAF8F5;
+  border: 1px solid #E8E4DF;
+  border-radius: 4px;
+}
+
+html.dark .react-flow__controls button {
+  background: #2a2a2a;
+  border: 1px solid #444;
+  color: #ccc;
+}
+
+html.dark .react-flow__controls button:hover {
+  background: #333;
+}
+
+html.dark .react-flow__minimap {
+  background: #1e1e1e;
+  border: 1px solid #333;
+}
+
+/* ── Focus ring (accessibility) ─────────────────────────── */
+
+*:focus-visible {
+  outline: 2px solid var(--color-terracotta);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

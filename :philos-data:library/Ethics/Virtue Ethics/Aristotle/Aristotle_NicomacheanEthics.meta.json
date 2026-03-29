@@ -1,0 +1,54 @@
+{
+  "id": "nicomachean-ethics",
+  "title": "Nicomachean Ethics",
+  "author": "Aristotle",
+  "year": -350,
+  "branch": "Ethics",
+  "school": "Virtue Ethics",
+  "source": "Project Gutenberg",
+  "sourceUrl": null,
+  "introduction": "The Nicomachean Ethics is the founding document of virtue ethics and one of the most enduringly practical works in the history of philosophy. Its central question — What is the good life for a human being? — sounds simple, but Aristotle's answer unfolds with extraordinary depth and nuance across ten books. The work is named for Aristotle's son Nicomachus, who may have edited it, and it represents the mature fruit of Aristotle's ethical thinking.\n\nAristotle's starting move is disarmingly commonsensical: every action aims at some good. But goods form a hierarchy — we seek some things for the sake of other things — and there must be a highest good that we seek for its own sake and never as a means to something else. This highest good, he argues, is eudaimonia, often translated as 'happiness' but better understood as 'flourishing' or 'living and doing well.' Happiness is not a feeling but an activity: the activity of the soul in accordance with its highest virtue.\n\nThe doctrine of the mean, Aristotle's most distinctive contribution, holds that virtue is a stable disposition to feel and act in the right way — not too much, not too little, but appropriately to the situation. Courage lies between cowardice and recklessness; generosity between miserliness and prodigality. Virtue is not a rule to follow but a character to cultivate — and cultivation takes time, practice, and the right upbringing. The Nicomachean Ethics is, in the end, a philosophy of moral education.",
+  "argumentCard": {
+    "centralQuestion": "What is the highest good for a human being — and what kind of life achieves it?",
+    "thesis": "The highest human good is eudaimonia (flourishing), which consists in the activity of the soul in accordance with virtue over a complete life. Virtue is a stable disposition to feel and act appropriately — the mean between excess and deficiency — cultivated through habit and practice, not merely through knowledge.",
+    "keyMoves": [
+      "The Function Argument (Book I): Every living thing has a characteristic function (ergon); the human function is rational activity. Therefore the good for humans is performing this function well — i.e., exercising reason virtuously",
+      "The Doctrine of the Mean (Book II): Virtue is not a rule but a disposition — a reliable tendency to respond appropriately to situations, avoiding both excess and deficiency. The virtuous person does not just act rightly; they feel rightly",
+      "Virtue requires habituation (Book II): We become courageous by doing courageous things, just by doing just things. Character is formed by practice, not by knowledge alone — we cannot think our way into virtue",
+      "The role of friendship (Books VIII-IX): Deep friendship — based not on utility or pleasure but on shared virtuous character — is one of the greatest components of eudaimonia. A human being cannot flourish in isolation"
+    ],
+    "strongestObjection": "Kant's objection: Aristotle's ethics is ultimately about self-cultivation and personal flourishing — but morality requires that we act from duty, for the right reason, regardless of whether it contributes to our own happiness. An ethics grounded in eudaimonia makes morality contingent on personal development, which seems to miss the unconditional character of moral obligation."
+  },
+  "conceptDNA": null,
+  "conceptHighlights": null,
+  "guidedPaths": null,
+  "debates": [
+    {
+      "id": "aristotle-plato-good-life",
+      "title": "Is the good life a matter of character or of knowledge?",
+      "subtitle": "Virtue as habit vs. virtue as wisdom",
+      "philosopher1": {
+        "name": "Aristotle",
+        "position": "Virtue is a stable disposition formed by habit; knowledge alone cannot make us good",
+        "keyQuote": "We become just by doing just acts, temperate by doing temperate acts, brave by doing brave acts. The virtues we get by first exercising them, as also happens in the case of the arts.",
+        "arguments": [
+          "Plato thinks that if you truly know the good, you will do it. But experience refutes this: people knowingly do wrong all the time. Akrasia — weakness of will — is a real phenomenon that any adequate ethics must explain.",
+          "Virtue is not primarily intellectual but dispositional. What matters is not knowing the definition of courage but being the kind of person who acts courageously — and this requires training, not just understanding.",
+          "The good life requires external goods too — moderate wealth, health, friends, good fortune. An ethics that claims virtue is sufficient for happiness, regardless of external circumstances, mistakes philosophy for therapy."
+        ]
+      },
+      "philosopher2": {
+        "name": "Plato",
+        "position": "Virtue is knowledge; no one does wrong willingly — all wrongdoing is a form of ignorance",
+        "keyQuote": "No man voluntarily pursues evil, or that which he thinks to be evil. To prefer evil to good is not in human nature; and when a man is compelled to choose one of two evils, no one will choose the greater when he may have the less.",
+        "arguments": [
+          "What people call 'weakness of will' is actually a failure to perceive the situation clearly. If someone truly understood that cruelty was bad for their soul, they would not be cruel — the appearance of knowing and not acting means the knowledge was not genuine.",
+          "Virtue is unified: the truly virtuous person has wisdom (phronesis as sophia), and this wisdom is the same in every domain. You cannot be courageous in war but unjust in business — these apparent contradictions reveal that neither was genuine virtue.",
+          "The Forms provide an objective standard for virtue that transcends individual temperament and culture. Without knowledge of the Form of the Good, any account of virtue is ultimately relative and unstable."
+        ]
+      },
+      "stakes": "This debate runs through every discussion of moral education, criminal justice, and self-help. Do people do wrong because they don't know better (Plato's insight), or because they know but haven't built the right habits (Aristotle)? The answer determines whether we respond to wrongdoing with more education or with practice, with therapy or with training.",
+      "yourTurn": "Think of a time you did something you knew was wrong. Was it because you didn't really 'know' in the deepest sense (Plato), or because knowledge wasn't enough (Aristotle)? Which account seems more honest about how humans actually work?"
+    }
+  ]
+}

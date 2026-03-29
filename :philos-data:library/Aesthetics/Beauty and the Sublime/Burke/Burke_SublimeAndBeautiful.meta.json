@@ -1,0 +1,54 @@
+{
+  "id": "sublime-and-beautiful",
+  "title": "A Philosophical Enquiry into the Sublime and Beautiful",
+  "author": "Edmund Burke",
+  "year": 1757,
+  "branch": "Aesthetics",
+  "school": "Beauty and the Sublime",
+  "source": "Project Gutenberg",
+  "sourceUrl": "https://www.gutenberg.org/ebooks/15043",
+  "introduction": null,
+  "argumentCard": {
+    "centralQuestion": "What are beauty and sublimity, and what in human nature makes us respond to them so powerfully?",
+    "thesis": "Beauty and sublimity are distinct aesthetic experiences with opposite qualities and psychological causes: beauty arises from smoothness, smallness, and social affection, while the sublime arises from terror, vastness, and the instinct of self-preservation — and both can be explained by their physiological effects on the human nervous system.",
+    "keyMoves": [
+      "Separates the beautiful and the sublime as categorically different experiences rather than degrees of the same thing, opposing the tendency to conflate them",
+      "Grounds the sublime in a physiological account of terror: confronting danger at a safe remove produces a 'delight' through the stimulation of self-preservation instincts",
+      "Identifies specific sensory qualities that produce beauty (smoothness, gradual variation, delicacy, clear color) versus sublimity (vastness, obscurity, power, darkness, infinity)",
+      "Argues that aesthetic responses are grounded in universal human physiology, not in cultural convention or rational judgment — anticipating empirical aesthetics"
+    ],
+    "strongestObjection": "Burke's purely physiological account cannot explain why the same storm at sea feels sublime to a poet and merely dangerous to a sailor — context, culture, and trained perception shape aesthetic response in ways that raw nerve stimulation cannot capture."
+  },
+  "conceptDNA": null,
+  "conceptHighlights": null,
+  "guidedPaths": null,
+  "debates": [
+    {
+      "id": "sublime-terror-vs-transcendence",
+      "title": "Is the sublime terror or transcendence?",
+      "subtitle": "Burke's physiology vs. Kant's moral philosophy of the sublime",
+      "philosopher1": {
+        "name": "Edmund Burke",
+        "position": "The sublime is rooted in terror and the instinct for self-preservation",
+        "keyQuote": "Whatever is fitted in any sort to excite the ideas of pain and danger — whatever is in any sort terrible — is a source of the sublime.",
+        "arguments": [
+          "When we encounter vast, overpowering natural forces — a storm, an abyss, a great darkness — we feel astonished, awe-struck, and slightly terrified. This is the sublime.",
+          "The experience is fundamentally physiological: the sublime produces tension in the nerves, a kind of 'delight' that arises from the removal of immediate danger. It's the thrill of the roller coaster.",
+          "Beauty and sublimity are opposites: beauty is smooth, small, gradual, and causes love; the sublime is rough, vast, and sudden, and causes awe. They should not be confused."
+        ]
+      },
+      "philosopher2": {
+        "name": "Immanuel Kant",
+        "position": "The sublime reveals our moral dignity as rational beings",
+        "keyQuote": "Sublimity is contained not in any thing of nature, but only in our mind, insofar as we can become conscious of being superior to nature within us.",
+        "arguments": [
+          "Burke's account is purely physiological — a story about nerves and animal fear. But it misses the crucial point: when we face the vastness of a mountain range, we feel something more than biological terror.",
+          "The sublime humiliates our senses but elevates our reason: it reminds us that our physical smallness is not our true measure. As rational moral beings, we are superior to any natural force.",
+          "The feeling of the sublime is therefore a feeling about ourselves — a recognition of the infinite that lives within the finite human mind. This is why it has a moral dimension that mere terror does not."
+        ]
+      },
+      "stakes": "This debate shapes aesthetic theory, environmental ethics, and the psychology of awe. Is our response to overwhelming nature a primitive survival instinct, or a window into something transcendent about human consciousness?",
+      "yourTurn": "Think of a time you felt something like sublime awe — a vast landscape, a thunderstorm, a great work of art. Did it feel like terror? Like moral elevation? Like both? Whose account fits your experience better?"
+    }
+  ]
+}
