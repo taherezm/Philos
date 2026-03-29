@@ -1,8 +1,8 @@
-#  Philos: Philosophy Made Readable
+#  Philos: Philosophy Made Intuitive
 
 **Philos** is an AI-powered reading companion designed to make the dense, archaic texts of the philosophical canon accessible to everyday readers, lifelong learners, and students without dumbing down the original arguments.
 
-Built for the **Claude Hackathon — Track 5: Creative Flourishing**.
+Built for the **CBC @ IU Claude Hackathon — Track 5: Creative Flourishing**.
 
 ---
 
