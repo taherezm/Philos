@@ -30,7 +30,7 @@ Philos was built with deep consideration for the ethical risks of AI in educatio
 
 ##  Technical Stack
 * **Frontend:** React, TypeScript, Vite, Tailwind CSS
-* **AI Integration:** Anthropic Claude API (`claude-3-5-sonnet-20240620`)
+* **AI Integration:** Anthropic Claude API (`claude-3-5-sonnet-20240620`) -- subject to change
 * **Architecture:** Context-aware prompt engineering, dynamic text resolution, and custom JSON schema enforcement.
 
    
