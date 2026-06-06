@@ -23,7 +23,7 @@ export function SessionEndCard({ data, onDismiss, onViewProgress, darkMode, text
 
   return (
     <div className="session-end-card fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90vw] max-w-[420px]">
-      <div className={`${darkMode ? "bg-[#242424]" : "bg-white"} rounded-2xl shadow-2xl border ${border} p-5 relative`}>
+      <div className={`${darkMode ? "bg-[#20231f]" : "bg-white"} rounded-lg shadow-xl border ${border} p-5 relative`}>
         {/* Dismiss */}
         <button
           onClick={onDismiss}
@@ -83,7 +83,7 @@ export function SessionEndCard({ data, onDismiss, onViewProgress, darkMode, text
           onClick={onViewProgress}
           className="w-full px-4 py-2 text-sm font-medium text-white bg-terracotta rounded-lg hover:bg-terracotta-dark transition-colors"
         >
-          View Full Progress
+          View progress
         </button>
       </div>
     </div>

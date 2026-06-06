@@ -65,7 +65,7 @@ export function MyProgressView({ storage, darkMode, text, textMuted, textFaint, 
         </div>
         <h2 className={`text-lg font-semibold ${text} mb-2`}>No reading data yet</h2>
         <p className={`text-sm ${textMuted} max-w-sm mx-auto`}>
-          Start reading and engaging with texts to see your absorption progress here. De-jargon passages, write notes, and explore different depth layers to build your profile.
+          Start reading to see your progress here. Explanations, notes, and saved passages build your profile.
         </p>
       </div>
     );
@@ -213,11 +213,11 @@ export function MyProgressView({ storage, darkMode, text, textMuted, textFaint, 
               {expandedText === textId && (
                 <div className={`px-4 pb-4 pt-1 border-t ${border} animate-[fadeIn_200ms_ease]`}>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                    <DetailStat label="Passages de-jargoned" value={ts.details.dejargonCount} textColor={text} textFaint={textFaint} />
+                    <DetailStat label="Passages explained" value={ts.details.dejargonCount} textColor={text} textFaint={textFaint} />
                     <DetailStat label="Plain depth" value={ts.details.depthPlain} textColor={text} textFaint={textFaint} />
                     <DetailStat label="Conceptual depth" value={ts.details.depthConceptual} textColor={text} textFaint={textFaint} />
                     <DetailStat label="Scholarly depth" value={ts.details.depthScholarly} textColor={text} textFaint={textFaint} />
-                    <DetailStat label="PhiloBook entries" value={ts.details.notebookEntries} textColor={text} textFaint={textFaint} />
+                    <DetailStat label="Notebook entries" value={ts.details.notebookEntries} textColor={text} textFaint={textFaint} />
                     <DetailStat label="Personal notes" value={ts.details.personalNotes} textColor={text} textFaint={textFaint} />
                     <DetailStat label="Active recall" value={ts.details.activeRecallCount} textColor={text} textFaint={textFaint} />
                     <DetailStat label="Total sessions" value={ts.totalSessions} textColor={text} textFaint={textFaint} />

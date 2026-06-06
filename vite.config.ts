@@ -32,6 +32,13 @@ const TOC_LINE_RE = /(\.\s*\.\s*\.)|(\.\s+\d+\s*$)|\d{2,}\s*$/;
 const SECTION_RE = /^(#{1,3}\s+)?([IVXLC]+\.?\s*$|SECTION\s+[IVXLC]+|CHAPTER\s+[IVXLC]+|BOOK\s+[IVXLC]+|PART\s+[IVXLC]+)/i;
 const ROMAN_STANDALONE_RE = /^[IVXLC]+\.?$/;
 
+function isMostlyUppercaseLine(text: string): boolean {
+  const letters = (text.match(/[a-zA-Z]/g) || []).length;
+  if (letters === 0) return false;
+  const uppers = (text.match(/[A-Z]/g) || []).length;
+  return uppers / letters > 0.75;
+}
+
 function isBoilerplateBlock(p: string): boolean {
   if (p === "") return true;
   if (BOILERPLATE_RE.test(p)) return true;
@@ -109,12 +116,23 @@ function parseMarkdownToParagraphs(raw: string): ParsedParagraph[] {
 
     // Check if this block is a section heading
     const trimmedBlock = block.replace(/\s+/g, " ");
+    const headingText = trimmedBlock
+      .replace(/^#{1,6}\s+/, "")
+      .replace(/\*\*/g, "")
+      .trim();
+    const isMarkdownHeading = /^#{1,6}\s+/.test(trimmedBlock);
+    const isSectionHeading = SECTION_RE.test(headingText) || ROMAN_STANDALONE_RE.test(headingText);
+    if (currentSection && headingText.length < 120 && isMostlyUppercaseLine(headingText)) {
+      currentSection = `${currentSection.replace(/\.$/, "")} ${headingText.replace(/\.$/, "")}`.replace(/\s+/g, " ").trim();
+      if (currentSection && !currentSection.endsWith("."))
+        currentSection += ".";
+      continue;
+    }
     if (
-      trimmedBlock.length < 40 &&
-      (SECTION_RE.test(trimmedBlock) || ROMAN_STANDALONE_RE.test(trimmedBlock))
+      headingText.length < 120 &&
+      (isMarkdownHeading || isSectionHeading)
     ) {
-      currentSection = trimmedBlock
-        .replace(/^#{1,3}\s+/, "")
+      currentSection = headingText
         .replace(/\.$/, "")
         .trim();
       if (currentSection && !currentSection.endsWith("."))

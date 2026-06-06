@@ -43,7 +43,7 @@ export function TaxonomyRoadmap({ completedTextIds, currentTextId, onSelectText,
         Philosophy Roadmap
       </h1>
       <p className={`text-sm ${textMuted} mb-2`}>
-        A guided journey from accessible entry points to advanced explorations.
+        A sequence from accessible entry points to advanced texts.
       </p>
       {/* Progress bar */}
       <div className="flex items-center gap-3 mb-10">
@@ -187,13 +187,12 @@ export function TaxonomyRoadmap({ completedTextIds, currentTextId, onSelectText,
 
       {/* Completion message */}
       {completedCount === allStops.length && (
-        <div className={`mt-10 text-center p-6 ${cardBg} rounded-2xl border ${border}`}>
-          <div className="text-3xl mb-3">🏛️</div>
+        <div className={`mt-10 text-center p-6 ${cardBg} rounded-lg border ${border}`}>
           <h3 className={`text-lg font-semibold ${text} mb-2`} style={{ fontFamily: "var(--font-serif)" }}>
-            Journey Complete
+            Roadmap complete
           </h3>
           <p className={`text-sm ${textMuted}`}>
-            You've explored the full roadmap — from first questions to the deepest inquiries. The library is always open for revisiting.
+            You have explored the full roadmap. The library remains open for revisiting.
           </p>
         </div>
       )}

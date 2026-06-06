@@ -23,18 +23,18 @@ const TABS: { key: FilterTab; label: string }[] = [
   { key: "all", label: "All" },
   { key: "annotation", label: "Annotations" },
   { key: "quote", label: "Quotes" },
-  { key: "dejargon", label: "De-jargons" },
-  { key: "debate_prep", label: "Debate Preps" },
-  { key: "study_package", label: "Study Packages" },
+  { key: "dejargon", label: "Explanations" },
+  { key: "debate_prep", label: "Counterpoints" },
+  { key: "study_package", label: "Study Notes" },
 ];
 
 const EMPTY_MESSAGES: Record<FilterTab, string> = {
-  all: "Your PhiloBook is empty. Start reading, highlighting, and de-jargoning to build your collection.",
-  annotation: "No annotations yet. When you're reading, highlight any passage and tap Annotate to start building your collection.",
-  quote: "No quotes saved yet. Highlight a passage that resonates and tap Save as Quote.",
-  dejargon: "No de-jargons saved yet. They'll appear here whenever you de-jargon a passage.",
-  debate_prep: "No debate preps saved yet. Try the Debate Prep feature on any text.",
-  study_package: "No study packages yet. Paste any philosophy passage into Study Mode to generate one.",
+  all: "No notebook entries yet. Save a quote, annotation, or explanation while reading.",
+  annotation: "No annotations yet.",
+  quote: "No quotes saved yet.",
+  dejargon: "No explanations saved yet.",
+  debate_prep: "No counterpoints saved yet.",
+  study_package: "No study notes yet.",
 };
 
 export function PhiloBookPage({ storage, onDelete, onUpdate, darkMode, text, textMuted, textFaint, cardBg, border }: PhiloBookPageProps) {
@@ -94,9 +94,9 @@ export function PhiloBookPage({ storage, onDelete, onUpdate, darkMode, text, tex
     <div className="max-w-[720px] mx-auto px-5 sm:px-8 py-10 sm:py-16">
       {/* Header */}
       <h1 className={`text-2xl font-semibold ${text} mb-1`} style={{ fontFamily: "var(--font-serif)" }}>
-        PhiloBook
+        Notebook
       </h1>
-      <p className={`text-sm ${textMuted} mb-5`}>Your philosophical trail, collected</p>
+      <p className={`text-sm ${textMuted} mb-5`}>Quotes, annotations, and explanations saved from reading.</p>
 
       {/* Search */}
       <div className="mb-4">
@@ -104,7 +104,7 @@ export function PhiloBookPage({ storage, onDelete, onUpdate, darkMode, text, tex
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Search your PhiloBook..."
+          placeholder="Search notebook"
           className={`w-full px-4 py-2.5 text-sm rounded-xl border ${inputBg} ${text} focus:outline-none focus:border-terracotta/40 transition-colors`}
         />
       </div>
@@ -325,7 +325,7 @@ function EditableContent({ item, onSave, onCancel, darkMode, text, textMuted, te
           </p>
         </div>
         <div className={`${darkMode ? "bg-[#1e1e1e]" : "bg-cream/60"} rounded-lg px-3 py-2.5 mb-3`}>
-          <span className={`text-xs font-medium ${textFaint} uppercase tracking-wider`}>De-jargoned</span>
+          <span className={`text-xs font-medium ${textFaint} uppercase`}>Explanation</span>
           <p className={`text-sm ${text} mt-1 leading-relaxed`} style={{ fontFamily: "var(--font-serif)" }}>{d.dejargonedText}</p>
         </div>
         <label className={`text-xs ${textFaint} mb-1 block`}>Your note</label>
@@ -343,7 +343,7 @@ function EditableContent({ item, onSave, onCancel, darkMode, text, textMuted, te
         <p className={`text-sm ${textMuted} mb-2 leading-relaxed`} style={{ fontFamily: "var(--font-serif)" }}>
           {d.originalText.slice(0, 150)}{d.originalText.length > 150 ? "..." : ""}
         </p>
-        <label className={`text-xs ${textFaint} mb-1 block`}>Debate prep content</label>
+        <label className={`text-xs ${textFaint} mb-1 block`}>Counterpoint content</label>
         <textarea value={val} onChange={(e) => setVal(e.target.value)} className={inputCls} rows={5} style={{ fontFamily: "var(--font-serif)" }} />
         <EditButtons onSave={() => onSave({ ...d, result: val })} onCancel={onCancel} darkMode={darkMode} />
       </div>
@@ -358,7 +358,7 @@ function EditableContent({ item, onSave, onCancel, darkMode, text, textMuted, te
         <p className={`text-sm ${textMuted} mb-2 leading-relaxed`} style={{ fontFamily: "var(--font-serif)" }}>
           {d.originalText.slice(0, 150)}{d.originalText.length > 150 ? "..." : ""}
         </p>
-        <label className={`text-xs ${textFaint} mb-1 block`}>Study package content</label>
+        <label className={`text-xs ${textFaint} mb-1 block`}>Study note content</label>
         <textarea value={val} onChange={(e) => setVal(e.target.value)} className={inputCls} rows={5} style={{ fontFamily: "var(--font-serif)" }} />
         <EditButtons onSave={() => onSave({ ...d, result: val })} onCancel={onCancel} darkMode={darkMode} />
       </div>
@@ -417,13 +417,13 @@ function DeJargonCard({ data, text, textMuted, textFaint, darkMode, border }: { 
   return (
     <>
       <div className="mb-3">
-        <span className={`text-xs font-medium ${textFaint} uppercase tracking-wider`}>Original</span>
+        <span className={`text-xs font-medium ${textFaint} uppercase`}>Original</span>
         <p className={`text-sm ${textMuted} mt-1 leading-relaxed`} style={{ fontFamily: "var(--font-serif)" }}>
           &ldquo;{data.originalText.slice(0, 200)}{data.originalText.length > 200 ? "..." : ""}&rdquo;
         </p>
       </div>
       <div className={`${darkMode ? "bg-[#1e1e1e]" : "bg-cream/60"} rounded-lg px-3 py-2.5 mb-3`}>
-        <span className={`text-xs font-medium ${textFaint} uppercase tracking-wider`}>De-jargoned</span>
+        <span className={`text-xs font-medium ${textFaint} uppercase`}>Explanation</span>
         <p className={`text-sm ${text} mt-1 leading-relaxed`} style={{ fontFamily: "var(--font-serif)" }}>
           {data.dejargonedText}
         </p>
@@ -433,13 +433,13 @@ function DeJargonCard({ data, text, textMuted, textFaint, darkMode, border }: { 
           {data.depthLayer}
         </span>
         <span className={`text-xs px-2 py-0.5 rounded-full ${darkMode ? "bg-[#333]" : "bg-cream-dark"} ${textFaint}`}>
-          {data.tone === "coffee_shop" ? "Coffee Shop" : "Office Hours"}
+          {data.tone === "coffee_shop" ? "Plainspoken" : "Seminar"}
         </span>
       </div>
       {data.soWhatText && (
         <div className="mt-3">
           <button onClick={(e) => { e.stopPropagation(); setExpanded(!expanded); }} className={`text-xs font-medium text-terracotta`}>
-            {expanded ? "Hide" : "Show"} So What?
+            {expanded ? "Hide" : "Show"} Context
           </button>
           {expanded && (
             <p className={`text-sm ${text} mt-2 leading-relaxed animate-[fadeIn_200ms_ease]`} style={{ fontFamily: "var(--font-serif)" }}>
@@ -466,7 +466,7 @@ function DebatePrepCard({ data, text, textMuted, darkMode }: { data: DebatePrepD
         {data.originalText.slice(0, 200)}{data.originalText.length > 200 ? "..." : ""}
       </p>
       <button onClick={(e) => { e.stopPropagation(); setExpanded(!expanded); }} className="text-xs font-medium text-terracotta">
-        {expanded ? "Collapse" : "Show full debate prep"}
+        {expanded ? "Collapse" : "Show counterpoint"}
       </button>
       {expanded && (
         <div className={`mt-3 text-sm ${text} leading-relaxed whitespace-pre-line animate-[fadeIn_200ms_ease]`} style={{ fontFamily: "var(--font-serif)" }}>
@@ -485,7 +485,7 @@ function StudyPackageCard({ data, text, textMuted, darkMode }: { data: StudyPack
         {data.originalText.slice(0, 200)}{data.originalText.length > 200 ? "..." : ""}
       </p>
       <button onClick={(e) => { e.stopPropagation(); setExpanded(!expanded); }} className="text-xs font-medium text-terracotta">
-        {expanded ? "Collapse" : "Show full study package"}
+        {expanded ? "Collapse" : "Show study note"}
       </button>
       {expanded && (
         <div className={`mt-3 text-sm ${text} leading-relaxed whitespace-pre-line animate-[fadeIn_200ms_ease]`} style={{ fontFamily: "var(--font-serif)" }}>
