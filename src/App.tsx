@@ -516,8 +516,8 @@ function App() {
   const textMuted = darkMode ? "text-[#a7ada3]" : "text-charcoal-light";
   const textFaint = darkMode ? "text-[#737a70]" : "text-charcoal-lighter";
   const border = darkMode ? "border-[#30362f]" : "border-[#dcddd5]";
-  const cardBg = darkMode ? "bg-[#20231f]" : "bg-white";
-  const cardBgHover = darkMode ? "hover:bg-[#252a24]" : "hover:bg-cream-dark/70";
+  const cardBg = "bg-transparent";
+  const cardBgHover = darkMode ? "hover:bg-[#20231f]" : "hover:bg-[#eef0eb]";
   const inputBg = darkMode ? "bg-[#1b1d1a] border-[#3a4038]" : "bg-white border-[#d7d8cf]";
   const headerBg = darkMode ? "bg-[#161716]/95" : "bg-cream/95";
 
@@ -597,12 +597,10 @@ function App() {
               <h2 className={`text-2xl font-semibold ${text} mb-6`} style={{ fontFamily: "var(--font-serif)" }}>
                 Choose an explanation style.
               </h2>
-              <div className="grid sm:grid-cols-2 gap-3">
+              <div className={`grid sm:grid-cols-2 border-y ${border}`}>
                 <button
                   onClick={() => setTone("coffee_shop")}
-                  className={`card-interactive w-full text-left p-4 rounded-lg border ${
-                    tone === "coffee_shop" ? "border-terracotta " + cardBg : border + " " + cardBg
-                  }`}
+                  className={`w-full text-left py-4 sm:pr-4 border-b sm:border-b-0 sm:border-r ${border} ${tone === "coffee_shop" ? "text-terracotta" : text}`}
                   style={{ animation: "pageEnter 280ms var(--ease-out) 60ms both" }}
                 >
                   <h3 className={`text-sm font-semibold ${text} mb-1`}>Plainspoken</h3>
@@ -610,9 +608,7 @@ function App() {
                 </button>
                 <button
                   onClick={() => setTone("office_hours")}
-                  className={`card-interactive w-full text-left p-4 rounded-lg border ${
-                    tone === "office_hours" ? "border-terracotta " + cardBg : border + " " + cardBg
-                  }`}
+                  className={`w-full text-left py-4 sm:pl-4 ${tone === "office_hours" ? "text-terracotta" : text}`}
                   style={{ animation: "pageEnter 280ms var(--ease-out) 120ms both" }}
                 >
                   <h3 className={`text-sm font-semibold ${text} mb-1`}>Seminar</h3>
@@ -638,7 +634,7 @@ function App() {
               <p className={`text-sm ${textMuted} mb-5 leading-relaxed`}>
                 Explanations run only when you request them. The key stays in this browser.
               </p>
-              <div className={`border ${border} ${cardBg} rounded-lg p-4`} style={{ animation: "pageEnter 280ms var(--ease-out) 80ms both" }}>
+              <div className={`border-y ${border} py-4`} style={{ animation: "pageEnter 280ms var(--ease-out) 80ms both" }}>
                 <label className={`text-xs ${textFaint} block mb-2`}>Anthropic API key</label>
                 <input
                   type="password"
@@ -752,16 +748,13 @@ function App() {
                 { id: "philobook" as AppView, label: "Notebook", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h6"/></svg> },
               ]).map((item) => (
                 <button key={item.id} onClick={() => navigate(item.id)}
-                  className={`sidebar-item relative w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-left mb-0.5 transition-all duration-150 ${
+                  className={`sidebar-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-left mb-0.5 transition-all duration-150 ${
                     view === item.id
-                      ? "bg-terracotta/10 text-terracotta font-medium"
+                      ? "text-terracotta font-medium"
                       : `${textMuted} hover:${darkMode ? "text-[#c8c4be]" : "text-charcoal"}`
                   }`}>
                   <span className={`transition-colors duration-150 ${view === item.id ? "text-terracotta" : ""}`}>{item.icon}</span>
                   {item.label}
-                  {view === item.id && (
-                    <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-4 bg-terracotta rounded-r" />
-                  )}
                 </button>
               ))}
             </nav>
@@ -829,7 +822,7 @@ function App() {
                   <p className={`text-sm ${textMuted}`} style={{ fontFamily: "var(--font-serif)" }}>Loading text…</p>
                 </div>
               ) : !currentText ? (
-                <div className={`${cardBg} rounded-xl p-8 border ${border} text-center`}>
+                <div className={`py-12 border-y ${border} text-center`}>
                   <div className={textFaint + " mb-3"}>
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="mx-auto">
                       <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
@@ -866,7 +859,7 @@ function App() {
                   {currentText.meta.argumentCard != null && (
                     <div className="mb-6">
                       <button onClick={() => setArgumentCardOpen(!argumentCardOpen)}
-                        className={`w-full flex items-center justify-between ${darkMode ? "bg-[#242424]" : "bg-cream-dark/70"} rounded-xl px-5 py-4 ${cardBgHover} transition-colors duration-150`}>
+                        className={`w-full flex items-center justify-between border-y ${border} px-0 py-3 bg-transparent ${cardBgHover} transition-colors duration-150`}>
                         <span className={`text-sm font-medium ${text}`}>Argument</span>
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"
                           className={`${textFaint} transition-transform duration-200 ${argumentCardOpen ? "rotate-180" : ""}`}>
@@ -874,7 +867,7 @@ function App() {
                         </svg>
                       </button>
                       {argumentCardOpen && (
-                        <div className={`${cardBg} rounded-b-xl px-5 py-5 -mt-2 pt-6 space-y-4 animate-[expandDown_220ms_var(--ease-out)]`}>
+                        <div className={`border-b ${border} py-5 space-y-4 animate-[expandDown_220ms_var(--ease-out)]`}>
                           {[
                             { label: "The Central Question", content: currentText.meta.argumentCard!.centralQuestion },
                             { label: "The Thesis", content: currentText.meta.argumentCard!.thesis },
@@ -908,7 +901,7 @@ function App() {
                     <div className="mb-6">
                       <button
                         onClick={() => setActiveConcept(activeConcept ? null : currentText.meta.conceptDNA![0].term)}
-                        className={`w-full flex items-center justify-between ${darkMode ? "bg-[#242424]" : "bg-cream-dark/70"} rounded-xl px-5 py-4 ${cardBgHover} transition-colors duration-200`}
+                        className={`w-full flex items-center justify-between border-y ${border} px-0 py-3 bg-transparent ${cardBgHover} transition-colors duration-200`}
                       >
                         <span className={`text-sm font-medium ${text}`}>Key Terms</span>
                         <div className="flex items-center gap-2">
@@ -920,14 +913,14 @@ function App() {
                         </div>
                       </button>
                       {!activeConcept && (
-                        <div className={`${cardBg} rounded-b-xl px-5 py-4 -mt-2 pt-5 animate-[fadeIn_200ms_ease]`}>
+                        <div className={`border-b ${border} py-4 animate-[fadeIn_200ms_ease]`}>
                           <p className={`text-xs ${textMuted} mb-3`}>Terms used by this text.</p>
                           <div className="flex flex-wrap gap-2">
                             {currentText.meta.conceptDNA!.map((c) => (
                               <button
                                 key={c.term}
                                 onClick={() => setActiveConcept(c.term)}
-                                className={`text-xs px-3 py-1.5 rounded-lg border ${border} ${cardBg} ${text} hover:border-terracotta/40 transition-colors`}
+                                className={`text-xs px-2.5 py-1 border ${border} ${text} hover:border-terracotta/40 transition-colors`}
                               >
                                 {c.displayTerm}
                               </button>
@@ -941,7 +934,7 @@ function App() {
                   {/* Primary Text (Collapsible) */}
                   <div className="mb-6">
                     <button onClick={() => setTextCollapsed(!textCollapsed)}
-                      className={`w-full flex items-center justify-between ${darkMode ? "bg-[#242424]" : "bg-cream-dark/70"} rounded-xl px-5 py-4 ${cardBgHover} transition-colors duration-200`}>
+                      className={`w-full flex items-center justify-between border-y ${border} px-0 py-3 bg-transparent ${cardBgHover} transition-colors duration-200`}>
                       <span className={`text-sm font-medium ${text}`}>Text</span>
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"
                         className={`${textFaint} transition-transform duration-200 ${!textCollapsed ? "rotate-180" : ""}`}>
@@ -1017,7 +1010,7 @@ function App() {
               <div className="space-y-3">
                 {allDebates.map((debate, i) => (
                   <button key={debate.id} onClick={() => { setActiveDebate(debate); setView("debate-detail"); }}
-                    className={`card-interactive w-full text-left ${cardBg} rounded-xl p-5 border ${border}`}
+                    className={`w-full text-left border-t ${border} py-4 ${cardBgHover} transition-colors`}
                     style={{ animation: `pageEnter 280ms var(--ease-out) ${Math.min(i * 40, 240)}ms both` }}
                   >
                     <h3 className={`text-base font-semibold ${text} mb-1`} style={{ fontFamily: "var(--font-serif)" }}>{debate.title}</h3>
@@ -1046,10 +1039,10 @@ function App() {
 
               <div className="grid sm:grid-cols-2 gap-4 mb-8">
                 {[activeDebate.philosopher1, activeDebate.philosopher2].map((phil, idx) => (
-                  <div key={idx} className={`${cardBg} rounded-xl p-5 border ${border}`} style={{ animation: `pageEnter 280ms var(--ease-out) ${idx * 80}ms both` }}>
+                  <div key={idx} className={`border-y ${border} py-5`} style={{ animation: `pageEnter 280ms var(--ease-out) ${idx * 80}ms both` }}>
                     <h3 className={`text-sm font-semibold text-terracotta mb-2`}>{phil.name}</h3>
                     <p className={`text-sm ${text} mb-3`} style={{ fontFamily: "var(--font-serif)" }}>{phil.position}</p>
-                    <blockquote className={`text-xs italic ${textMuted} border-l-2 border-terracotta/30 pl-3 mb-4`}>
+                    <blockquote className={`text-xs italic ${textMuted} mb-4`}>
                       "{phil.keyQuote}"
                     </blockquote>
                     <ul className="space-y-2">
@@ -1063,11 +1056,11 @@ function App() {
                 ))}
               </div>
 
-              <div className={`${cardBg} rounded-xl p-5 border ${border} mb-4`}>
+              <div className={`border-y ${border} py-5 mb-4`}>
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-terracotta mb-2">What's at Stake</h3>
                 <p className={`text-sm ${text} leading-relaxed`} style={{ fontFamily: "var(--font-serif)" }}>{activeDebate.stakes}</p>
               </div>
-              <div className={`${cardBg} rounded-xl p-5 border ${border}`}>
+              <div className={`border-y ${border} py-5`}>
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-terracotta mb-2">Your Turn</h3>
                 <p className={`text-sm ${text} leading-relaxed`} style={{ fontFamily: "var(--font-serif)" }}>{activeDebate.yourTurn}</p>
               </div>
@@ -1136,7 +1129,7 @@ function App() {
               </button>
 
               {studyResult && (
-                <div className={`mt-8 ${cardBg} rounded-xl p-6 border ${border} animate-[fadeIn_300ms_ease]`}>
+                <div className={`mt-8 border-y ${border} py-6 animate-[fadeIn_300ms_ease]`}>
                   <div className={`text-sm leading-relaxed ${text} whitespace-pre-wrap`} style={{ fontFamily: "var(--font-serif)" }}>
                     {studyResult}
                   </div>
@@ -1169,7 +1162,7 @@ function App() {
 
         {/* Annotation UI */}
         {highlightToolbarMode === "annotate" && floatingBtn && (
-          <div className={`fixed z-50 -translate-x-1/2 w-72 animate-scale-in ${darkMode ? "bg-[#2a2a2a] border-[#444]" : "bg-white border-cream-darker"} border rounded-xl shadow-2xl p-4`}
+          <div className={`fixed z-50 -translate-x-1/2 w-72 animate-scale-in ${darkMode ? "bg-[#1b1d1a] border-[#3a4038]" : "bg-white border-[#d7d8cf]"} border rounded-xl shadow-xl p-4`}
             style={{ left: Math.min(Math.max(floatingBtn.x, 160), window.innerWidth - 160), top: floatingBtn.y + 10 }}>
             <div className="flex items-center justify-between mb-3">
               <span className={`text-xs font-semibold uppercase tracking-wider ${textFaint}`}>Annotate</span>
@@ -1219,7 +1212,7 @@ function App() {
           <>
             <div className="fixed inset-0 z-40" onClick={() => setConceptPopover(null)} />
             <div
-              className={`fixed z-50 w-80 ${darkMode ? "bg-[#2a2a2a] border-[#444]" : "bg-white border-cream-darker"} border rounded-xl shadow-2xl p-4 animate-scale-in`}
+              className={`fixed z-50 w-80 ${darkMode ? "bg-[#1b1d1a] border-[#3a4038]" : "bg-white border-[#d7d8cf]"} border rounded-xl shadow-xl p-4 animate-scale-in`}
               style={{ left: Math.min(conceptPopover.x, window.innerWidth - 340), top: conceptPopover.y + 20 }}
             >
               {(() => {
@@ -1263,8 +1256,7 @@ function App() {
           <>
             <div className="bottom-sheet-overlay fixed inset-0 z-40 bg-black/30"
               onClick={() => { setShowDeJargon(false); setDeJargonResult(null); setSoWhatResult(null); setDebatePrepResult(null); tracker.recordDejargonClose(); }} />
-            <div className={`panel-enter-mobile fixed bottom-0 left-0 right-0 z-50 ${bg} rounded-t-2xl max-h-[70vh] overflow-y-auto shadow-2xl`}>
-              <div className={`w-10 h-1 ${darkMode ? "bg-[#444]" : "bg-cream-darker"} rounded-full mx-auto mt-3 mb-1`} />
+            <div className={`panel-enter-mobile fixed bottom-0 left-0 right-0 z-50 ${bg} border-t ${border} max-h-[70vh] overflow-y-auto shadow-xl`}>
               <DeJargonPanelContent
                 isLoading={isLoading} result={deJargonResult} activeDepth={activeDepth} setActiveDepth={handleDepthChange}
                 selectedText={selectedText} onClose={() => { setShowDeJargon(false); setDeJargonResult(null); setSoWhatResult(null); setDebatePrepResult(null); tracker.recordDejargonClose(); }}
@@ -1396,7 +1388,7 @@ function BranchNode({ branch, schools, defaultOpen, currentTextId, darkMode, tex
       </button>
       <div className={`tree-children ${open ? "open" : ""}`}>
         <div className="tree-children-inner">
-          <div className={`ml-3 pl-3 border-l ${darkMode ? "border-[#333]" : "border-cream-darker/60"}`}>
+          <div className="ml-3 pl-3">
             {schoolNames.map((school) => (
               <SchoolNode
                 key={school}
@@ -1445,7 +1437,7 @@ function SchoolNode({ school, authors, currentTextId, darkMode, textMuted, textF
       </button>
       <div className={`tree-children ${open ? "open" : ""}`}>
         <div className="tree-children-inner">
-        <div className={`ml-3 pl-3 border-l ${darkMode ? "border-[#333]" : "border-cream-darker/60"} mb-1`}>
+        <div className="ml-3 pl-3 mb-1">
           {authorNames.map((author) => {
             const entries = authors[author];
             if (entries.length === 1) {
@@ -1456,7 +1448,7 @@ function SchoolNode({ school, authors, currentTextId, darkMode, textMuted, textF
                 <button
                   key={entry.id}
                   onClick={() => onTextClick(entry.relativePath)}
-                  className={`sidebar-item w-full text-left px-3 py-1.5 text-sm rounded-lg ${isActive ? "bg-terracotta/8 text-terracotta font-medium" : textMuted + " hover:text-terracotta"} transition-colors cursor-pointer`}
+                  className={`sidebar-item w-full text-left px-3 py-1.5 text-sm rounded-lg ${isActive ? "text-terracotta font-medium" : textMuted + " hover:text-terracotta"} transition-colors cursor-pointer`}
                 >
                   {author} &mdash; {entry.title}
                 </button>
@@ -1510,14 +1502,14 @@ function AuthorNode({ author, entries, currentTextId, darkMode, textMuted, textF
         </svg>
       </button>
       {open && (
-        <div className={`ml-3 pl-3 border-l ${darkMode ? "border-[#333]" : "border-cream-darker/60"} mb-1`}>
+        <div className="ml-3 pl-3 mb-1">
           {entries.map((entry) => {
             const isActive = entry.id === currentTextId;
             return (
               <button
                 key={entry.id}
                 onClick={() => onTextClick(entry.relativePath)}
-                className={`sidebar-item w-full text-left px-3 py-1.5 text-sm rounded-lg ${isActive ? "bg-terracotta/8 text-terracotta font-medium" : textMuted + " hover:text-terracotta"} transition-colors cursor-pointer`}
+                className={`sidebar-item w-full text-left px-3 py-1.5 text-sm rounded-lg ${isActive ? "text-terracotta font-medium" : textMuted + " hover:text-terracotta"} transition-colors cursor-pointer`}
               >
                 {entry.title}
               </button>
@@ -1687,18 +1679,18 @@ function DeJargonPanelContent({
         </button>
       </div>
 
-      <div className={`${darkMode ? "bg-[#2a2a2a]" : "bg-highlight/40"} rounded-lg px-4 py-3 mb-4 border-l-2 border-terracotta/40`}>
+      <div className={`border-y ${border} py-3 mb-4`}>
         <p className={`text-xs ${textMuted} line-clamp-3`} style={{ fontFamily: "var(--font-serif)" }}>
           &ldquo;{selectedText.slice(0, 200)}{selectedText.length > 200 ? "..." : ""}&rdquo;
         </p>
       </div>
 
-      <div className={`flex gap-1 p-1 rounded-lg mb-5 ${darkMode ? "bg-[#2a2a2a]" : "bg-cream-dark/60"}`}>
+      <div className={`flex gap-1 border-y ${border} mb-5`}>
         {(["plain", "conceptual", "scholarly"] as DepthLevel[]).map((depth) => (
           <button key={depth} onClick={() => setActiveDepth(depth)}
-            className={`flex-1 py-1.5 text-xs font-medium rounded-md transition-all duration-150 ${
+            className={`flex-1 py-2 text-xs font-medium transition-colors duration-150 ${
               activeDepth === depth
-                ? "bg-terracotta text-white shadow-sm"
+                ? "text-terracotta border-b-2 border-terracotta"
                 : `${darkMode ? "text-[#888] hover:text-[#bbb]" : "text-charcoal-light hover:text-charcoal"}`
             }`}>
             {depth === "plain" ? "Plain" : depth === "conceptual" ? "Context" : "Close read"}
@@ -1735,7 +1727,7 @@ function DeJargonPanelContent({
 
           {/* So What? Result */}
           {soWhatResult && (
-            <div className={`${cardBg} rounded-lg p-4 mb-4 border ${border} animate-[fadeIn_200ms_ease]`}>
+            <div className={`border-y ${border} py-4 mb-4 animate-[fadeIn_200ms_ease]`}>
               <h4 className="text-xs font-semibold uppercase text-terracotta mb-2">Context</h4>
               <p className={`text-sm leading-relaxed ${text}`} style={{ fontFamily: "var(--font-serif)" }}>{soWhatResult}</p>
             </div>
@@ -1743,7 +1735,7 @@ function DeJargonPanelContent({
 
           {/* Debate Prep Result */}
           {debatePrepResult && (
-            <div className={`${cardBg} rounded-lg p-4 mb-4 border ${border} animate-[fadeIn_200ms_ease]`}>
+            <div className={`border-y ${border} py-4 mb-4 animate-[fadeIn_200ms_ease]`}>
               <h4 className="text-xs font-semibold uppercase text-terracotta mb-2">Counterpoint</h4>
               <div className={`text-sm leading-relaxed ${text} whitespace-pre-wrap`} style={{ fontFamily: "var(--font-serif)" }}>{debatePrepResult}</div>
             </div>
@@ -1855,7 +1847,7 @@ function ConceptDNAPanel({
       </div>
 
       {/* Term header */}
-      <div className={`${darkMode ? "bg-[#2a2a2a]" : "bg-highlight/40"} rounded-lg px-4 py-3 mb-5 border-l-2 border-terracotta/40`}>
+      <div className={`border-y ${border} py-3 mb-5`}>
         <h4 className={`text-base font-semibold ${text} mb-0.5`} style={{ fontFamily: "var(--font-serif)" }}>
           {concept.displayTerm}
         </h4>
@@ -1884,8 +1876,8 @@ function ConceptDNAPanel({
                   disabled={!isClickable}
                   className={`text-xs px-3 py-1.5 rounded-lg border transition-colors ${
                     isClickable
-                      ? `${cardBg} ${border} hover:border-terracotta/40 ${text} cursor-pointer`
-                      : `${cardBg} ${border} ${textFaint} cursor-default`
+                      ? `${border} hover:border-terracotta/40 ${text} cursor-pointer`
+                      : `${border} ${textFaint} cursor-default`
                   }`}
                 >
                   {rt}
@@ -1906,7 +1898,7 @@ function ConceptDNAPanel({
               onClick={() => onTermClick(c.term)}
               className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
                 c.term === activeTerm
-                  ? "bg-terracotta/10 text-terracotta font-medium"
+                  ? "text-terracotta font-medium"
                   : `${text} ${darkMode ? "hover:bg-[#2a2a2a]" : "hover:bg-cream-dark/60"}`
               }`}
             >

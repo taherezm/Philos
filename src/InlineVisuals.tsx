@@ -84,15 +84,15 @@ export function InlineVisualWrapper({ visual, darkMode, textMuted, textFaint, ca
     }
   }, [expanded, onExpand, onCollapse]);
 
-  const barBg = darkMode ? "bg-[#242424]" : "bg-cream-dark/50";
-  const barHover = darkMode ? "hover:bg-[#2a2a2a]" : "hover:bg-cream-dark/70";
+  const barBg = "bg-transparent";
+  const barHover = darkMode ? "hover:bg-[#20231f]" : "hover:bg-[#eef0eb]";
 
   return (
     <div ref={wrapperRef} className="my-6">
       {/* Collapsed bar / Header */}
       <button
         onClick={toggle}
-        className={`w-full flex items-center gap-3 px-4 py-3 ${barBg} ${barHover} border-l-[3px] border-l-terracotta/60 rounded-r-lg transition-colors duration-200 text-left group`}
+        className={`w-full flex items-center gap-3 py-3 ${barBg} ${barHover} border-y ${darkMode ? "border-[#30362f]" : "border-[#dcddd5]"} transition-colors duration-200 text-left group`}
       >
         <span className={`${textFaint} shrink-0`}>{TYPE_ICONS[visual.type]}</span>
         <span className={`flex-1 text-xs font-medium ${textMuted}`} style={{ fontFamily: "var(--font-sans)" }}>
@@ -110,7 +110,7 @@ export function InlineVisualWrapper({ visual, darkMode, textMuted, textFaint, ca
       {expanded && (
         <div
           ref={contentRef}
-          className={`overflow-hidden border-l-[3px] border-l-terracotta/30 rounded-br-lg ${darkMode ? "bg-[#1e1e1e]" : "bg-white"} border ${darkMode ? "border-[#333]" : "border-cream-darker/40"} border-t-0`}
+          className={`overflow-hidden ${darkMode ? "bg-transparent" : "bg-transparent"} border-b ${darkMode ? "border-[#30362f]" : "border-[#dcddd5]"}`}
           style={{
             animation: "visualExpand 350ms ease-out forwards",
             maxHeight: window.innerWidth < 640 ? 350 : 450,
@@ -241,7 +241,7 @@ function PhilosNode({ data }: { data: { label: string; nodeType: ArgMapNode["typ
     <>
       <Handle type="target" position={Position.Top} style={{ opacity: 0 }} />
       <div
-        className="rounded-lg shadow-sm"
+        className="shadow-none"
         style={{
           background: s.bg,
           border: s.border,
@@ -370,7 +370,7 @@ function InlineArgumentMap({ data, darkMode, textMuted, textFaint, cardBg, borde
         {/* Expand button */}
         <button
           onClick={(e) => { e.stopPropagation(); setOverlayOpen(true); }}
-          className={`absolute top-2 right-2 p-1.5 rounded-md ${darkMode ? "bg-[#333] hover:bg-[#3a3a3a]" : "bg-cream-dark hover:bg-cream-darker"} transition-colors`}
+          className={`absolute top-2 right-2 p-1.5 rounded-md ${darkMode ? "bg-[#20231f] hover:bg-[#2a2e29]" : "bg-[#eef0eb] hover:bg-[#e3e6df]"} transition-colors`}
           title="Expand to full view"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={darkMode ? "#aaa" : "#666"} strokeWidth="2">
@@ -384,7 +384,7 @@ function InlineArgumentMap({ data, darkMode, textMuted, textFaint, cardBg, borde
         <div className="fixed inset-0 z-[100] flex items-center justify-center" onClick={() => setOverlayOpen(false)}>
           <div className="absolute inset-0 bg-black/40" />
           <div
-            className="relative rounded-2xl shadow-2xl overflow-hidden"
+            className="relative rounded-2xl shadow-xl overflow-hidden"
             style={{ width: "85vw", height: "85vh", background: flowBg }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -419,7 +419,7 @@ function InlineArgumentMap({ data, darkMode, textMuted, textFaint, cardBg, borde
             {/* Close button */}
             <button
               onClick={() => setOverlayOpen(false)}
-              className={`absolute top-4 right-4 p-2 rounded-lg ${darkMode ? "bg-[#333] hover:bg-[#444] text-[#ccc]" : "bg-cream-dark hover:bg-cream-darker text-charcoal"} transition-colors shadow-sm`}
+              className={`absolute top-4 right-4 p-2 rounded-lg ${darkMode ? "bg-[#20231f] hover:bg-[#2a2e29] text-[#ccc]" : "bg-[#eef0eb] hover:bg-[#e3e6df] text-charcoal"} transition-colors`}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M18 6L6 18M6 6l12 12" />

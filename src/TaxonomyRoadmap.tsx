@@ -116,19 +116,19 @@ export function TaxonomyRoadmap({ completedTextIds, currentTextId, onSelectText,
                     </div>
                   </div>
 
-                  {/* Card */}
+                  {/* Stop row */}
                   <button
                     onClick={() => {
                       if (state === "locked") return;
                       setSelectedStop(selectedStop?.id === stop.id ? null : stop);
                     }}
                     disabled={state === "locked"}
-                    className={`w-full text-left rounded-xl p-4 border ${
+                    className={`w-full text-left py-4 border-t ${
                       state === "locked"
-                        ? `${darkMode ? "bg-[#1e1e1e] border-[#2a2a2a]" : "bg-cream-dark/20 border-cream-darker/30"} opacity-50 cursor-not-allowed`
+                        ? `${darkMode ? "border-[#2a2a2a]" : "border-cream-darker/30"} opacity-50 cursor-not-allowed`
                         : selectedStop?.id === stop.id
-                          ? `${darkMode ? "bg-[#2a2725]" : "bg-white"} border-terracotta/40 shadow-sm cursor-pointer`
-                          : `card-interactive ${cardBg} ${border} cursor-pointer`
+                          ? `border-terracotta/40 cursor-pointer`
+                          : `${border} cursor-pointer ${darkMode ? "hover:bg-[#20231f]" : "hover:bg-[#eef0eb]"}`
                     }`}
                   >
                     <div className="flex items-start justify-between gap-3">
@@ -152,7 +152,7 @@ export function TaxonomyRoadmap({ completedTextIds, currentTextId, onSelectText,
 
                   {/* Expanded detail card */}
                   {selectedStop?.id === stop.id && state !== "locked" && (
-                    <div className={`mt-2 rounded-xl p-4 border ${border} ${darkMode ? "bg-[#242424]" : "bg-white"} animate-[expandDown_220ms_var(--ease-out)]`}>
+                    <div className={`border-t ${border} py-4 animate-[expandDown_220ms_var(--ease-out)]`}>
                       <p className={`text-sm ${text} leading-relaxed mb-4`} style={{ fontFamily: "var(--font-serif)" }}>
                         {stop.why}
                       </p>
@@ -187,7 +187,7 @@ export function TaxonomyRoadmap({ completedTextIds, currentTextId, onSelectText,
 
       {/* Completion message */}
       {completedCount === allStops.length && (
-        <div className={`mt-10 text-center p-6 ${cardBg} rounded-lg border ${border}`}>
+        <div className={`mt-10 text-center py-6 border-y ${border}`}>
           <h3 className={`text-lg font-semibold ${text} mb-2`} style={{ fontFamily: "var(--font-serif)" }}>
             Roadmap complete
           </h3>

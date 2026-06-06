@@ -12,8 +12,8 @@
   --color-terracotta-dark: #40564D;
   --color-highlight: rgba(126, 144, 112, 0.18);
   --color-highlight-solid: #E4E8DE;
-  --font-serif: "Crimson Pro", Georgia, "Times New Roman", serif;
-  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-serif: "Times New Roman", Times, serif;
+  --font-sans: "Times New Roman", Times, serif;
 }
 
 * {
@@ -32,6 +32,27 @@ body {
   color: var(--color-charcoal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html.dark body {
+  background-color: #161716;
+  color: #e5e8e1;
+}
+
+body,
+header,
+aside,
+main,
+button,
+input,
+textarea,
+select,
+.reading-text,
+.explanation-text,
+.dejargon-panel {
+  transition-property: background-color, border-color, color, fill, stroke, opacity;
+  transition-duration: 260ms;
+  transition-timing-function: ease;
 }
 
 button,
@@ -227,7 +248,7 @@ html.dark .shimmer {
   padding: 6px 16px;
   font-size: 13px;
   font-weight: 500;
-  border-radius: 6px;
+  border-radius: 2px;
   transition: color 150ms ease, background-color 150ms ease;
   cursor: pointer;
   border: none;
@@ -253,7 +274,6 @@ html.dark .shimmer {
 
 /* ── Button interactions ────────────────────────────────── */
 
-/* Primary CTA — press scale feedback */
 .btn-primary {
   transition: background-color 150ms ease, transform 100ms ease, box-shadow 150ms ease;
 }
@@ -261,24 +281,6 @@ html.dark .shimmer {
   transform: scale(0.97);
 }
 
-/* Subtle card hover — lift */
-.card-interactive {
-  transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out), background-color 150ms ease;
-}
-.card-interactive:hover {
-  transform: none;
-  box-shadow: none;
-}
-.card-interactive:active {
-  transform: translateY(0);
-  box-shadow: none;
-}
-
-html.dark .card-interactive:hover {
-  box-shadow: none;
-}
-
-/* Icon button press */
 .btn-icon {
   transition: background-color 150ms ease, transform 100ms ease, opacity 100ms ease;
 }
@@ -303,24 +305,11 @@ html.dark .card-interactive:hover {
 }
 
 .sidebar-item:hover {
-  background-color: var(--color-cream-dark);
+  background-color: rgba(85, 112, 100, 0.08);
 }
 
 html.dark .sidebar-item:hover {
-  background-color: #2a2a2a;
-}
-
-/* Active sidebar item indicator dot */
-.sidebar-item-active::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 3px;
-  height: 16px;
-  background: var(--color-terracotta);
-  border-radius: 0 2px 2px 0;
+  background-color: rgba(111, 137, 125, 0.14);
 }
 
 /* ── Tree node expand/collapse ──────────────────────────── */
@@ -473,7 +462,7 @@ html.dark .badge-earned {
 
 /* React Flow canvas overrides */
 .react-flow {
-  border-radius: 8px;
+  border-radius: 2px;
 }
 
 .react-flow__controls button {
@@ -511,15 +500,20 @@ html.dark .react-flow__minimap {
 /* ── Focus ring (accessibility) ─────────────────────────── */
 
 *:focus-visible {
-  outline: 2px solid var(--color-terracotta);
-  outline-offset: 2px;
-  border-radius: 4px;
+  outline: 0;
+  box-shadow: inset 0 -1px 0 var(--color-terracotta);
+  border-radius: 2px;
 }
 
 .rounded-xl {
-  border-radius: 8px;
+  border-radius: 2px;
 }
 
 .rounded-2xl {
-  border-radius: 10px;
+  border-radius: 2px;
+}
+
+.rounded-lg,
+.rounded-md {
+  border-radius: 2px;
 }

@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from "react";
 import type { PhiloBookStorage, PhiloBookItem, PhiloBookItemType, QuoteData, AnnotationData, DeJargonData, DebatePrepData, StudyPackageData } from "./philoBookData";
-import { TYPE_BORDER_COLORS } from "./philoBookData";
 
 type FilterTab = "all" | PhiloBookItemType;
 type SortMode = "newest" | "oldest" | "by_text";
@@ -43,7 +42,7 @@ export function PhiloBookPage({ storage, onDelete, onUpdate, darkMode, text, tex
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  const inputBg = darkMode ? "bg-[#2a2a2a] border-[#444]" : "bg-white border-cream-darker/50";
+  const inputBg = darkMode ? "bg-[#1b1d1a] border-[#3a4038]" : "bg-white border-[#d7d8cf]";
 
   const filtered = useMemo(() => {
     let items = storage.items;
@@ -105,7 +104,7 @@ export function PhiloBookPage({ storage, onDelete, onUpdate, darkMode, text, tex
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search notebook"
-          className={`w-full px-4 py-2.5 text-sm rounded-xl border ${inputBg} ${text} focus:outline-none focus:border-terracotta/40 transition-colors`}
+          className={`w-full px-3 py-2 text-sm rounded-xl border ${inputBg} ${text} focus:outline-none focus:border-terracotta/40 transition-colors`}
         />
       </div>
 
@@ -191,13 +190,6 @@ function ItemCard({
   const [editing, setEditing] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
 
-  // Use inline style for annotation border color since dynamic Tailwind classes won't work
-  const borderStyle = item.type === "annotation"
-    ? { borderLeftColor: (item.data as AnnotationData).highlightColor?.replace("0.25", "0.7") || "rgb(196,164,92)" }
-    : {};
-
-  const borderColor = item.type !== "annotation" ? TYPE_BORDER_COLORS[item.type] : "";
-
   const dateStr = new Date(item.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 
   const handleSaveEdit = (newData: PhiloBookItem["data"]) => {
@@ -208,12 +200,11 @@ function ItemCard({
   return (
     <div
       onClick={() => { if (!editing) onSelect(); }}
-      className={`${cardBg} rounded-xl border ${border} border-l-4 ${borderColor} overflow-hidden cursor-pointer transition-all duration-200 ${
-        isSelected ? (darkMode ? "ring-1 ring-terracotta/40" : "ring-1 ring-terracotta/30 shadow-sm") : ""
+      className={`border-t ${border} cursor-pointer transition-colors duration-200 ${
+        isSelected ? (darkMode ? "bg-[#20231f]" : "bg-[#eef0eb]") : "bg-transparent"
       }`}
-      style={borderStyle}
     >
-      <div className="p-5">
+      <div className="py-5">
         {/* Header: source + date */}
         <div className="flex items-start justify-between mb-3">
           <div className="flex items-center gap-2 flex-wrap">
@@ -242,7 +233,7 @@ function ItemCard({
           <div className={`flex items-center gap-2 mt-4 pt-3 border-t ${border} animate-[fadeIn_150ms_ease]`} onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setEditing(true)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg ${darkMode ? "bg-[#333] text-[#ccc] hover:bg-[#3a3a3a]" : "bg-cream-dark text-charcoal-light hover:bg-cream-darker"} transition-colors`}
+              className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-lg ${darkMode ? "bg-transparent text-[#ccc] hover:bg-[#20231f]" : "bg-transparent text-charcoal-light hover:bg-[#eef0eb]"} transition-colors`}
             >
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
@@ -285,7 +276,7 @@ function EditableContent({ item, onSave, onCancel, darkMode, text, textMuted, te
   textFaint: string;
   border: string;
 }) {
-  const inputCls = `w-full px-3 py-2 text-sm rounded-lg ${darkMode ? "bg-[#222] text-[#ddd] border-[#444]" : "bg-cream-dark text-charcoal border-cream-darker"} border focus:outline-none focus:border-terracotta/40 resize-none`;
+  const inputCls = `w-full px-3 py-2 text-sm rounded-lg ${darkMode ? "bg-[#1b1d1a] text-[#ddd] border-[#3a4038]" : "bg-white text-charcoal border-[#d7d8cf]"} border focus:outline-none focus:border-terracotta/40 resize-none`;
 
   if (item.type === "quote") {
     const d = item.data as QuoteData;
@@ -324,7 +315,7 @@ function EditableContent({ item, onSave, onCancel, darkMode, text, textMuted, te
             &ldquo;{d.originalText.slice(0, 200)}{d.originalText.length > 200 ? "..." : ""}&rdquo;
           </p>
         </div>
-        <div className={`${darkMode ? "bg-[#1e1e1e]" : "bg-cream/60"} rounded-lg px-3 py-2.5 mb-3`}>
+        <div className={`border-y ${border} py-2.5 mb-3`}>
           <span className={`text-xs font-medium ${textFaint} uppercase`}>Explanation</span>
           <p className={`text-sm ${text} mt-1 leading-relaxed`} style={{ fontFamily: "var(--font-serif)" }}>{d.dejargonedText}</p>
         </div>
@@ -422,17 +413,17 @@ function DeJargonCard({ data, text, textMuted, textFaint, darkMode, border }: { 
           &ldquo;{data.originalText.slice(0, 200)}{data.originalText.length > 200 ? "..." : ""}&rdquo;
         </p>
       </div>
-      <div className={`${darkMode ? "bg-[#1e1e1e]" : "bg-cream/60"} rounded-lg px-3 py-2.5 mb-3`}>
+      <div className={`border-y ${border} py-2.5 mb-3`}>
         <span className={`text-xs font-medium ${textFaint} uppercase`}>Explanation</span>
         <p className={`text-sm ${text} mt-1 leading-relaxed`} style={{ fontFamily: "var(--font-serif)" }}>
           {data.dejargonedText}
         </p>
       </div>
       <div className="flex flex-wrap gap-1.5">
-        <span className={`text-xs px-2 py-0.5 rounded-full ${darkMode ? "bg-[#333]" : "bg-cream-dark"} ${textFaint}`}>
+        <span className={`text-xs px-2 py-0.5 border ${border} ${textFaint}`}>
           {data.depthLayer}
         </span>
-        <span className={`text-xs px-2 py-0.5 rounded-full ${darkMode ? "bg-[#333]" : "bg-cream-dark"} ${textFaint}`}>
+        <span className={`text-xs px-2 py-0.5 border ${border} ${textFaint}`}>
           {data.tone === "coffee_shop" ? "Plainspoken" : "Seminar"}
         </span>
       </div>

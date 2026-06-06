@@ -115,14 +115,14 @@ export function MyProgressView({ storage, darkMode, text, textMuted, textFaint, 
       <div className="mb-10">
         <div className="flex items-center justify-between mb-3">
           <h2 className={`text-sm font-semibold ${text}`}>Absorption Over Time</h2>
-          <div className={`flex gap-1 ${darkMode ? "bg-[#242424]" : "bg-cream-dark"} rounded-lg p-0.5`}>
+          <div className={`flex gap-1 border-y ${border}`}>
             {([7, 30, 0] as const).map((d) => (
               <button
                 key={d}
                 onClick={() => setChartRange(d)}
-                className={`px-2.5 py-1 text-xs font-medium rounded-md transition-all ${
+                className={`px-2.5 py-1.5 text-xs font-medium transition-colors ${
                   chartRange === d
-                    ? (darkMode ? "bg-[#333] text-[#e0ddd8]" : "bg-white text-charcoal") + " shadow-sm"
+                    ? "text-terracotta border-b-2 border-terracotta"
                     : textMuted
                 }`}
               >
@@ -131,7 +131,7 @@ export function MyProgressView({ storage, darkMode, text, textMuted, textFaint, 
             ))}
           </div>
         </div>
-        <div className={`${cardBg} rounded-xl p-4 border ${border}`}>
+        <div className={`border-y ${border} py-4`}>
           <AbsorptionLineChart sessions={sessions} days={chartRange} darkMode={darkMode} textColor={text} textMuted={textMuted} />
         </div>
       </div>
@@ -140,7 +140,7 @@ export function MyProgressView({ storage, darkMode, text, textMuted, textFaint, 
       <div className="mb-10">
         <h2 className={`text-sm font-semibold ${text} mb-1`}>How You Spend Your Reading Time</h2>
         <p className={`text-xs ${textFaint} mb-3`}>Last 10 sessions</p>
-        <div className={`${cardBg} rounded-xl p-4 border ${border}`}>
+        <div className={`border-y ${border} py-4`}>
           <div className="flex gap-4 mb-3">
             <div className="flex items-center gap-1.5">
               <span className="w-3 h-3 rounded-sm bg-terracotta" />
@@ -180,10 +180,10 @@ export function MyProgressView({ storage, darkMode, text, textMuted, textFaint, 
 
         <div className="space-y-2">
           {sortedTexts.map(([textId, ts]) => (
-            <div key={textId} className={`${cardBg} rounded-xl border ${border} overflow-hidden`}>
+            <div key={textId} className={`border-t ${border} overflow-hidden`}>
               <button
                 onClick={() => setExpandedText(expandedText === textId ? null : textId)}
-                className={`w-full flex items-center gap-4 px-4 py-3 text-left transition-colors ${darkMode ? "hover:bg-[#2a2a2a]" : "hover:bg-cream-dark/60"}`}
+                className={`w-full flex items-center gap-4 py-3 text-left transition-colors ${darkMode ? "hover:bg-[#20231f]" : "hover:bg-[#eef0eb]"}`}
               >
                 <div className="flex-1 min-w-0">
                   <p className={`text-sm font-medium ${text} truncate`}>{ts.title}</p>
@@ -239,7 +239,7 @@ export function MyProgressView({ storage, darkMode, text, textMuted, textFaint, 
             return (
               <div
                 key={badge.id}
-                className={`${cardBg} rounded-xl p-4 border ${border} transition-all duration-300 ${
+                className={`border-t ${border} py-4 transition-all duration-300 ${
                   earned ? "badge-earned" : "opacity-50 grayscale"
                 }`}
               >
