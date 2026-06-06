@@ -79,15 +79,6 @@ export const HIGHLIGHT_COLORS = [
 
 export const DEFAULT_QUOTE_COLOR = "rgba(196, 164, 92, 0.15)";
 
-// Type border colors for PhiloBook cards
-export const TYPE_BORDER_COLORS: Record<PhiloBookItemType, string> = {
-  quote: "border-l-[rgb(196,164,92)]",
-  annotation: "", // uses the item's highlight color
-  dejargon: "border-l-terracotta",
-  debate_prep: "border-l-[rgb(120,148,120)]",
-  study_package: "border-l-[rgb(118,140,168)]",
-};
-
 // ---- localStorage helpers ----
 
 const PHILOBOOK_KEY = "philos_book";

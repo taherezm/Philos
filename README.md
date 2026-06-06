@@ -1,36 +1,26 @@
-#  Philos: Philosophy Made Intuitive
+# Philos
 
-**Philos** is an AI-powered reading companion designed to make the dense, archaic texts of the philosophical canon accessible to everyday readers, lifelong learners, and students without dumbing down the original arguments.
+Philos is a focused reader for primary philosophy texts. It pairs a curated library with passage explanations, annotations, saved quotes, a notebook, a roadmap, debate views, and progress tracking.
 
-Built for the **CBC @ IU Claude Hackathon — Track 5: Creative Flourishing**.
+## What It Does
 
----
+- Browse primary texts by branch, school, author, and work.
+- Select a difficult passage and request an explanation at plain, contextual, or close-reading depth.
+- Save quotes, annotations, explanations, counterpoints, and study notes to the notebook.
+- Follow a roadmap from accessible texts to more advanced works.
+- Track reading sessions, explanation use, active recall, and notebook activity.
 
-##  The Problem
-Philosophy is humanity's oldest framework for finding meaning and understanding our world. However, the cultural preservation of these great ideas is failing because reading them is isolating and inherently difficult. Readers are often locked out by impenetrable jargon, losing the opportunity to engage with transformative ideas.
+## Reader Principles
 
-##  The Solution (Context-Aware De-jargoning)
-Philos doesn't just overlay an AI chatbot on top of a text. Our core innovation is a **Context-Aware De-jargon Engine**. 
+- Preserve the original argument rather than flattening it into a generic summary.
+- Keep explanations adjacent to the selected passage so the primary text stays central.
+- Treat generated explanations as support for interpretation, not a replacement for reading.
+- Store notes, highlights, and API keys locally in the browser.
 
-When a user highlights a confusing passage, Philos doesn't just read the isolated sentence. It programmatically resolves the selection back into the structure of the source essay, assembling a "context bundle" (including nearby paragraphs, the essay's central thesis, and key argumentative moves) before querying the model. 
+## Technical Stack
 
-The AI acts as a careful guide, explaining the highlighted text as part of a *live argument* rather than a floating sentence.
-
-##  Key Features
-* **Layered De-jargoning:** Choose your depth. Explanations are provided in 'Plain', 'Conceptual', or 'Scholarly' depths to match the reader's current understanding.
-* **"So What?" Engine:** Instantly bridges the gap between ancient texts and modern life by providing concrete, contemporary examples of why an idea still matters today.
-* **Debate Prep:** Prepares the reader to actively argue the philosophical concept by breaking down the core thesis, strongest defenses, and best counterarguments.
-* **Study Mode:** Users can paste in external texts to instantly generate structured study packages (Summaries, Argument Structures, and Critical Questions).
-* **Custom Personas:** Switch between "Coffee Shop" (warm, casual analogies) and "Office Hours" (structured, academic context) explanation tones.
-
-##  Ethical Alignment
-Philos was built with deep consideration for the ethical risks of AI in education:
-1.  **Anti-Flattening:** We designed the system to preserve the integrity of the original thinker. We explicitly prompt the AI to avoid turning philosophy into generic self-help or vague paraphrase.
-2.  **Empowerment over Replacement:** Philos is designed to enhance critical thinking, not replace it. By providing context and structured breakdowns, we give the user the tools to interpret the text themselves, keeping the human firmly in the driver's seat.
-
-##  Technical Stack
-* **Frontend:** React, TypeScript, Vite, Tailwind CSS
-* **AI Integration:** Anthropic Claude API (`claude-3-5-sonnet-20240620`) -- subject to change
-* **Architecture:** Context-aware prompt engineering, dynamic text resolution, and custom JSON schema enforcement.
-
-   
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Anthropic Messages API for optional explanations

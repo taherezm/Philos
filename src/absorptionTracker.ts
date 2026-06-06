@@ -406,7 +406,7 @@ export const BADGE_DEFINITIONS: BadgeDefinition[] = [
   {
     id: "first_light",
     name: "First Light",
-    description: "De-jargoned your first passage",
+    description: "Explained your first passage",
     icon: "M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z",
     target: 1,
     check: (s) => ({ earned: s.totalDejargonRequests >= 1, progress: Math.min(1, s.totalDejargonRequests) }),
@@ -484,7 +484,7 @@ export const BADGE_DEFINITIONS: BadgeDefinition[] = [
   {
     id: "debate_ready",
     name: "Debate Ready",
-    description: "Used Debate Prep 5 times",
+    description: "Used counterpoints 5 times",
     icon: "M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z",
     target: 5,
     check: (s) => ({ earned: s.totalDebatePrepUses >= 5, progress: Math.min(5, s.totalDebatePrepUses) }),
@@ -492,7 +492,7 @@ export const BADGE_DEFINITIONS: BadgeDefinition[] = [
   {
     id: "question_everything",
     name: "Question Everything",
-    description: 'Used "So What?" on 10 different passages',
+    description: "Added context to 10 different passages",
     icon: "M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-7v2h2v-2h-2zm2-1.645A3.502 3.502 0 0012 6.5 3.501 3.501 0 008.545 9h2.013A1.5 1.5 0 0112 8.5c.83 0 1.5.67 1.5 1.5 0 .66-.27 1.13-.71 1.49l-.86.72A3.31 3.31 0 0011 14.5h2c0-.93.42-1.44.97-1.89l.53-.45A3.08 3.08 0 0015.5 10 3.5 3.5 0 0013 13.355z",
     target: 10,
     check: (s) => ({ earned: s.totalSoWhatClicks >= 10, progress: Math.min(10, s.totalSoWhatClicks) }),
@@ -573,7 +573,7 @@ export function checkBadges(state: BadgeCheckState): Record<string, BadgeProgres
 export function getSessionHighlights(session: SessionData): string[] {
   const highlights: string[] = [];
   if (session.signals.dejargonRequests > 0) {
-    highlights.push(`You de-jargoned ${session.signals.dejargonRequests} passage${session.signals.dejargonRequests > 1 ? "s" : ""}`);
+    highlights.push(`You explained ${session.signals.dejargonRequests} passage${session.signals.dejargonRequests > 1 ? "s" : ""}`);
   }
   if (session.signals.personalNotesWritten > 0) {
     highlights.push(`You wrote ${session.signals.personalNotesWritten} personal note${session.signals.personalNotesWritten > 1 ? "s" : ""}`);
@@ -583,10 +583,10 @@ export function getSessionHighlights(session: SessionData): string[] {
     highlights.push("You explored all 3 depth layers");
   }
   if (session.signals.featuresUsed.includes("debate_prep")) {
-    highlights.push("You used Debate Prep");
+    highlights.push("You used a counterpoint");
   }
   if (session.signals.featuresUsed.includes("so_what")) {
-    highlights.push('You used "So What?"');
+    highlights.push("You added context");
   }
   if (session.signals.notebookSaves > 0) {
     highlights.push(`You saved ${session.signals.notebookSaves} notebook entr${session.signals.notebookSaves > 1 ? "ies" : "y"}`);

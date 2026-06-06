@@ -367,7 +367,7 @@ function App() {
     setSaveNote("");
     setShowSaveSuccess(true);
     setTimeout(() => setShowSaveSuccess(false), 2000);
-    showToast(type === "quote" ? "Saved to PhiloBook" : type === "dejargon" ? "Saved to PhiloBook" : "Saved to PhiloBook");
+    showToast("Saved to Notebook");
   };
 
   const saveQuote = () => {
@@ -400,7 +400,7 @@ function App() {
     setAnnotationText("");
     setHighlightToolbarMode(null);
     setFloatingBtn(null);
-    showToast("Annotation saved to PhiloBook");
+    showToast("Annotation saved");
   };
 
   const savePersistentHighlight = (type: "annotation" | "quote", color: string, underline: boolean, annotation: string | null) => {
@@ -511,134 +511,131 @@ function App() {
   };
 
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-  const bg = darkMode ? "bg-[#1a1a1a]" : "bg-cream";
-  const text = darkMode ? "text-[#e0ddd8]" : "text-charcoal";
-  const textMuted = darkMode ? "text-[#9a9590]" : "text-charcoal-light";
-  const textFaint = darkMode ? "text-[#6a6560]" : "text-charcoal-lighter";
-  const border = darkMode ? "border-[#333]" : "border-cream-darker/50";
-  const cardBg = darkMode ? "bg-[#242424]" : "bg-cream-dark/40";
-  const cardBgHover = darkMode ? "hover:bg-[#2a2a2a]" : "hover:bg-cream-dark";
-  const inputBg = darkMode ? "bg-[#2a2a2a] border-[#444]" : "bg-white border-cream-darker";
-  const headerBg = darkMode ? "bg-[#1a1a1a]/95" : "bg-cream/95";
+  const bg = darkMode ? "bg-[#161716]" : "bg-cream";
+  const text = darkMode ? "text-[#e5e8e1]" : "text-charcoal";
+  const textMuted = darkMode ? "text-[#a7ada3]" : "text-charcoal-light";
+  const textFaint = darkMode ? "text-[#737a70]" : "text-charcoal-lighter";
+  const border = darkMode ? "border-[#30362f]" : "border-[#dcddd5]";
+  const cardBg = "bg-transparent";
+  const cardBgHover = darkMode ? "hover:bg-[#20231f]" : "hover:bg-[#eef0eb]";
+  const inputBg = darkMode ? "bg-[#1b1d1a] border-[#3a4038]" : "bg-white border-[#d7d8cf]";
+  const headerBg = darkMode ? "bg-[#161716]/95" : "bg-cream/95";
 
   // ---- Landing / Onboarding ----
   if (view === "landing") {
+    const steps = ["Desk", "Method", "Voice", "Key"];
     return (
-      <div className={`min-h-screen ${bg} flex items-center justify-center p-6`}>
-        <div className="max-w-lg w-full">
+      <div className={`min-h-screen ${bg} flex items-center justify-center px-5 py-10`}>
+        <div className="w-full max-w-[760px]">
+          <div className="mb-8 flex items-center justify-between">
+            <PhilosLogo text={text} onClick={() => setOnboardingStep(0)} />
+            <div className="flex items-center gap-2">
+              {steps.map((step, i) => (
+                <span
+                  key={step}
+                  className={`h-1.5 rounded-full transition-all ${i <= onboardingStep ? "bg-terracotta" : darkMode ? "bg-[#30362f]" : "bg-cream-darker"}`}
+                  style={{ width: i === onboardingStep ? 28 : 10 }}
+                  aria-label={step}
+                />
+              ))}
+            </div>
+          </div>
+
           {onboardingStep === 0 && (
-            <div className="text-center animate-page-enter">
-              <h1 className={`text-4xl sm:text-5xl font-semibold ${text} mb-4`} style={{ fontFamily: "var(--font-serif)" }}>
-                Philos
+            <div className="animate-page-enter max-w-[560px]">
+              <p className={`text-xs font-medium uppercase text-terracotta mb-4`}>Reading desk</p>
+              <h1 className={`text-4xl sm:text-5xl font-semibold ${text} mb-4 leading-tight`} style={{ fontFamily: "var(--font-serif)" }}>
+                Primary texts, clearer margins.
               </h1>
-              <p className={`text-lg ${textMuted} mb-2`} style={{ fontFamily: "var(--font-serif)" }}>
-                Philosophy made readable.
-              </p>
-              <p className={`text-sm ${textFaint} mb-10 max-w-sm mx-auto`}>
-                Read the great texts. Highlight anything confusing. Get clear, layered explanations powered by AI.
+              <p className={`text-base ${textMuted} mb-8 leading-relaxed max-w-[460px]`}>
+                Read from the library, clarify selected passages, and keep your own notes close to the text.
               </p>
               <button
                 onClick={() => setOnboardingStep(1)}
-                className="btn-primary px-8 py-3 bg-terracotta text-white font-medium rounded-xl hover:bg-terracotta-dark transition-colors text-sm"
+                className="btn-primary px-5 py-2.5 bg-terracotta text-white font-medium rounded-lg hover:bg-terracotta-dark transition-colors text-sm"
               >
-                Get Started
+                Start
               </button>
             </div>
           )}
 
           {onboardingStep === 1 && (
-            <div className="animate-page-enter">
-              <p className={`text-xs font-medium uppercase tracking-wider text-terracotta mb-6 text-center`}>How it works</p>
-              <div className="space-y-3">
+            <div className="animate-page-enter max-w-[620px]">
+              <p className={`text-xs font-medium uppercase text-terracotta mb-3`}>Method</p>
+              <h2 className={`text-2xl font-semibold ${text} mb-6`} style={{ fontFamily: "var(--font-serif)" }}>
+                Keep the work close to the page.
+              </h2>
+              <div className={`border-y ${border}`}>
                 {[
-                  { icon: "1", title: "Read", desc: "Browse curated primary texts from the philosophical canon." },
-                  { icon: "2", title: "Highlight", desc: "Select any passage that feels dense or confusing." },
-                  { icon: "3", title: "Understand", desc: "Get AI-powered explanations at three depth levels: Plain, Conceptual, and Scholarly." },
+                  { label: "Read", desc: "Choose a primary text from the library." },
+                  { label: "Clarify", desc: "Select a difficult passage and ask for a layered explanation." },
+                  { label: "Keep", desc: "Save quotes, annotations, and explanations in the notebook." },
                 ].map((step, i) => (
                   <div
-                    key={step.icon}
-                    className={`flex items-start gap-4 ${cardBg} rounded-xl p-4`}
+                    key={step.label}
+                    className={`grid grid-cols-[112px_1fr] gap-4 py-4 ${i > 0 ? `border-t ${border}` : ""}`}
                     style={{ animation: `pageEnter 300ms var(--ease-out) ${i * 60}ms both` }}
                   >
-                    <span className="w-8 h-8 rounded-full bg-terracotta/15 text-terracotta flex items-center justify-center text-sm font-semibold shrink-0">
-                      {step.icon}
-                    </span>
-                    <div>
-                      <h3 className={`text-sm font-semibold ${text} mb-0.5`}>{step.title}</h3>
-                      <p className={`text-sm ${textMuted}`}>{step.desc}</p>
-                    </div>
+                    <h3 className={`text-sm font-semibold ${text}`}>{step.label}</h3>
+                    <p className={`text-sm ${textMuted}`}>{step.desc}</p>
                   </div>
                 ))}
               </div>
-
-              {/* Ethical guardrails callout */}
-              <div
-                className="mt-5 flex gap-3 rounded-xl bg-terracotta/10 border border-terracotta/20 px-4 py-3"
-                style={{ animation: "pageEnter 300ms var(--ease-out) 200ms both" }}
-              >
-                <svg className="shrink-0 mt-0.5 text-terracotta" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-                <div>
-                  <p className="text-xs font-semibold text-terracotta mb-0.5 tracking-wide">Philosophical Guardrails</p>
-                  <p className={`text-xs ${textMuted} leading-relaxed`}>
-                    Philos is designed to enhance your critical thinking, not replace it. Our AI provides context and clarity, but the final interpretation is always yours.
-                  </p>
-                </div>
-              </div>
-
               <button
                 onClick={() => setOnboardingStep(2)}
-                className="btn-primary w-full mt-5 px-6 py-3 bg-terracotta text-white font-medium rounded-xl hover:bg-terracotta-dark transition-colors text-sm"
+                className="btn-primary mt-6 px-5 py-2.5 bg-terracotta text-white font-medium rounded-lg hover:bg-terracotta-dark transition-colors text-sm"
                 style={{ animation: "pageEnter 300ms var(--ease-out) 260ms both" }}
               >
-                Next
+                Continue
               </button>
             </div>
           )}
 
           {onboardingStep === 2 && (
-            <div className="animate-page-enter">
-              <p className={`text-xs font-medium uppercase tracking-wider text-terracotta mb-2 text-center`}>Customize your experience</p>
-              <p className={`text-sm ${textMuted} mb-6 text-center`}>How would you like explanations delivered?</p>
-              <div className="space-y-3">
+            <div className="animate-page-enter max-w-[620px]">
+              <p className={`text-xs font-medium uppercase text-terracotta mb-3`}>Voice</p>
+              <h2 className={`text-2xl font-semibold ${text} mb-6`} style={{ fontFamily: "var(--font-serif)" }}>
+                Choose an explanation style.
+              </h2>
+              <div className={`grid sm:grid-cols-2 border-y ${border}`}>
                 <button
                   onClick={() => setTone("coffee_shop")}
-                  className={`card-interactive w-full text-left p-4 rounded-xl border-2 ${
-                    tone === "coffee_shop" ? "border-terracotta " + cardBg : (darkMode ? "border-[#333]" : "border-cream-darker/30") + " " + cardBg
-                  }`}
+                  className={`w-full text-left py-4 sm:pr-4 border-b sm:border-b-0 sm:border-r ${border} ${tone === "coffee_shop" ? "text-terracotta" : text}`}
                   style={{ animation: "pageEnter 280ms var(--ease-out) 60ms both" }}
                 >
-                  <h3 className={`text-sm font-semibold ${text} mb-1`}>Coffee Shop</h3>
-                  <p className={`text-xs ${textMuted}`}>Like a smart friend explaining things casually. Concrete analogies, everyday language, warm tone.</p>
+                  <h3 className={`text-sm font-semibold ${text} mb-1`}>Plainspoken</h3>
+                  <p className={`text-xs ${textMuted} leading-relaxed`}>Shorter sentences, concrete examples, less technical language.</p>
                 </button>
                 <button
                   onClick={() => setTone("office_hours")}
-                  className={`card-interactive w-full text-left p-4 rounded-xl border-2 ${
-                    tone === "office_hours" ? "border-terracotta " + cardBg : (darkMode ? "border-[#333]" : "border-cream-darker/30") + " " + cardBg
-                  }`}
+                  className={`w-full text-left py-4 sm:pl-4 ${tone === "office_hours" ? "text-terracotta" : text}`}
                   style={{ animation: "pageEnter 280ms var(--ease-out) 120ms both" }}
                 >
-                  <h3 className={`text-sm font-semibold ${text} mb-1`}>Office Hours</h3>
-                  <p className={`text-xs ${textMuted}`}>Like an engaging professor. More context, philosophical tradition, structured explanations.</p>
+                  <h3 className={`text-sm font-semibold ${text} mb-1`}>Seminar</h3>
+                  <p className={`text-xs ${textMuted} leading-relaxed`}>More context, argument structure, and philosophical vocabulary.</p>
                 </button>
               </div>
               <button
                 onClick={() => setOnboardingStep(3)}
-                className="btn-primary w-full mt-8 px-6 py-3 bg-terracotta text-white font-medium rounded-xl hover:bg-terracotta-dark transition-colors text-sm"
+                className="btn-primary mt-6 px-5 py-2.5 bg-terracotta text-white font-medium rounded-lg hover:bg-terracotta-dark transition-colors text-sm"
                 style={{ animation: "pageEnter 280ms var(--ease-out) 180ms both" }}
               >
-                Next
+                Continue
               </button>
             </div>
           )}
 
           {onboardingStep === 3 && (
-            <div className="animate-page-enter">
-              <p className={`text-xs font-medium uppercase tracking-wider text-terracotta mb-2 text-center`}>Almost there</p>
-              <p className={`text-sm ${textMuted} mb-6 text-center`}>To power the de-jargon engine, you'll need a Claude API key.</p>
-              <div className={`${cardBg} rounded-xl p-4`} style={{ animation: "pageEnter 280ms var(--ease-out) 80ms both" }}>
-                <label className={`text-xs ${textFaint} block mb-2`}>API Key</label>
+            <div className="animate-page-enter max-w-[520px]">
+              <p className={`text-xs font-medium uppercase text-terracotta mb-3`}>Optional key</p>
+              <h2 className={`text-2xl font-semibold ${text} mb-3`} style={{ fontFamily: "var(--font-serif)" }}>
+                Add an Anthropic key now or later.
+              </h2>
+              <p className={`text-sm ${textMuted} mb-5 leading-relaxed`}>
+                Explanations run only when you request them. The key stays in this browser.
+              </p>
+              <div className={`border-y ${border} py-4`} style={{ animation: "pageEnter 280ms var(--ease-out) 80ms both" }}>
+                <label className={`text-xs ${textFaint} block mb-2`}>Anthropic API key</label>
                 <input
                   type="password"
                   value={apiKey}
@@ -646,16 +643,14 @@ function App() {
                   placeholder="sk-ant-..."
                   className={`w-full px-3 py-2 text-sm ${inputBg} rounded-lg focus:outline-none focus:border-terracotta/50 transition-colors`}
                 />
-                <p className={`text-xs ${textFaint} mt-2`}>Stored locally. Never sent anywhere except the Anthropic API.</p>
               </div>
               <button
                 onClick={finishOnboarding}
-                className="btn-primary w-full mt-6 px-6 py-3 bg-terracotta text-white font-medium rounded-xl hover:bg-terracotta-dark transition-colors text-sm"
+                className="btn-primary mt-6 px-5 py-2.5 bg-terracotta text-white font-medium rounded-lg hover:bg-terracotta-dark transition-colors text-sm"
                 style={{ animation: "pageEnter 280ms var(--ease-out) 160ms both" }}
               >
-                {apiKey ? "Start Reading" : "Skip for Now"}
+                {apiKey ? "Open Library" : "Skip Key"}
               </button>
-              <p className={`text-xs ${textFaint} text-center mt-3`}>You can add your API key later in settings.</p>
             </div>
           )}
         </div>
@@ -746,23 +741,20 @@ function App() {
             <nav className="mb-6">
               {([
                 { id: "reading" as AppView, label: "Browse", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> },
-                { id: "roadmap" as AppView, label: "Guided Paths", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 17l4-4 4 4 4-4 4 4"/><path d="M3 7l4-4 4 4 4-4 4 4"/></svg> },
+                { id: "roadmap" as AppView, label: "Roadmap", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 17l4-4 4 4 4-4 4 4"/><path d="M3 7l4-4 4 4 4-4 4 4"/></svg> },
                 { id: "debates" as AppView, label: "Debates", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> },
-                { id: "study-mode" as AppView, label: "Study Mode", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> },
-                { id: "progress" as AppView, label: "My Progress", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> },
-                { id: "philobook" as AppView, label: "PhiloBook", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h6"/></svg> },
+                { id: "study-mode" as AppView, label: "Study", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> },
+                { id: "progress" as AppView, label: "Progress", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> },
+                { id: "philobook" as AppView, label: "Notebook", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h6"/></svg> },
               ]).map((item) => (
                 <button key={item.id} onClick={() => navigate(item.id)}
-                  className={`sidebar-item relative w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-left mb-0.5 transition-all duration-150 ${
+                  className={`sidebar-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-left mb-0.5 transition-all duration-150 ${
                     view === item.id
-                      ? "bg-terracotta/10 text-terracotta font-medium"
+                      ? "text-terracotta font-medium"
                       : `${textMuted} hover:${darkMode ? "text-[#c8c4be]" : "text-charcoal"}`
                   }`}>
                   <span className={`transition-colors duration-150 ${view === item.id ? "text-terracotta" : ""}`}>{item.icon}</span>
                   {item.label}
-                  {view === item.id && (
-                    <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-4 bg-terracotta rounded-r" />
-                  )}
                 </button>
               ))}
             </nav>
@@ -808,7 +800,7 @@ function App() {
                     <><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></>
                   )}
                 </svg>
-                <span>{tone === "coffee_shop" ? "Coffee Shop" : "Office Hours"}</span>
+                <span>{tone === "coffee_shop" ? "Plainspoken" : "Seminar"}</span>
               </button>
             </div>
           </div>
@@ -830,7 +822,7 @@ function App() {
                   <p className={`text-sm ${textMuted}`} style={{ fontFamily: "var(--font-serif)" }}>Loading text…</p>
                 </div>
               ) : !currentText ? (
-                <div className={`${cardBg} rounded-xl p-8 border ${border} text-center`}>
+                <div className={`py-12 border-y ${border} text-center`}>
                   <div className={textFaint + " mb-3"}>
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="mx-auto">
                       <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
@@ -838,7 +830,7 @@ function App() {
                   </div>
                   <h2 className={`text-lg font-semibold ${text} mb-2`}>Select a text to begin</h2>
                   <p className={`text-sm ${textMuted} max-w-sm mx-auto`}>
-                    Choose a text from the sidebar to start reading. Enriched texts include introductions, argument cards, and concept highlighting.
+                    Choose a text from the sidebar to start reading.
                   </p>
                 </div>
               ) : (
@@ -867,15 +859,15 @@ function App() {
                   {currentText.meta.argumentCard != null && (
                     <div className="mb-6">
                       <button onClick={() => setArgumentCardOpen(!argumentCardOpen)}
-                        className={`w-full flex items-center justify-between ${darkMode ? "bg-[#242424]" : "bg-cream-dark/70"} rounded-xl px-5 py-4 ${cardBgHover} transition-colors duration-150`}>
-                        <span className={`text-sm font-medium ${text}`}>Argument at a Glance</span>
+                        className={`w-full flex items-center justify-between border-y ${border} px-0 py-3 bg-transparent ${cardBgHover} transition-colors duration-150`}>
+                        <span className={`text-sm font-medium ${text}`}>Argument</span>
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"
                           className={`${textFaint} transition-transform duration-200 ${argumentCardOpen ? "rotate-180" : ""}`}>
                           <path d="M4 6l4 4 4-4" />
                         </svg>
                       </button>
                       {argumentCardOpen && (
-                        <div className={`${cardBg} rounded-b-xl px-5 py-5 -mt-2 pt-6 space-y-4 animate-[expandDown_220ms_var(--ease-out)]`}>
+                        <div className={`border-b ${border} py-5 space-y-4 animate-[expandDown_220ms_var(--ease-out)]`}>
                           {[
                             { label: "The Central Question", content: currentText.meta.argumentCard!.centralQuestion },
                             { label: "The Thesis", content: currentText.meta.argumentCard!.thesis },
@@ -909,9 +901,9 @@ function App() {
                     <div className="mb-6">
                       <button
                         onClick={() => setActiveConcept(activeConcept ? null : currentText.meta.conceptDNA![0].term)}
-                        className={`w-full flex items-center justify-between ${darkMode ? "bg-[#242424]" : "bg-cream-dark/70"} rounded-xl px-5 py-4 ${cardBgHover} transition-colors duration-200`}
+                        className={`w-full flex items-center justify-between border-y ${border} px-0 py-3 bg-transparent ${cardBgHover} transition-colors duration-200`}
                       >
-                        <span className={`text-sm font-medium ${text}`}>Concept DNA</span>
+                        <span className={`text-sm font-medium ${text}`}>Key Terms</span>
                         <div className="flex items-center gap-2">
                           <span className={`text-xs ${textFaint}`}>{currentText.meta.conceptDNA!.length} terms</span>
                           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"
@@ -921,14 +913,14 @@ function App() {
                         </div>
                       </button>
                       {!activeConcept && (
-                        <div className={`${cardBg} rounded-b-xl px-5 py-4 -mt-2 pt-5 animate-[fadeIn_200ms_ease]`}>
-                          <p className={`text-xs ${textMuted} mb-3`}>Key philosophical terms in this text. Click to explore, or find them <span className="border-b-2 border-dotted border-terracotta/50">dotted-underlined</span> in the text.</p>
+                        <div className={`border-b ${border} py-4 animate-[fadeIn_200ms_ease]`}>
+                          <p className={`text-xs ${textMuted} mb-3`}>Terms used by this text.</p>
                           <div className="flex flex-wrap gap-2">
                             {currentText.meta.conceptDNA!.map((c) => (
                               <button
                                 key={c.term}
                                 onClick={() => setActiveConcept(c.term)}
-                                className={`text-xs px-3 py-1.5 rounded-lg border ${border} ${cardBg} ${text} hover:border-terracotta/40 transition-colors`}
+                                className={`text-xs px-2.5 py-1 border ${border} ${text} hover:border-terracotta/40 transition-colors`}
                               >
                                 {c.displayTerm}
                               </button>
@@ -942,8 +934,8 @@ function App() {
                   {/* Primary Text (Collapsible) */}
                   <div className="mb-6">
                     <button onClick={() => setTextCollapsed(!textCollapsed)}
-                      className={`w-full flex items-center justify-between ${darkMode ? "bg-[#242424]" : "bg-cream-dark/70"} rounded-xl px-5 py-4 ${cardBgHover} transition-colors duration-200`}>
-                      <span className={`text-sm font-medium ${text}`}>Primary Text</span>
+                      className={`w-full flex items-center justify-between border-y ${border} px-0 py-3 bg-transparent ${cardBgHover} transition-colors duration-200`}>
+                      <span className={`text-sm font-medium ${text}`}>Text</span>
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"
                         className={`${textFaint} transition-transform duration-200 ${!textCollapsed ? "rotate-180" : ""}`}>
                         <path d="M4 6l4 4 4-4" />
@@ -1013,12 +1005,12 @@ function App() {
           {/* ---- Debates View ---- */}
           {view === "debates" && (
             <div className="animate-page-enter max-w-[720px] mx-auto px-5 sm:px-8 py-10 sm:py-16">
-              <h1 className={`text-2xl font-semibold ${text} mb-2`} style={{ fontFamily: "var(--font-serif)" }}>Philosopher vs. Philosopher</h1>
-              <p className={`text-sm ${textMuted} mb-8`}>See the great debates play out. Pick a side — or don't.</p>
+              <h1 className={`text-2xl font-semibold ${text} mb-2`} style={{ fontFamily: "var(--font-serif)" }}>Debates</h1>
+              <p className={`text-sm ${textMuted} mb-8`}>Compare opposing arguments from the library.</p>
               <div className="space-y-3">
                 {allDebates.map((debate, i) => (
                   <button key={debate.id} onClick={() => { setActiveDebate(debate); setView("debate-detail"); }}
-                    className={`card-interactive w-full text-left ${cardBg} rounded-xl p-5 border ${border}`}
+                    className={`w-full text-left border-t ${border} py-4 ${cardBgHover} transition-colors`}
                     style={{ animation: `pageEnter 280ms var(--ease-out) ${Math.min(i * 40, 240)}ms both` }}
                   >
                     <h3 className={`text-base font-semibold ${text} mb-1`} style={{ fontFamily: "var(--font-serif)" }}>{debate.title}</h3>
@@ -1040,17 +1032,17 @@ function App() {
               <button onClick={() => { setView("debates"); setActiveDebate(null); }}
                 className={`text-sm ${textMuted} mb-6 flex items-center gap-1.5 hover:text-terracotta transition-colors duration-150`}>
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M10 4l-4 4 4 4"/></svg>
-                Back to Debates
+                Back to debates
               </button>
               <h1 className={`text-2xl font-semibold ${text} mb-1`} style={{ fontFamily: "var(--font-serif)" }}>{activeDebate.title}</h1>
               <p className={`text-sm ${textMuted} mb-8`}>{activeDebate.subtitle}</p>
 
               <div className="grid sm:grid-cols-2 gap-4 mb-8">
                 {[activeDebate.philosopher1, activeDebate.philosopher2].map((phil, idx) => (
-                  <div key={idx} className={`${cardBg} rounded-xl p-5 border ${border}`} style={{ animation: `pageEnter 280ms var(--ease-out) ${idx * 80}ms both` }}>
+                  <div key={idx} className={`border-y ${border} py-5`} style={{ animation: `pageEnter 280ms var(--ease-out) ${idx * 80}ms both` }}>
                     <h3 className={`text-sm font-semibold text-terracotta mb-2`}>{phil.name}</h3>
                     <p className={`text-sm ${text} mb-3`} style={{ fontFamily: "var(--font-serif)" }}>{phil.position}</p>
-                    <blockquote className={`text-xs italic ${textMuted} border-l-2 border-terracotta/30 pl-3 mb-4`}>
+                    <blockquote className={`text-xs italic ${textMuted} mb-4`}>
                       "{phil.keyQuote}"
                     </blockquote>
                     <ul className="space-y-2">
@@ -1064,11 +1056,11 @@ function App() {
                 ))}
               </div>
 
-              <div className={`${cardBg} rounded-xl p-5 border ${border} mb-4`}>
+              <div className={`border-y ${border} py-5 mb-4`}>
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-terracotta mb-2">What's at Stake</h3>
                 <p className={`text-sm ${text} leading-relaxed`} style={{ fontFamily: "var(--font-serif)" }}>{activeDebate.stakes}</p>
               </div>
-              <div className={`${cardBg} rounded-xl p-5 border ${border}`}>
+              <div className={`border-y ${border} py-5`}>
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-terracotta mb-2">Your Turn</h3>
                 <p className={`text-sm ${text} leading-relaxed`} style={{ fontFamily: "var(--font-serif)" }}>{activeDebate.yourTurn}</p>
               </div>
@@ -1117,13 +1109,13 @@ function App() {
           {/* ---- Study Mode (BYOT) ---- */}
           {view === "study-mode" && (
             <div className="animate-page-enter max-w-[720px] mx-auto px-5 sm:px-8 py-10 sm:py-16">
-              <h1 className={`text-2xl font-semibold ${text} mb-2`} style={{ fontFamily: "var(--font-serif)" }}>Study Mode</h1>
-              <p className={`text-sm ${textMuted} mb-8`}>Paste any philosophical text. Get an AI-generated study package.</p>
+              <h1 className={`text-2xl font-semibold ${text} mb-2`} style={{ fontFamily: "var(--font-serif)" }}>Study</h1>
+              <p className={`text-sm ${textMuted} mb-8`}>Paste a passage and produce a structured note.</p>
 
               <textarea
                 value={studyText}
                 onChange={(e) => setStudyText(e.target.value)}
-                placeholder="Paste a philosophical passage here..."
+                placeholder="Paste a philosophical passage"
                 rows={8}
                 className={`w-full px-4 py-3 text-sm ${inputBg} ${text} rounded-xl focus:outline-none focus:border-terracotta/50 transition-colors resize-none mb-4`}
                 style={{ fontFamily: "var(--font-serif)" }}
@@ -1133,11 +1125,11 @@ function App() {
                 disabled={studyLoading || !studyText.trim()}
                 className={`btn-primary px-6 py-2.5 text-sm font-medium text-white bg-terracotta rounded-lg hover:bg-terracotta-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed`}
               >
-                {studyLoading ? "Generating..." : "Generate Study Package"}
+                {studyLoading ? "Creating..." : "Create Note"}
               </button>
 
               {studyResult && (
-                <div className={`mt-8 ${cardBg} rounded-xl p-6 border ${border} animate-[fadeIn_300ms_ease]`}>
+                <div className={`mt-8 border-y ${border} py-6 animate-[fadeIn_300ms_ease]`}>
                   <div className={`text-sm leading-relaxed ${text} whitespace-pre-wrap`} style={{ fontFamily: "var(--font-serif)" }}>
                     {studyResult}
                   </div>
@@ -1152,8 +1144,8 @@ function App() {
           <div className="fixed z-50 -translate-x-1/2 -translate-y-full animate-scale-in flex items-center gap-0.5 bg-charcoal rounded-lg shadow-xl p-1"
             style={{ left: floatingBtn.x, top: floatingBtn.y }}>
             <button onClick={callDeJargon}
-              className="px-3 py-1.5 text-white text-xs font-medium rounded-md hover:bg-white/10 transition-colors" title="De-jargon this passage">
-              De-jargon
+              className="px-3 py-1.5 text-white text-xs font-medium rounded-md hover:bg-white/10 transition-colors" title="Explain this passage">
+              Explain
             </button>
             <div className="w-px h-5 bg-white/20" />
             <button onClick={() => { setHighlightToolbarMode("annotate"); setShowAnnotationUI(true); }}
@@ -1170,7 +1162,7 @@ function App() {
 
         {/* Annotation UI */}
         {highlightToolbarMode === "annotate" && floatingBtn && (
-          <div className={`fixed z-50 -translate-x-1/2 w-72 animate-scale-in ${darkMode ? "bg-[#2a2a2a] border-[#444]" : "bg-white border-cream-darker"} border rounded-xl shadow-2xl p-4`}
+          <div className={`fixed z-50 -translate-x-1/2 w-72 animate-scale-in ${darkMode ? "bg-[#1b1d1a] border-[#3a4038]" : "bg-white border-[#d7d8cf]"} border rounded-xl shadow-xl p-4`}
             style={{ left: Math.min(Math.max(floatingBtn.x, 160), window.innerWidth - 160), top: floatingBtn.y + 10 }}>
             <div className="flex items-center justify-between mb-3">
               <span className={`text-xs font-semibold uppercase tracking-wider ${textFaint}`}>Annotate</span>
@@ -1220,7 +1212,7 @@ function App() {
           <>
             <div className="fixed inset-0 z-40" onClick={() => setConceptPopover(null)} />
             <div
-              className={`fixed z-50 w-80 ${darkMode ? "bg-[#2a2a2a] border-[#444]" : "bg-white border-cream-darker"} border rounded-xl shadow-2xl p-4 animate-scale-in`}
+              className={`fixed z-50 w-80 ${darkMode ? "bg-[#1b1d1a] border-[#3a4038]" : "bg-white border-[#d7d8cf]"} border rounded-xl shadow-xl p-4 animate-scale-in`}
               style={{ left: Math.min(conceptPopover.x, window.innerWidth - 340), top: conceptPopover.y + 20 }}
             >
               {(() => {
@@ -1264,8 +1256,7 @@ function App() {
           <>
             <div className="bottom-sheet-overlay fixed inset-0 z-40 bg-black/30"
               onClick={() => { setShowDeJargon(false); setDeJargonResult(null); setSoWhatResult(null); setDebatePrepResult(null); tracker.recordDejargonClose(); }} />
-            <div className={`panel-enter-mobile fixed bottom-0 left-0 right-0 z-50 ${bg} rounded-t-2xl max-h-[70vh] overflow-y-auto shadow-2xl`}>
-              <div className={`w-10 h-1 ${darkMode ? "bg-[#444]" : "bg-cream-darker"} rounded-full mx-auto mt-3 mb-1`} />
+            <div className={`panel-enter-mobile fixed bottom-0 left-0 right-0 z-50 ${bg} border-t ${border} max-h-[70vh] overflow-y-auto shadow-xl`}>
               <DeJargonPanelContent
                 isLoading={isLoading} result={deJargonResult} activeDepth={activeDepth} setActiveDepth={handleDepthChange}
                 selectedText={selectedText} onClose={() => { setShowDeJargon(false); setDeJargonResult(null); setSoWhatResult(null); setDebatePrepResult(null); tracker.recordDejargonClose(); }}
@@ -1397,7 +1388,7 @@ function BranchNode({ branch, schools, defaultOpen, currentTextId, darkMode, tex
       </button>
       <div className={`tree-children ${open ? "open" : ""}`}>
         <div className="tree-children-inner">
-          <div className={`ml-3 pl-3 border-l ${darkMode ? "border-[#333]" : "border-cream-darker/60"}`}>
+          <div className="ml-3 pl-3">
             {schoolNames.map((school) => (
               <SchoolNode
                 key={school}
@@ -1446,7 +1437,7 @@ function SchoolNode({ school, authors, currentTextId, darkMode, textMuted, textF
       </button>
       <div className={`tree-children ${open ? "open" : ""}`}>
         <div className="tree-children-inner">
-        <div className={`ml-3 pl-3 border-l ${darkMode ? "border-[#333]" : "border-cream-darker/60"} mb-1`}>
+        <div className="ml-3 pl-3 mb-1">
           {authorNames.map((author) => {
             const entries = authors[author];
             if (entries.length === 1) {
@@ -1457,7 +1448,7 @@ function SchoolNode({ school, authors, currentTextId, darkMode, textMuted, textF
                 <button
                   key={entry.id}
                   onClick={() => onTextClick(entry.relativePath)}
-                  className={`sidebar-item w-full text-left px-3 py-1.5 text-sm rounded-lg ${isActive ? "bg-terracotta/8 text-terracotta font-medium" : textMuted + " hover:text-terracotta"} transition-colors cursor-pointer`}
+                  className={`sidebar-item w-full text-left px-3 py-1.5 text-sm rounded-lg ${isActive ? "text-terracotta font-medium" : textMuted + " hover:text-terracotta"} transition-colors cursor-pointer`}
                 >
                   {author} &mdash; {entry.title}
                 </button>
@@ -1511,14 +1502,14 @@ function AuthorNode({ author, entries, currentTextId, darkMode, textMuted, textF
         </svg>
       </button>
       {open && (
-        <div className={`ml-3 pl-3 border-l ${darkMode ? "border-[#333]" : "border-cream-darker/60"} mb-1`}>
+        <div className="ml-3 pl-3 mb-1">
           {entries.map((entry) => {
             const isActive = entry.id === currentTextId;
             return (
               <button
                 key={entry.id}
                 onClick={() => onTextClick(entry.relativePath)}
-                className={`sidebar-item w-full text-left px-3 py-1.5 text-sm rounded-lg ${isActive ? "bg-terracotta/8 text-terracotta font-medium" : textMuted + " hover:text-terracotta"} transition-colors cursor-pointer`}
+                className={`sidebar-item w-full text-left px-3 py-1.5 text-sm rounded-lg ${isActive ? "text-terracotta font-medium" : textMuted + " hover:text-terracotta"} transition-colors cursor-pointer`}
               >
                 {entry.title}
               </button>
@@ -1531,6 +1522,43 @@ function AuthorNode({ author, entries, currentTextId, darkMode, textMuted, textF
 }
 
 /* ---- Helper: Render paragraph with Concept DNA highlights ---- */
+function renderInlineMarkup(segment: string, keyPrefix: string): React.ReactNode[] {
+  const nodes: React.ReactNode[] = [];
+  const markdownToken = /(\*\*[^*]+\*\*|_[^_\s][^_]*_)/g;
+  let cursor = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = markdownToken.exec(segment)) !== null) {
+    if (match.index > cursor) {
+      nodes.push(segment.slice(cursor, match.index));
+    }
+
+    const token = match[0];
+    const content = token.startsWith("**")
+      ? token.slice(2, -2)
+      : token.slice(1, -1);
+
+    nodes.push(
+      token.startsWith("**") ? (
+        <strong key={`${keyPrefix}-strong-${match.index}`} className="font-semibold">
+          {content}
+        </strong>
+      ) : (
+        <em key={`${keyPrefix}-em-${match.index}`}>
+          {content}
+        </em>
+      ),
+    );
+    cursor = match.index + token.length;
+  }
+
+  if (cursor < segment.length) {
+    nodes.push(segment.slice(cursor));
+  }
+
+  return nodes.length > 0 ? nodes : [segment];
+}
+
 function renderParagraphWithConcepts(
   text: string,
   paraId: number,
@@ -1539,14 +1567,18 @@ function renderParagraphWithConcepts(
   conceptHighlightMap: Record<string, number[]>,
   conceptDNA: ConceptDNAEntry[] | null | undefined,
 ) {
-  if (!conceptDNA || Object.keys(conceptHighlightMap).length === 0) return text;
+  if (!conceptDNA || Object.keys(conceptHighlightMap).length === 0) {
+    return <>{renderInlineMarkup(text, `para-${paraId}`)}</>;
+  }
 
   // Find concepts that appear in this paragraph
   const relevantTerms = Object.entries(conceptHighlightMap)
     .filter(([, paraIds]) => paraIds.includes(paraId))
     .map(([term]) => term);
 
-  if (relevantTerms.length === 0) return text;
+  if (relevantTerms.length === 0) {
+    return <>{renderInlineMarkup(text, `para-${paraId}`)}</>;
+  }
 
   // Build a keyword map from the concept DNA entries for this text
   const termKeywords: Record<string, string> = {};
@@ -1588,7 +1620,9 @@ function renderParagraphWithConcepts(
     }
   }
 
-  if (matches.length === 0) return text;
+  if (matches.length === 0) {
+    return <>{renderInlineMarkup(text, `para-${paraId}`)}</>;
+  }
 
   // Sort by position
   matches.sort((a, b) => a.start - b.start);
@@ -1598,7 +1632,7 @@ function renderParagraphWithConcepts(
   let cursor = 0;
   for (const m of matches) {
     if (m.start > cursor) {
-      parts.push(text.slice(cursor, m.start));
+      parts.push(...renderInlineMarkup(text.slice(cursor, m.start), `para-${paraId}-${cursor}`));
     }
     const matchText = text.slice(m.start, m.end);
     parts.push(
@@ -1610,13 +1644,13 @@ function renderParagraphWithConcepts(
           setActiveConcept(m.term);
         }}
       >
-        {matchText}
+        {renderInlineMarkup(matchText, `para-${paraId}-${m.term}-${m.start}`)}
       </span>,
     );
     cursor = m.end;
   }
   if (cursor < text.length) {
-    parts.push(text.slice(cursor));
+    parts.push(...renderInlineMarkup(text.slice(cursor), `para-${paraId}-${cursor}`));
   }
 
   return <>{parts}</>;
@@ -1639,27 +1673,27 @@ function DeJargonPanelContent({
   return (
     <div className="p-5">
       <div className="flex items-center justify-between mb-4">
-        <h3 className={`text-sm font-semibold ${text}`}>De-jargoned</h3>
+        <h3 className={`text-sm font-semibold ${text}`}>Explanation</h3>
         <button onClick={onClose} className={`p-1.5 rounded-lg ${darkMode ? "hover:bg-[#333]" : "hover:bg-cream-dark"} transition-colors duration-150 ${textFaint}`} aria-label="Close">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 4l8 8M12 4l-8 8" /></svg>
         </button>
       </div>
 
-      <div className={`${darkMode ? "bg-[#2a2a2a]" : "bg-highlight/40"} rounded-lg px-4 py-3 mb-4 border-l-2 border-terracotta/40`}>
+      <div className={`border-y ${border} py-3 mb-4`}>
         <p className={`text-xs ${textMuted} line-clamp-3`} style={{ fontFamily: "var(--font-serif)" }}>
           &ldquo;{selectedText.slice(0, 200)}{selectedText.length > 200 ? "..." : ""}&rdquo;
         </p>
       </div>
 
-      <div className={`flex gap-1 p-1 rounded-lg mb-5 ${darkMode ? "bg-[#2a2a2a]" : "bg-cream-dark/60"}`}>
+      <div className={`flex gap-1 border-y ${border} mb-5`}>
         {(["plain", "conceptual", "scholarly"] as DepthLevel[]).map((depth) => (
           <button key={depth} onClick={() => setActiveDepth(depth)}
-            className={`flex-1 py-1.5 text-xs font-medium rounded-md transition-all duration-150 ${
+            className={`flex-1 py-2 text-xs font-medium transition-colors duration-150 ${
               activeDepth === depth
-                ? "bg-terracotta text-white shadow-sm"
+                ? "text-terracotta border-b-2 border-terracotta"
                 : `${darkMode ? "text-[#888] hover:text-[#bbb]" : "text-charcoal-light hover:text-charcoal"}`
             }`}>
-            {depth.charAt(0).toUpperCase() + depth.slice(1)}
+            {depth === "plain" ? "Plain" : depth === "conceptual" ? "Context" : "Close read"}
           </button>
         ))}
       </div>
@@ -1669,7 +1703,7 @@ function DeJargonPanelContent({
           <svg className="loading-spin text-terracotta/50" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
           </svg>
-          <p className={`text-sm ${textMuted}`} style={{ fontFamily: "var(--font-serif)" }}>Reading the passage…</p>
+          <p className={`text-sm ${textMuted}`} style={{ fontFamily: "var(--font-serif)" }}>Reading the passage...</p>
         </div>
       ) : result ? (
         <>
@@ -1677,43 +1711,43 @@ function DeJargonPanelContent({
             {result[activeDepth].split("\n").map((p, i) => (<p key={i} className={i > 0 ? "mt-3" : ""}>{p}</p>))}
           </div>
 
-          {/* Action buttons: So What? + Debate Prep */}
+          {/* Secondary explanation tools */}
           {apiKey && (
             <div className={`flex gap-2 mb-4`}>
               <button onClick={onSoWhat} disabled={soWhatLoading}
                 className={`flex-1 px-3 py-2 text-xs font-medium rounded-lg border ${border} ${cardBg} ${text} hover:border-terracotta/50 transition-colors disabled:opacity-50`}>
-                {soWhatLoading ? "Thinking..." : "So What?"}
+                {soWhatLoading ? "Working..." : "Context"}
               </button>
               <button onClick={onDebatePrep} disabled={debatePrepLoading}
                 className={`flex-1 px-3 py-2 text-xs font-medium rounded-lg border ${border} ${cardBg} ${text} hover:border-terracotta/50 transition-colors disabled:opacity-50`}>
-                {debatePrepLoading ? "Prepping..." : "Debate Prep"}
+                {debatePrepLoading ? "Working..." : "Counterpoint"}
               </button>
             </div>
           )}
 
           {/* So What? Result */}
           {soWhatResult && (
-            <div className={`${cardBg} rounded-lg p-4 mb-4 border ${border} animate-[fadeIn_200ms_ease]`}>
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-terracotta mb-2">Why It Still Matters</h4>
+            <div className={`border-y ${border} py-4 mb-4 animate-[fadeIn_200ms_ease]`}>
+              <h4 className="text-xs font-semibold uppercase text-terracotta mb-2">Context</h4>
               <p className={`text-sm leading-relaxed ${text}`} style={{ fontFamily: "var(--font-serif)" }}>{soWhatResult}</p>
             </div>
           )}
 
           {/* Debate Prep Result */}
           {debatePrepResult && (
-            <div className={`${cardBg} rounded-lg p-4 mb-4 border ${border} animate-[fadeIn_200ms_ease]`}>
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-terracotta mb-2">Debate Prep</h4>
+            <div className={`border-y ${border} py-4 mb-4 animate-[fadeIn_200ms_ease]`}>
+              <h4 className="text-xs font-semibold uppercase text-terracotta mb-2">Counterpoint</h4>
               <div className={`text-sm leading-relaxed ${text} whitespace-pre-wrap`} style={{ fontFamily: "var(--font-serif)" }}>{debatePrepResult}</div>
             </div>
           )}
 
-          {/* Save to PhiloBook */}
+          {/* Save to notebook */}
           <div className={`border-t ${border} pt-4`}>
             <textarea value={saveNote} onChange={(e) => setSaveNote(e.target.value)} placeholder="Add a note (optional)..."
               className={`w-full px-3 py-2 text-sm ${inputBg} ${text} rounded-lg focus:outline-none focus:border-terracotta/40 resize-none transition-colors`} rows={2} />
             <button onClick={onSave}
               className="btn-primary mt-2 w-full px-4 py-2 text-sm font-medium text-white bg-terracotta rounded-lg hover:bg-terracotta-dark transition-colors">
-              {showSaveSuccess ? "✓ Saved" : "Save to PhiloBook"}
+              {showSaveSuccess ? "Saved" : "Save to Notebook"}
             </button>
           </div>
         </>
@@ -1806,14 +1840,14 @@ function ConceptDNAPanel({
   return (
     <div className="p-5">
       <div className="flex items-center justify-between mb-4">
-        <h3 className={`text-sm font-semibold ${text}`}>Concept DNA</h3>
+        <h3 className={`text-sm font-semibold ${text}`}>Key Term</h3>
         <button onClick={onClose} className={`p-1.5 rounded-lg ${darkMode ? "hover:bg-[#333]" : "hover:bg-cream-dark"} transition-colors duration-150 ${textFaint}`} aria-label="Close">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 4l8 8M12 4l-8 8" /></svg>
         </button>
       </div>
 
       {/* Term header */}
-      <div className={`${darkMode ? "bg-[#2a2a2a]" : "bg-highlight/40"} rounded-lg px-4 py-3 mb-5 border-l-2 border-terracotta/40`}>
+      <div className={`border-y ${border} py-3 mb-5`}>
         <h4 className={`text-base font-semibold ${text} mb-0.5`} style={{ fontFamily: "var(--font-serif)" }}>
           {concept.displayTerm}
         </h4>
@@ -1822,7 +1856,7 @@ function ConceptDNAPanel({
 
       {/* Definition */}
       <div className="mb-5">
-        <h5 className="text-xs font-semibold uppercase tracking-wider text-terracotta mb-2">Definition</h5>
+        <h5 className="text-xs font-semibold uppercase text-terracotta mb-2">Definition</h5>
         <p className={`text-sm ${text} leading-relaxed`} style={{ fontFamily: "var(--font-serif)" }}>
           {concept.definition}
         </p>
@@ -1831,7 +1865,7 @@ function ConceptDNAPanel({
       {/* Related Terms */}
       {concept.relatedTerms.length > 0 && (
         <div>
-          <h5 className="text-xs font-semibold uppercase tracking-wider text-terracotta mb-2">Related Concepts</h5>
+          <h5 className="text-xs font-semibold uppercase text-terracotta mb-2">Related Terms</h5>
           <div className="flex flex-wrap gap-2">
             {concept.relatedTerms.map((rt) => {
               const isClickable = conceptDNA.some((c) => c.term === rt);
@@ -1842,8 +1876,8 @@ function ConceptDNAPanel({
                   disabled={!isClickable}
                   className={`text-xs px-3 py-1.5 rounded-lg border transition-colors ${
                     isClickable
-                      ? `${cardBg} ${border} hover:border-terracotta/40 ${text} cursor-pointer`
-                      : `${cardBg} ${border} ${textFaint} cursor-default`
+                      ? `${border} hover:border-terracotta/40 ${text} cursor-pointer`
+                      : `${border} ${textFaint} cursor-default`
                   }`}
                 >
                   {rt}
@@ -1856,7 +1890,7 @@ function ConceptDNAPanel({
 
       {/* Browse all concepts */}
       <div className={`mt-8 pt-5 border-t ${border}`}>
-        <h5 className={`text-xs font-semibold ${textMuted} mb-3`}>All concepts in this text</h5>
+        <h5 className={`text-xs font-semibold ${textMuted} mb-3`}>Terms in this text</h5>
         <div className="space-y-1">
           {conceptDNA.map((c) => (
             <button
@@ -1864,7 +1898,7 @@ function ConceptDNAPanel({
               onClick={() => onTermClick(c.term)}
               className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
                 c.term === activeTerm
-                  ? "bg-terracotta/10 text-terracotta font-medium"
+                  ? "text-terracotta font-medium"
                   : `${text} ${darkMode ? "hover:bg-[#2a2a2a]" : "hover:bg-cream-dark/60"}`
               }`}
             >
@@ -1877,49 +1911,16 @@ function ConceptDNAPanel({
   );
 }
 
-/* ---- Philos Logo with Greek hover effect ---- */
+/* ---- Philos Logo ---- */
 
 function PhilosLogo({ text, onClick }: { text: string; onClick: () => void }) {
-  const [hovered, setHovered] = useState(false);
-  const [tapped, setTapped] = useState(false);
-  const showGreek = hovered || tapped;
-
   return (
     <button
       onClick={onClick}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onTouchEnd={(e) => {
-        // On touch devices, toggle instead of hover
-        e.preventDefault();
-        setTapped((prev) => !prev);
-      }}
-      className={`relative text-xl font-semibold tracking-tight ${text} cursor-pointer`}
-      style={{ fontFamily: "var(--font-sans)", width: "5.5rem", height: "1.75rem" }}
+      className={`text-xl font-semibold ${text} cursor-pointer`}
+      style={{ fontFamily: "var(--font-sans)" }}
     >
-      {/* English */}
-      <span
-        className="absolute inset-0 flex items-center transition-all duration-[400ms] ease-in-out"
-        style={{
-          opacity: showGreek ? 0 : 1,
-          transform: showGreek ? "translateY(-4px)" : "translateY(0)",
-          pointerEvents: showGreek ? "none" : "auto",
-        }}
-      >
-        Philos
-      </span>
-      {/* Greek */}
-      <span
-        className="absolute inset-0 flex items-center transition-all duration-[400ms] ease-in-out"
-        style={{
-          fontFamily: "var(--font-serif)",
-          opacity: showGreek ? 1 : 0,
-          transform: showGreek ? "translateY(0)" : "translateY(4px)",
-          pointerEvents: showGreek ? "auto" : "none",
-        }}
-      >
-        φίλος
-      </span>
+      Philos
     </button>
   );
 }

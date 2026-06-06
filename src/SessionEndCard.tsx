@@ -23,11 +23,11 @@ export function SessionEndCard({ data, onDismiss, onViewProgress, darkMode, text
 
   return (
     <div className="session-end-card fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90vw] max-w-[420px]">
-      <div className={`${darkMode ? "bg-[#242424]" : "bg-white"} rounded-2xl shadow-2xl border ${border} p-5 relative`}>
+      <div className={`${darkMode ? "bg-[#161716]" : "bg-cream"} border-y ${border} py-5 relative`}>
         {/* Dismiss */}
         <button
           onClick={onDismiss}
-          className={`absolute top-3 right-3 p-1 rounded-lg ${darkMode ? "hover:bg-[#333]" : "hover:bg-cream-dark"} transition-colors ${textFaint}`}
+          className={`absolute top-3 right-0 p-1 rounded-lg ${darkMode ? "hover:bg-[#20231f]" : "hover:bg-[#eef0eb]"} transition-colors ${textFaint}`}
           aria-label="Dismiss"
         >
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -83,7 +83,7 @@ export function SessionEndCard({ data, onDismiss, onViewProgress, darkMode, text
           onClick={onViewProgress}
           className="w-full px-4 py-2 text-sm font-medium text-white bg-terracotta rounded-lg hover:bg-terracotta-dark transition-colors"
         >
-          View Full Progress
+          View progress
         </button>
       </div>
     </div>

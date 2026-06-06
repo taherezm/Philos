@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream: #FAF8F5;
-  --color-cream-dark: #F0EDE8;
-  --color-cream-darker: #E5E0D8;
-  --color-charcoal: #2C2C2C;
-  --color-charcoal-light: #5A5A5A;
-  --color-charcoal-lighter: #8A8A8A;
-  --color-terracotta: #C17C5A;
-  --color-terracotta-light: #D4956F;
-  --color-terracotta-dark: #A86A4A;
-  --color-highlight: rgba(245, 230, 200, 0.5);
-  --color-highlight-solid: #F5E6C8;
-  --font-serif: "Crimson Pro", Georgia, "Times New Roman", serif;
-  --font-sans: "DM Sans", system-ui, sans-serif;
+  --color-cream: #F7F7F4;
+  --color-cream-dark: #EDEDE8;
+  --color-cream-darker: #DADAD2;
+  --color-charcoal: #252724;
+  --color-charcoal-light: #5A6059;
+  --color-charcoal-lighter: #858B82;
+  --color-terracotta: #557064;
+  --color-terracotta-light: #6F897D;
+  --color-terracotta-dark: #40564D;
+  --color-highlight: rgba(126, 144, 112, 0.18);
+  --color-highlight-solid: #E4E8DE;
+  --font-serif: "Times New Roman", Times, serif;
+  --font-sans: "Times New Roman", Times, serif;
 }
 
 * {
@@ -34,6 +34,38 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html.dark body {
+  background-color: #161716;
+  color: #e5e8e1;
+}
+
+body,
+header,
+aside,
+main,
+button,
+input,
+textarea,
+select,
+.reading-text,
+.explanation-text,
+.dejargon-panel {
+  transition-property: background-color, border-color, color, fill, stroke, opacity;
+  transition-duration: 260ms;
+  transition-timing-function: ease;
+}
+
+button,
+input,
+textarea,
+select {
+  letter-spacing: 0;
+}
+
+[class*="tracking-"] {
+  letter-spacing: 0 !important;
+}
+
 ::selection {
   background-color: var(--color-highlight);
 }
@@ -41,8 +73,8 @@ body {
 /* Reading text styles */
 .reading-text {
   font-family: var(--font-serif);
-  font-size: 19px;
-  line-height: 1.75;
+  font-size: 18px;
+  line-height: 1.78;
   color: var(--color-charcoal);
 }
 
@@ -70,7 +102,7 @@ html.dark .explanation-text {
 
 :root {
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.05);
+  --ease-spring: cubic-bezier(0.2, 0, 0, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --duration-fast: 120ms;
   --duration-base: 200ms;
@@ -216,7 +248,7 @@ html.dark .shimmer {
   padding: 6px 16px;
   font-size: 13px;
   font-weight: 500;
-  border-radius: 6px;
+  border-radius: 2px;
   transition: color 150ms ease, background-color 150ms ease;
   cursor: pointer;
   border: none;
@@ -227,7 +259,7 @@ html.dark .shimmer {
 .depth-tab-active {
   background-color: var(--color-terracotta);
   color: white;
-  box-shadow: 0 1px 3px rgba(193, 124, 90, 0.3);
+  box-shadow: none;
 }
 
 .depth-tab-inactive {
@@ -242,7 +274,6 @@ html.dark .shimmer {
 
 /* ── Button interactions ────────────────────────────────── */
 
-/* Primary CTA — press scale feedback */
 .btn-primary {
   transition: background-color 150ms ease, transform 100ms ease, box-shadow 150ms ease;
 }
@@ -250,24 +281,6 @@ html.dark .shimmer {
   transform: scale(0.97);
 }
 
-/* Subtle card hover — lift */
-.card-interactive {
-  transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out), background-color 150ms ease;
-}
-.card-interactive:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
-}
-.card-interactive:active {
-  transform: translateY(0);
-  box-shadow: none;
-}
-
-html.dark .card-interactive:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), 0 1px 4px rgba(0, 0, 0, 0.15);
-}
-
-/* Icon button press */
 .btn-icon {
   transition: background-color 150ms ease, transform 100ms ease, opacity 100ms ease;
 }
@@ -292,24 +305,11 @@ html.dark .card-interactive:hover {
 }
 
 .sidebar-item:hover {
-  background-color: var(--color-cream-dark);
+  background-color: rgba(85, 112, 100, 0.08);
 }
 
 html.dark .sidebar-item:hover {
-  background-color: #2a2a2a;
-}
-
-/* Active sidebar item indicator dot */
-.sidebar-item-active::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 3px;
-  height: 16px;
-  background: var(--color-terracotta);
-  border-radius: 0 2px 2px 0;
+  background-color: rgba(111, 137, 125, 0.14);
 }
 
 /* ── Tree node expand/collapse ──────────────────────────── */
@@ -426,11 +426,11 @@ html.dark .dejargon-panel::-webkit-scrollbar-thumb {
 /* ── Badge earned ───────────────────────────────────────── */
 
 .badge-earned {
-  box-shadow: 0 0 0 1px rgba(193, 124, 90, 0.15), 0 0 12px rgba(193, 124, 90, 0.08);
+  box-shadow: 0 0 0 1px rgba(85, 112, 100, 0.24);
 }
 
 html.dark .badge-earned {
-  box-shadow: 0 0 0 1px rgba(193, 124, 90, 0.25), 0 0 16px rgba(193, 124, 90, 0.1);
+  box-shadow: 0 0 0 1px rgba(111, 137, 125, 0.32);
 }
 
 /* ── Roadmap ────────────────────────────────────────────── */
@@ -440,8 +440,8 @@ html.dark .badge-earned {
 }
 
 @keyframes roadmapPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(193, 124, 90, 0.3); }
-  50%       { box-shadow: 0 0 0 8px rgba(193, 124, 90, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(85, 112, 100, 0.26); }
+  50%       { box-shadow: 0 0 0 8px rgba(85, 112, 100, 0); }
 }
 
 /* ── Inline Visual Aids ─────────────────────────────────── */
@@ -462,7 +462,7 @@ html.dark .badge-earned {
 
 /* React Flow canvas overrides */
 .react-flow {
-  border-radius: 8px;
+  border-radius: 2px;
 }
 
 .react-flow__controls button {
@@ -500,7 +500,20 @@ html.dark .react-flow__minimap {
 /* ── Focus ring (accessibility) ─────────────────────────── */
 
 *:focus-visible {
-  outline: 2px solid var(--color-terracotta);
-  outline-offset: 2px;
-  border-radius: 4px;
+  outline: 0;
+  box-shadow: inset 0 -1px 0 var(--color-terracotta);
+  border-radius: 2px;
+}
+
+.rounded-xl {
+  border-radius: 2px;
+}
+
+.rounded-2xl {
+  border-radius: 2px;
+}
+
+.rounded-lg,
+.rounded-md {
+  border-radius: 2px;
 }
