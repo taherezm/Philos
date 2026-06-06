@@ -33,36 +33,118 @@ interface DeJargonResult {
   scholarly: string;
 }
 
-const SYSTEM_PROMPT = (tone: ToneMode) => `You are the de-jargon engine for Philos, a philosophy reading app. Your job is to make dense philosophical text clear and accessible while preserving the intellectual substance of the ideas.
+const COMMON_WORDS = new Set([
+  "about", "after", "again", "against", "being", "because", "before", "between", "could", "does", "every",
+  "first", "from", "have", "into", "itself", "many", "more", "most", "other", "should", "such", "than",
+  "that", "their", "there", "these", "this", "those", "through", "under", "very", "what", "when", "where",
+  "which", "while", "with", "would", "your",
+]);
 
-TONE: ${tone}
+const pause = (ms = 120) => new Promise((resolve) => window.setTimeout(resolve, ms));
+const normalizePassage = (value: string) => value.replace(/\s+/g, " ").trim();
+const splitSentences = (value: string) => normalizePassage(value).split(/(?<=[.!?])\s+/).filter(Boolean);
+const trimWords = (value: string, maxWords: number) => {
+  const words = normalizePassage(value).split(/\s+/);
+  return words.length > maxWords ? `${words.slice(0, maxWords).join(" ")}...` : words.join(" ");
+};
+const extractKeywords = (value: string, limit = 5) => {
+  const seen = new Set<string>();
+  const words = normalizePassage(value).toLowerCase().match(/[a-z][a-z'-]{3,}/g) ?? [];
+  const keywords: string[] = [];
+  for (const raw of words) {
+    const word = raw.replace(/'s$/, "");
+    if (COMMON_WORDS.has(word) || seen.has(word)) continue;
+    seen.add(word);
+    keywords.push(word);
+    if (keywords.length >= limit) break;
+  }
+  return keywords;
+};
+const sourceLabel = (currentText: UnifiedText) => `${currentText.meta.author}'s "${currentText.meta.title}"`;
+const keywordPhrase = (keywords: string[]) => keywords.length ? keywords.join(", ") : "the central claim";
 
-${
-  tone === "coffee_shop"
-    ? `- Write like a smart, well-read friend explaining something over coffee
-- Use "you" and direct address naturally
-- Keep sentences short and varied in length
-- Use concrete analogies and examples from everyday life when they genuinely help
-- It's okay to say "basically" or "in plain terms" once, but don't overuse these crutches
-- Be warm but not patronizing`
-    : `- Write like an engaging philosophy professor in office hours
-- Include relevant philosophical context: who is this thinker responding to? What tradition does this belong to? What's the broader debate?
-- Use more structured explanation, but never lecture-style walls of text
-- You can reference other thinkers by name when it adds genuine understanding
-- Be intellectually generous -- assume the reader is smart but unfamiliar with the jargon`
+function buildDeJargonResult(rawPassage: string, currentText: UnifiedText, tone: ToneMode): DeJargonResult {
+  const passage = normalizePassage(rawPassage);
+  const sentences = splitSentences(passage);
+  const lead = trimWords(sentences[0] || passage, 32);
+  const keywords = extractKeywords(passage, 4);
+  const terms = keywordPhrase(keywords);
+  const source = sourceLabel(currentText);
+  const plainTone = tone === "coffee_shop"
+    ? "Read it as a practical point before worrying about the older wording."
+    : "Read it as a compact philosophical move before worrying about the older wording.";
+
+  return {
+    plain: `${plainTone} The passage is pressing on ${terms}. ${lead}`,
+    conceptual: `In ${source}, this passage works as part of a larger argument, not as an isolated sentence. It asks the reader to keep ${terms} in view, then notice how the claim changes once the surrounding reasons are taken seriously.`,
+    scholarly: `Argumentative role: ${lead} Key terms to watch: ${terms}. The passage is best read as a move from premise to consequence, where the author's vocabulary carries technical weight and should be translated only after the structure is clear.`,
+  };
 }
 
-FOR BOTH TONES -- ABSOLUTE RULES:
-1. NEVER use these words/phrases: "essentially," "fundamentally," "it's worth noting," "it bears mentioning," "let's unpack," "delve into," "at its core," "in other words" (more than once), "simply put," "when we really think about it"
-2. NEVER use more than one em dash per paragraph. Prefer commas, periods, or semicolons.
-3. NEVER start a paragraph with "So," or "Now,"
-4. NEVER use rhetorical questions that you immediately answer ("But what does this mean? It means...")
-5. NEVER use the phrase "This is important because" -- just show why it's important through your explanation
-6. Vary your sentence length. Mix short punchy sentences with longer ones. Read your output out loud in your head -- does it sound like a real person wrote it, or like an AI generated it?
-7. Preserve the PHILOSOPHER'S voice in your explanation. When explaining William James, be slightly energetic and direct (James was). When explaining Seneca, be more aphoristic and coaching. When explaining Kant, be more methodical. The de-jargon should hint at the thinker's personality.
-8. If a term is genuinely important philosophical vocabulary the reader SHOULD learn, keep it but define it clearly in context. Don't strip away all technical language -- give the reader the tools to use it themselves.
-9. Keep explanations concise. For a single sentence or short passage, respond in 2-4 sentences. For a full paragraph, respond in 4-8 sentences. Never be longer than the original passage.
-10. Do not begin your response with any greeting, preamble, or meta-commentary. Jump straight into the explanation.`;
+function buildSoWhatResult(rawPassage: string, currentText: UnifiedText, tone: ToneMode) {
+  const keywords = extractKeywords(rawPassage, 3);
+  const terms = keywordPhrase(keywords);
+  const source = sourceLabel(currentText);
+  if (tone === "coffee_shop") {
+    return `This still travels because ${terms} shows up whenever people defend a choice, a habit, or a belief without slowing down to justify it. ${source} gives you a sharper way to ask what is doing the real work in the argument.`;
+  }
+  return `This remains useful because ${terms} marks a recurring problem in ethics, politics, science, and ordinary judgment: reasons often look obvious until their assumptions are named. ${source} gives the reader a structure for testing those assumptions instead of accepting the surface wording.`;
+}
+
+function buildDebatePrep(rawPassage: string, currentText: UnifiedText) {
+  const lead = trimWords(splitSentences(rawPassage)[0] || rawPassage, 28);
+  const terms = keywordPhrase(extractKeywords(rawPassage, 4));
+  return [
+    "THE ARGUMENT IN ONE SENTENCE",
+    `${currentText.meta.author} is pushing the reader to treat ${terms} as something that has to be argued for, not merely assumed.`,
+    "",
+    "YOUR STRONGEST MOVE",
+    `Start from the passage itself: ${lead}`,
+    "",
+    "THE BEST COUNTERARGUMENT",
+    "An opponent can say the passage depends too much on its historical context or on vocabulary that no longer maps cleanly onto current problems.",
+    "",
+    "YOUR COMEBACK",
+    "Answer by separating the dated phrasing from the live argumentative structure, then show where the same structure still appears today.",
+    "",
+    "A CONCRETE EXAMPLE",
+    `Use a modern dispute where people argue over ${terms}, then ask which side gives reasons and which side relies on inherited assumptions.`,
+  ].join("\n");
+}
+
+function buildStudyPackage(rawText: string, tone: ToneMode) {
+  const sentences = splitSentences(rawText);
+  const summary = sentences.slice(0, 3).join(" ") || trimWords(rawText, 60);
+  const terms = extractKeywords(rawText, 6);
+  const termLines = terms.length
+    ? terms.map((term) => `- ${term}: Track how the passage uses this term and whether it names a claim, an assumption, or an objection.`)
+    : ["- central claim: Identify the main assertion before judging whether it succeeds."];
+  const toneLine = tone === "coffee_shop"
+    ? "Keep the first pass plain, then return for the harder moves."
+    : "Separate exposition from evaluation before deciding whether the argument succeeds.";
+
+  return [
+    "SUMMARY",
+    summary,
+    "",
+    "KEY TERMS",
+    ...termLines,
+    "",
+    "ARGUMENT STRUCTURE",
+    "1. Identify the claim the passage most wants the reader to accept.",
+    "2. Mark the reasons offered for that claim.",
+    "3. Separate examples from premises.",
+    "4. Test whether the conclusion still follows if the vocabulary is modernized.",
+    "",
+    "CRITICAL QUESTIONS",
+    "1. What assumption does the passage rely on but not fully defend?",
+    "2. Which sentence carries the most argumentative weight?",
+    "3. What would a thoughtful opponent reject first?",
+    "",
+    "READING NOTE",
+    toneLine,
+  ].join("\n");
+}
 
 function App() {
   // ---- State ----
@@ -90,8 +172,6 @@ function App() {
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [argumentCardOpen, setArgumentCardOpen] = useState(false);
   const [textCollapsed, setTextCollapsed] = useState(false);
-  const [apiKey, setApiKey] = useState(() => localStorage.getItem("philos_api_key") || "");
-  const [showApiKeyInput, setShowApiKeyInput] = useState(false);
   const [saveNote, setSaveNote] = useState("");
   const [showSaveSuccess, setShowSaveSuccess] = useState(false);
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("philos_dark") === "true");
@@ -118,7 +198,6 @@ function App() {
   trackerRef.current = tracker;
 
   // ---- Persist preferences ----
-  useEffect(() => { if (apiKey) localStorage.setItem("philos_api_key", apiKey); }, [apiKey]);
   useEffect(() => { localStorage.setItem("philos_dark", String(darkMode)); }, [darkMode]);
   useEffect(() => { localStorage.setItem("philos_tone", tone); }, [tone]);
   useEffect(() => { localStorage.setItem("philos_bookmarks", JSON.stringify(bookmarks)); }, [bookmarks]);
@@ -233,7 +312,6 @@ function App() {
   }, []);
 
   const callDeJargon = async () => {
-    if (!apiKey) { setShowApiKeyInput(true); return; }
     if (!currentText) return;
     setShowDeJargon(true);
     setIsLoading(true);
@@ -244,96 +322,40 @@ function App() {
     setActiveDepth("plain");
     // Track de-jargon request
     tracker.recordDejargon(currentText.meta.id, 0, selectedText.length);
-    try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "x-api-key": apiKey, "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 1500,
-          system: SYSTEM_PROMPT(tone),
-          messages: [{ role: "user", content: `De-jargon the following passage from "${currentText.meta.author}" (from the text "${currentText.meta.title}").\n\nProvide THREE versions at different depth levels. Respond ONLY in this exact JSON format with no other text:\n\n{\n  "plain": "The most accessible explanation. No jargon. Clear and direct.",\n  "conceptual": "Adds philosophical context: the argument structure, the tradition, who the thinker is responding to. Still clear but richer.",\n  "scholarly": "Near-original density but with key terms defined in parentheses and the argument structure made explicit. For readers who want to understand the text as written."\n}\n\nThe passage:\n"${selectedText}"` }],
-        }),
-      });
-      if (!response.ok) { const err = await response.json(); throw new Error(err.error?.message || "API request failed"); }
-      const data = await response.json();
-      const content = data.content[0].text;
-      const jsonMatch = content.match(/\{[\s\S]*\}/);
-      if (jsonMatch) { setDeJargonResult(JSON.parse(jsonMatch[0])); }
-      else { setDeJargonResult({ plain: content, conceptual: content, scholarly: content }); }
-    } catch (err: any) {
-      setDeJargonResult({ plain: `Error: ${err.message}. Please check your API key and try again.`, conceptual: `Error: ${err.message}`, scholarly: `Error: ${err.message}` });
-    } finally { setIsLoading(false); }
+    await pause();
+    setDeJargonResult(buildDeJargonResult(selectedText, currentText, tone));
+    setIsLoading(false);
   };
 
   const callSoWhat = async () => {
-    if (!apiKey || !deJargonResult || !currentText) return;
+    if (!deJargonResult || !currentText) return;
     setSoWhatLoading(true);
     setSoWhatResult(null);
     tracker.recordActiveRecall("so_what");
-    try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "x-api-key": apiKey, "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 800,
-          system: `You explain why old philosophical ideas still matter today. Be specific and concrete. Give 2-3 modern examples or applications. ${tone === "coffee_shop" ? "Write conversationally." : "Write with intellectual depth but stay accessible."}`,
-          messages: [{ role: "user", content: `This passage is from ${currentText.meta.author}'s "${currentText.meta.title}" (${currentText.meta.year ?? "date unknown"}):\n\n"${selectedText}"\n\nExplain why this idea still matters today. Give specific modern examples -- technology, politics, relationships, science, whatever fits best. Be concrete, not abstract. 3-5 sentences.` }],
-        }),
-      });
-      if (!response.ok) throw new Error("API request failed");
-      const data = await response.json();
-      setSoWhatResult(data.content[0].text);
-    } catch (err: any) { setSoWhatResult(`Error: ${err.message}`); }
-    finally { setSoWhatLoading(false); }
+    await pause();
+    setSoWhatResult(buildSoWhatResult(selectedText, currentText, tone));
+    setSoWhatLoading(false);
   };
 
   const callDebatePrep = async () => {
-    if (!apiKey || !deJargonResult || !currentText) return;
+    if (!deJargonResult || !currentText) return;
     setDebatePrepLoading(true);
     setDebatePrepResult(null);
     tracker.recordActiveRecall("debate_prep");
-    try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "x-api-key": apiKey, "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 1200,
-          system: `You are a debate coach preparing someone to argue about philosophical ideas. Be practical and punchy. ${tone === "coffee_shop" ? "Keep it casual and energizing." : "Be thorough but engaging."}`,
-          messages: [{ role: "user", content: `This passage is from ${currentText.meta.author}'s "${currentText.meta.title}":\n\n"${selectedText}"\n\nPrepare me to debate this idea tomorrow. Give me:\n1. THE ARGUMENT IN ONE SENTENCE (what the philosopher is really saying)\n2. YOUR STRONGEST MOVE (the most convincing way to defend this position)\n3. THE BEST COUNTERARGUMENT (what an opponent would say)\n4. YOUR COMEBACK (how to respond to that counterargument)\n5. A KILLER EXAMPLE (a concrete real-world case that supports this idea)\n\nKeep each section to 1-2 sentences. Be direct.` }],
-        }),
-      });
-      if (!response.ok) throw new Error("API request failed");
-      const data = await response.json();
-      setDebatePrepResult(data.content[0].text);
-    } catch (err: any) { setDebatePrepResult(`Error: ${err.message}`); }
-    finally { setDebatePrepLoading(false); }
+    await pause();
+    setDebatePrepResult(buildDebatePrep(selectedText, currentText));
+    setDebatePrepLoading(false);
   };
 
   const callStudyMode = async () => {
-    if (!apiKey || !studyText.trim()) return;
+    if (!studyText.trim()) return;
     setStudyLoading(true);
     setStudyResult(null);
     tracker.recordActiveRecall("study_mode");
     tracker.recordFeatureUsed("study_mode");
-    try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "x-api-key": apiKey, "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 2000,
-          system: `You create study packages for philosophical texts. Be thorough but clear. ${tone === "coffee_shop" ? "Write in an approachable, friendly tone." : "Write with academic rigor but remain accessible."}`,
-          messages: [{ role: "user", content: `Create a study package for this text:\n\n"${studyText}"\n\nProvide:\n1. SUMMARY (3-4 sentences capturing the core argument)\n2. KEY TERMS (list any important philosophical terms with brief definitions)\n3. THE ARGUMENT STRUCTURE (break down the logical moves being made)\n4. CRITICAL QUESTIONS (3 questions this text raises that you should think about)\n5. CONNECTIONS (how does this relate to other philosophical ideas or thinkers?)` }],
-        }),
-      });
-      if (!response.ok) throw new Error("API request failed");
-      const data = await response.json();
-      setStudyResult(data.content[0].text);
-    } catch (err: any) { setStudyResult(`Error: ${err.message}`); }
-    finally { setStudyLoading(false); }
+    await pause();
+    setStudyResult(buildStudyPackage(studyText, tone));
+    setStudyLoading(false);
   };
 
   const saveToPhiloBook = (type: PhiloBookItemType = "dejargon", extraData?: Partial<PhiloBookItem>) => {
@@ -535,7 +557,7 @@ function App() {
                 Philosophy made readable.
               </p>
               <p className={`text-sm ${textFaint} mb-10 max-w-sm mx-auto`}>
-                Read the great texts. Highlight anything confusing. Get clear, layered explanations powered by AI.
+                Read the great texts. Highlight anything confusing. Get clear, layered explanations.
               </p>
               <button
                 onClick={() => setOnboardingStep(1)}
@@ -553,7 +575,7 @@ function App() {
                 {[
                   { icon: "1", title: "Read", desc: "Browse curated primary texts from the philosophical canon." },
                   { icon: "2", title: "Highlight", desc: "Select any passage that feels dense or confusing." },
-                  { icon: "3", title: "Understand", desc: "Get AI-powered explanations at three depth levels: Plain, Conceptual, and Scholarly." },
+                  { icon: "3", title: "Understand", desc: "Get explanations at three depth levels: Plain, Conceptual, and Scholarly." },
                 ].map((step, i) => (
                   <div
                     key={step.icon}
@@ -582,7 +604,7 @@ function App() {
                 <div>
                   <p className="text-xs font-semibold text-terracotta mb-0.5 tracking-wide">Philosophical Guardrails</p>
                   <p className={`text-xs ${textMuted} leading-relaxed`}>
-                    Philos is designed to enhance your critical thinking, not replace it. Our AI provides context and clarity, but the final interpretation is always yours.
+                    Philos is designed to enhance your critical thinking, not replace it. The guide provides context and clarity, but the final interpretation is always yours.
                   </p>
                 </div>
               </div>
@@ -624,38 +646,12 @@ function App() {
                 </button>
               </div>
               <button
-                onClick={() => setOnboardingStep(3)}
+                onClick={finishOnboarding}
                 className="btn-primary w-full mt-8 px-6 py-3 bg-terracotta text-white font-medium rounded-xl hover:bg-terracotta-dark transition-colors text-sm"
                 style={{ animation: "pageEnter 280ms var(--ease-out) 180ms both" }}
               >
-                Next
+                Start Reading
               </button>
-            </div>
-          )}
-
-          {onboardingStep === 3 && (
-            <div className="animate-page-enter">
-              <p className={`text-xs font-medium uppercase tracking-wider text-terracotta mb-2 text-center`}>Almost there</p>
-              <p className={`text-sm ${textMuted} mb-6 text-center`}>To power the de-jargon engine, you'll need a Claude API key.</p>
-              <div className={`${cardBg} rounded-xl p-4`} style={{ animation: "pageEnter 280ms var(--ease-out) 80ms both" }}>
-                <label className={`text-xs ${textFaint} block mb-2`}>API Key</label>
-                <input
-                  type="password"
-                  value={apiKey}
-                  onChange={(e) => setApiKey(e.target.value)}
-                  placeholder="sk-ant-..."
-                  className={`w-full px-3 py-2 text-sm ${inputBg} rounded-lg focus:outline-none focus:border-terracotta/50 transition-colors`}
-                />
-                <p className={`text-xs ${textFaint} mt-2`}>Stored locally. Never sent anywhere except the Anthropic API.</p>
-              </div>
-              <button
-                onClick={finishOnboarding}
-                className="btn-primary w-full mt-6 px-6 py-3 bg-terracotta text-white font-medium rounded-xl hover:bg-terracotta-dark transition-colors text-sm"
-                style={{ animation: "pageEnter 280ms var(--ease-out) 160ms both" }}
-              >
-                {apiKey ? "Start Reading" : "Skip for Now"}
-              </button>
-              <p className={`text-xs ${textFaint} text-center mt-3`}>You can add your API key later in settings.</p>
             </div>
           )}
         </div>
@@ -707,34 +703,8 @@ function App() {
               )}
             </button>
 
-            {/* Settings */}
-            <button
-              onClick={() => setShowApiKeyInput(!showApiKeyInput)}
-              className={`btn-icon p-2 rounded-lg ${cardBgHover} ${textFaint}`}
-              aria-label="Settings"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="3" />
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
-              </svg>
-            </button>
           </div>
         </div>
-
-        {/* API Key Input */}
-        {showApiKeyInput && (
-          <div className={`border-t ${border} ${darkMode ? "bg-[#222]" : "bg-cream-dark/50"} animate-slide-down`}>
-            <div className="max-w-screen-xl mx-auto px-4 sm:px-6 py-3">
-              <div className="flex items-center gap-3 max-w-lg">
-                <label className={`text-xs ${textMuted} whitespace-nowrap`}>API Key:</label>
-                <input type="password" value={apiKey} onChange={(e) => setApiKey(e.target.value)} placeholder="sk-ant-..."
-                  className={`flex-1 px-3 py-1.5 text-sm ${inputBg} rounded-lg focus:outline-none focus:border-terracotta/50 transition-colors ${text}`} />
-                <button onClick={() => setShowApiKeyInput(false)} className="text-xs text-terracotta font-medium hover:text-terracotta-dark transition-colors">Done</button>
-              </div>
-              <p className={`text-xs ${textFaint} mt-1.5`}>Your key is stored locally and never sent anywhere except the Anthropic API.</p>
-            </div>
-          </div>
-        )}
 
       </header>
 
@@ -1118,7 +1088,7 @@ function App() {
           {view === "study-mode" && (
             <div className="animate-page-enter max-w-[720px] mx-auto px-5 sm:px-8 py-10 sm:py-16">
               <h1 className={`text-2xl font-semibold ${text} mb-2`} style={{ fontFamily: "var(--font-serif)" }}>Study Mode</h1>
-              <p className={`text-sm ${textMuted} mb-8`}>Paste any philosophical text. Get an AI-generated study package.</p>
+              <p className={`text-sm ${textMuted} mb-8`}>Paste any philosophical text. Get a structured study package.</p>
 
               <textarea
                 value={studyText}
@@ -1254,7 +1224,6 @@ function App() {
               darkMode={darkMode} text={text} textMuted={textMuted} textFaint={textFaint} cardBg={cardBg} border={border} inputBg={inputBg}
               soWhatResult={soWhatResult} soWhatLoading={soWhatLoading} onSoWhat={callSoWhat}
               debatePrepResult={debatePrepResult} debatePrepLoading={debatePrepLoading} onDebatePrep={callDebatePrep}
-              apiKey={apiKey}
             />
           </div>
         )}
@@ -1273,7 +1242,6 @@ function App() {
                 darkMode={darkMode} text={text} textMuted={textMuted} textFaint={textFaint} cardBg={cardBg} border={border} inputBg={inputBg}
                 soWhatResult={soWhatResult} soWhatLoading={soWhatLoading} onSoWhat={callSoWhat}
                 debatePrepResult={debatePrepResult} debatePrepLoading={debatePrepLoading} onDebatePrep={callDebatePrep}
-                apiKey={apiKey}
               />
             </div>
           </>
@@ -1627,14 +1595,13 @@ function renderParagraphWithConcepts(
 function DeJargonPanelContent({
   isLoading, result, activeDepth, setActiveDepth, selectedText, onClose, onSave,
   saveNote, setSaveNote, showSaveSuccess, darkMode, text, textMuted, textFaint, cardBg, border, inputBg,
-  soWhatResult, soWhatLoading, onSoWhat, debatePrepResult, debatePrepLoading, onDebatePrep, apiKey,
+  soWhatResult, soWhatLoading, onSoWhat, debatePrepResult, debatePrepLoading, onDebatePrep,
 }: {
   isLoading: boolean; result: DeJargonResult | null; activeDepth: DepthLevel; setActiveDepth: (d: DepthLevel) => void;
   selectedText: string; onClose: () => void; onSave: () => void; saveNote: string; setSaveNote: (s: string) => void;
   showSaveSuccess: boolean; darkMode: boolean; text: string; textMuted: string; textFaint: string; cardBg: string; border: string; inputBg: string;
   soWhatResult: string | null; soWhatLoading: boolean; onSoWhat: () => void;
   debatePrepResult: string | null; debatePrepLoading: boolean; onDebatePrep: () => void;
-  apiKey: string;
 }) {
   return (
     <div className="p-5">
@@ -1678,18 +1645,16 @@ function DeJargonPanelContent({
           </div>
 
           {/* Action buttons: So What? + Debate Prep */}
-          {apiKey && (
-            <div className={`flex gap-2 mb-4`}>
-              <button onClick={onSoWhat} disabled={soWhatLoading}
-                className={`flex-1 px-3 py-2 text-xs font-medium rounded-lg border ${border} ${cardBg} ${text} hover:border-terracotta/50 transition-colors disabled:opacity-50`}>
-                {soWhatLoading ? "Thinking..." : "So What?"}
-              </button>
-              <button onClick={onDebatePrep} disabled={debatePrepLoading}
-                className={`flex-1 px-3 py-2 text-xs font-medium rounded-lg border ${border} ${cardBg} ${text} hover:border-terracotta/50 transition-colors disabled:opacity-50`}>
-                {debatePrepLoading ? "Prepping..." : "Debate Prep"}
-              </button>
-            </div>
-          )}
+          <div className={`flex gap-2 mb-4`}>
+            <button onClick={onSoWhat} disabled={soWhatLoading}
+              className={`flex-1 px-3 py-2 text-xs font-medium rounded-lg border ${border} ${cardBg} ${text} hover:border-terracotta/50 transition-colors disabled:opacity-50`}>
+              {soWhatLoading ? "Thinking..." : "So What?"}
+            </button>
+            <button onClick={onDebatePrep} disabled={debatePrepLoading}
+              className={`flex-1 px-3 py-2 text-xs font-medium rounded-lg border ${border} ${cardBg} ${text} hover:border-terracotta/50 transition-colors disabled:opacity-50`}>
+              {debatePrepLoading ? "Prepping..." : "Debate Prep"}
+            </button>
+          </div>
 
           {/* So What? Result */}
           {soWhatResult && (

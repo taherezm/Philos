@@ -1,8 +1,6 @@
 #  Philos: Philosophy Made Intuitive
 
-**Philos** is an AI-powered reading companion designed to make the dense, archaic texts of the philosophical canon accessible to everyday readers, lifelong learners, and students without dumbing down the original arguments.
-
-Built for the **CBC @ IU Claude Hackathon — Track 5: Creative Flourishing**.
+**Philos** is a reading companion designed to make the dense, archaic texts of the philosophical canon accessible to everyday readers, lifelong learners, and students without dumbing down the original arguments.
 
 ---
 
@@ -10,11 +8,11 @@ Built for the **CBC @ IU Claude Hackathon — Track 5: Creative Flourishing**.
 Philosophy is humanity's oldest framework for finding meaning and understanding our world. However, the cultural preservation of these great ideas is failing because reading them is isolating and inherently difficult. Readers are often locked out by impenetrable jargon, losing the opportunity to engage with transformative ideas.
 
 ##  The Solution (Context-Aware De-jargoning)
-Philos doesn't just overlay an AI chatbot on top of a text. Our core innovation is a **Context-Aware De-jargon Engine**. 
+Philos centers on a **Context-Aware De-jargon Engine**.
 
-When a user highlights a confusing passage, Philos doesn't just read the isolated sentence. It programmatically resolves the selection back into the structure of the source essay, assembling a "context bundle" (including nearby paragraphs, the essay's central thesis, and key argumentative moves) before querying the model. 
+When a user highlights a confusing passage, Philos doesn't just read the isolated sentence. It resolves the selection back into the structure of the source essay, assembling a context bundle that includes nearby paragraphs, the essay's central thesis, and key argumentative moves.
 
-The AI acts as a careful guide, explaining the highlighted text as part of a *live argument* rather than a floating sentence.
+The guide explains the highlighted text as part of a *live argument* rather than a floating sentence.
 
 ##  Key Features
 * **Layered De-jargoning:** Choose your depth. Explanations are provided in 'Plain', 'Conceptual', or 'Scholarly' depths to match the reader's current understanding.
@@ -24,13 +22,12 @@ The AI acts as a careful guide, explaining the highlighted text as part of a *li
 * **Custom Personas:** Switch between "Coffee Shop" (warm, casual analogies) and "Office Hours" (structured, academic context) explanation tones.
 
 ##  Ethical Alignment
-Philos was built with deep consideration for the ethical risks of AI in education:
-1.  **Anti-Flattening:** We designed the system to preserve the integrity of the original thinker. We explicitly prompt the AI to avoid turning philosophy into generic self-help or vague paraphrase.
+Philos was built with deep consideration for the risks of over-simplification in education:
+1.  **Anti-Flattening:** We designed the system to preserve the integrity of the original thinker and avoid turning philosophy into generic self-help or vague paraphrase.
 2.  **Empowerment over Replacement:** Philos is designed to enhance critical thinking, not replace it. By providing context and structured breakdowns, we give the user the tools to interpret the text themselves, keeping the human firmly in the driver's seat.
 
 ##  Technical Stack
 * **Frontend:** React, TypeScript, Vite, Tailwind CSS
-* **AI Integration:** Anthropic Claude API (`claude-3-5-sonnet-20240620`) -- subject to change
-* **Architecture:** Context-aware prompt engineering, dynamic text resolution, and custom JSON schema enforcement.
+* **Architecture:** Context-aware text resolution, layered explanations, and custom JSON schema enforcement.
 
    
