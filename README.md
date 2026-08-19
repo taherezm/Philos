@@ -1,6 +1,6 @@
-#  Philos: Philosophy Made Intuitive
+intuitive philosophy
 
-**Philos** is a reading companion designed to make the dense, archaic texts of the philosophical canon accessible to everyday readers, lifelong learners, and students without dumbing down the original arguments.
+**Philos** is a reading program designed to make the dense, archaic texts of the philosophical canon accessible to everyday readers, lifelong learners, and students without dumbing down the original arguments.
 
 ---
 
