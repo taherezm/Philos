@@ -30,4 +30,4 @@ Philos was built with deep consideration for the risks of over-simplification in
 * **Frontend:** React, TypeScript, Vite, Tailwind CSS
 * **Architecture:** Context-aware text resolution, layered explanations, and custom JSON schema enforcement.
 
-   
+Currently a WIP; developing OpenAI plugin for native-use on ChatGPT    
